@@ -211,13 +211,13 @@
   <section id="contact">
     <div class="card">
       <h2>Contact Me</h2>
-      <form onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+      <!-- ✅ Updated with Formspree endpoint -->
+      <form action="https://formspree.io/f/movlzppp" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
         <button type="submit">Send</button>
       </form>
-      <p id="response"></p>
     </div>
   </section>
 
@@ -229,12 +229,6 @@
   </footer>
 
   <script>
-    // Contact form
-    function sendMessage(event) {
-      event.preventDefault();
-      document.getElementById('response').innerText = "Thanks! Your message has been recorded.";
-    }
-
     // ✅ To-Do App
     function loadTasks() {
       let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
