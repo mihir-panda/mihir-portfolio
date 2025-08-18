@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mihir Ranjan Panda - Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input, textarea {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    button:hover {
+      background: #555;
+    }
+    ul { list-style: none; padding: 0; }
+    li { margin: 5px 0; padding: 5px; background: #eee; border-radius: 5px; }
+    .calc input {
+      width: 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mihir Ranjan Panda</h1>
+    <p>Software Test Engineer | Automation | API Testing</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>I am a Software Test Engineer with 2+ years of experience in Manual & Automation testing, Selenium, Java, API Testing (Postman), SQL, and Agile.</p>
+    </div>
+
+    <div class="card">
+      <h2>Projects</h2>
+      <ul>
+        <li>Zyler ERP Suite – Automated workflows</li>
+        <li>ConfluxHR – HR management system</li>
+        <li>ASTERDocs – Document management system</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Contact Me</h2>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="response"></p>
+    </div>
+
+    <!-- ✅ To-Do List App -->
+    <div class="card">
+      <h2>Mini To-Do List</h2>
+      <input type="text" id="todoInput" placeholder="Enter a task">
+      <button onclick="addTask()">Add Task</button>
+      <ul id="todoList"></ul>
+    </div>
+
+    <!-- ✅ Calculator -->
+    <div class="card calc">
+      <h2>Mini Calculator</h2>
+      <input type="number" id="num1">
+      <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="number" id="num2">
+      <button onclick="calculate()">=</button>
+      <p id="calcResult"></p>
+    </div>
+
+    <!-- ✅ Random Quote Generator -->
+    <div class="card">
+      <h2>Quote Generator</h2>
+      <button onclick="generateQuote()">Get Quote</button>
+      <p id="quote"></p>
+    </div>
+  </section>
+
+  <script>
+    // Contact form
+    function sendMessage(event) {
+      event.preventDefault();
+      document.getElementById('response').innerText = "Thanks! Your message has been recorded.";
+    }
+
+    // ✅ To-Do App
+    function loadTasks() {
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      let list = document.getElementById("todoList");
+      list.innerHTML = "";
+      tasks.forEach((task, index) => {
+        let li = document.createElement("li");
+        li.innerHTML = task + " <button onclick='deleteTask(" + index + ")'>X</button>";
+        list.appendChild(li);
+      });
+    }
+    function addTask() {
+      let input = document.getElementById("todoInput");
+      let task = input.value.trim();
+      if(task) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.push(task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        input.value = "";
+        loadTasks();
+      }
+    }
+    function deleteTask(index) {
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      loadTasks();
+    }
+    loadTasks();
+
+    // ✅ Calculator
+    function calculate() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let operator = document.getElementById("operator").value;
+      let result;
+      if(operator === "+") result = num1 + num2;
+      else if(operator === "-") result = num1 - num2;
+      else if(operator === "*") result = num1 * num2;
+      else if(operator === "/") result = num2 !== 0 ? num1 / num2 : "Error (÷0)";
+      document.getElementById("calcResult").innerText = "Result: " + result;
+    }
+
+    // ✅ Random Quote Generator
+    const quotes = [
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Believe you can and you're halfway there.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "The future depends on what you do today.",
+      "Dream big and dare to fail."
+    ];
+    function generateQuote() {
+      let randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[randomIndex];
+    }
+  </script>
+</body>
+</html>
