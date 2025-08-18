@@ -6,53 +6,131 @@
   <title>Mihir Ranjan Panda - Portfolio</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
     header {
-      background: #333;
+      background: linear-gradient(135deg, #1a73e8, #0f4c81);
       color: #fff;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    nav {
+      background: #fff;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #1a73e8;
     }
     section {
-      padding: 20px;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
     }
     .card {
       background: #fff;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
     }
     h2 {
       margin-top: 0;
+      color: #1a73e8;
     }
-    input, textarea {
+    input, textarea, select {
       padding: 10px;
       margin: 5px 0;
-      border-radius: 5px;
+      width: 100%;
+      border-radius: 8px;
       border: 1px solid #ccc;
     }
     button {
-      background: #333;
+      background: #1a73e8;
       color: #fff;
-      padding: 10px;
+      padding: 10px 15px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 5px;
+      transition: background 0.3s;
     }
     button:hover {
-      background: #555;
+      background: #0f4c81;
     }
     ul { list-style: none; padding: 0; }
-    li { margin: 5px 0; padding: 5px; background: #eee; border-radius: 5px; }
+    li {
+      margin: 8px 0;
+      padding: 8px;
+      background: #f1f1f1;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li button {
+      background: red;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
     .calc input {
-      width: 60px;
+      width: 70px;
       text-align: center;
+    }
+    /* ✅ Skills Progress Bars */
+    .skill {
+      margin: 10px 0;
+    }
+    .skill span {
+      font-weight: bold;
+      display: block;
+    }
+    .progress {
+      background: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 12px;
+    }
+    .progress-bar {
+      height: 12px;
+      background: linear-gradient(90deg, #1a73e8, #0f4c81);
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    footer a {
+      color: #1a73e8;
+      margin: 0 8px;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -62,12 +140,22 @@
     <p>Software Test Engineer | Automation | API Testing</p>
   </header>
 
-  <section>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#apps">Mini Apps</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
     <div class="card">
       <h2>About Me</h2>
       <p>I am a Software Test Engineer with 2+ years of experience in Manual & Automation testing, Selenium, Java, API Testing (Postman), SQL, and Agile.</p>
     </div>
+  </section>
 
+  <section id="projects">
     <div class="card">
       <h2>Projects</h2>
       <ul>
@@ -76,18 +164,19 @@
         <li>ASTERDocs – Document management system</li>
       </ul>
     </div>
+  </section>
 
+  <section id="skills">
     <div class="card">
-      <h2>Contact Me</h2>
-      <form onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <p id="response"></p>
+      <h2>Skills</h2>
+      <div class="skill"><span>Selenium</span><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
+      <div class="skill"><span>Java</span><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
+      <div class="skill"><span>API Testing (Postman)</span><div class="progress"><div class="progress-bar" style="width:75%"></div></div></div>
+      <div class="skill"><span>SQL</span><div class="progress"><div class="progress-bar" style="width:70%"></div></div></div>
     </div>
+  </section>
 
+  <section id="apps">
     <!-- ✅ To-Do List App -->
     <div class="card">
       <h2>Mini To-Do List</h2>
@@ -118,6 +207,26 @@
       <p id="quote"></p>
     </div>
   </section>
+
+  <section id="contact">
+    <div class="card">
+      <h2>Contact Me</h2>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="response"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Mihir Ranjan Panda | Connect with me:
+      <a href="https://github.com/mihir-panda" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/mihir-panda" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
 
   <script>
     // Contact form
