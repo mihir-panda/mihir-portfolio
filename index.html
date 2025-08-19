@@ -1,521 +1,471 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mihir Ranjan Panda – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mihir Ranjan Panda — Portfolio</title>
   <style>
-    /* =============================
-       THEME (Light / Dark Toggle)
-       ============================= */
     :root{
-      --bg: #f7f8fc;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #2563eb;
-      --primary-2: #0ea5e9;
-      --border: #e5e7eb;
-      --shadow: 0 6px 18px rgba(0,0,0,.08);
-      --shadow-2: 0 10px 30px rgba(37,99,235,.15);
-    }
-    [data-theme="dark"]{
       --bg: #0f1115;
-      --card: #161a23;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --primary: #e11d48; /* Instagram-ish accent in dark */
-      --primary-2: #a78bfa;
-      --border: #222733;
-      --shadow: 0 6px 18px rgba(0,0,0,.45);
-      --shadow-2: 0 10px 30px rgba(225,29,72,.22);
+      --bg-soft:#151922;
+      --card:#141922;
+      --text:#e9eef7;
+      --muted:#a9b1c3;
+      --brand:#6f6cf6;
+      --brand-2:#d458f6;
+      --shadow: 0 10px 24px rgba(0,0,0,.45);
+      --ring: 0 0 0 2px rgba(111,108,246,.35);
+    }
+    [data-theme="light"]{
+      --bg:#f5f7fb;
+      --bg-soft:#ffffff;
+      --card:#ffffff;
+      --text:#1c2230;
+      --muted:#57607a;
+      --brand:#4f46e5;
+      --brand-2:#ec4899;
+      --shadow: 0 10px 24px rgba(31,41,55,.08);
+      --ring: 0 0 0 2px rgba(79,70,229,.25);
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:var(--text);}
+    html,body{margin:0;height:100%}
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      background: radial-gradient(1200px 500px at 20% -10%, rgba(111,108,246,.25), transparent 60%),
+                  radial-gradient(900px 500px at 110% -30%, rgba(212,88,246,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      transition: background .4s ease, color .4s ease;
+    }
 
     /* Top bar */
-    .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;padding:14px 16px;box-shadow:var(--shadow-2)}
-    .topbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px}
-    .avatar{width:44px;height:44px;border-radius:50%;background:#fff1;border:2px solid #ffffff55;display:flex;align-items:center;justify-content:center;font-weight:700}
-    .brand{flex:1}
-    .brand h1{margin:0;font-size:1.1rem;letter-spacing:.3px}
-    .brand p{margin:0;opacity:.9;font-size:.85rem}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      color:#fff;
+      padding:12px 16px;
+      box-shadow: var(--shadow);
+    }
+    .topbar .inner{
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:16px;
+    }
+    .avatar{
+      width:40px; height:40px; border-radius:50%;
+      display:grid; place-items:center; font-weight:700; letter-spacing:.5px;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .title-group{flex:1}
+    .name{font-weight:800; font-size:18px; margin:0}
+    .tagline{margin:2px 0 0; font-size:12px; opacity:.95}
 
-    /* Theme toggle */
-    .toggle{display:flex;align-items:center;gap:8px}
-    .switch{position:relative;width:56px;height:28px;background:#ffffff44;border-radius:999px;cursor:pointer;border:1px solid #ffffff55}
-    .knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .25s}
-    [data-theme="dark"] .knob{transform:translateX(28px)}
-    .toggle span{font-size:.85rem}
+    nav a{
+      color:#fff; text-decoration:none; font-weight:600; padding:10px 12px; border-radius:10px;
+      transition: transform .2s ease, background .2s ease;
+    }
+    nav a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.15);}
+    .toggle{
+      display:flex; align-items:center; gap:8px; font-weight:700; font-size:13px;
+      background: rgba(255,255,255,.15); padding:6px 10px; border-radius:999px; cursor:pointer;
+      user-select:none;
+    }
+    .toggle input{appearance:none; width:44px; height:24px; background:#0f172a; border-radius:999px; position:relative; outline:none; border:1px solid rgba(255,255,255,.4)}
+    .toggle input:after{
+      content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
+      background:#fff; transition: left .25s ease;
+    }
+    [data-theme="light"] .toggle input{background:#e5e7eb; border-color:#cbd5e1}
+    [data-theme="light"] .toggle input:after{left:22px}
 
     /* Layout */
-    .container{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns: 1fr 1.15fr;gap:18px}
-    @media (max-width: 900px){.container{grid-template-columns:1fr}}
+    .container{max-width:1200px; margin:22px auto; padding:0 14px}
+    .grid{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;
+    }
+    @media (max-width: 920px){
+      .grid{grid-template-columns: 1fr}
+    }
 
     /* Cards */
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
-    .card h2{margin:0 0 10px;color:var(--text);font-size:1.1rem}
-    .card p{margin:6px 0;color:var(--muted);line-height:1.55}
+    .card{
+      background: var(--card);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding:18px;
+      transition: transform .2s ease, background .35s ease, border-color .35s ease;
+    }
+    .card:hover{ transform: translateY(-2px) }
+    .card h3{ margin:0 0 12px; font-size:18px }
+    .pill{
+      display:inline-block; padding:6px 12px; border-radius:999px; font-weight:700; font-size:12px;
+      color:#fff; background: linear-gradient(90deg, var(--brand), var(--brand-2)); box-shadow: var(--ring);
+    }
 
-    /* Sections spacing */
-    .stack{display:grid;gap:14px}
+    /* About stats */
+    .stats{display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:14px}
+    .stat{background:var(--bg-soft); border-radius:14px; padding:14px; text-align:center; border:1px solid rgba(255,255,255,.06)}
+    .stat b{font-size:20px}
+    .muted{color:var(--muted)}
 
-    /* Profile / About */
-    .badge{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;padding:6px 10px;border-radius:999px;font-size:.75rem;font-weight:600;margin-bottom:8px}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-    .kpi{padding:12px;border:1px dashed var(--border);border-radius:12px;text-align:center}
-    .kpi strong{display:block;font-size:1.1rem}
-    .kpi span{color:var(--muted);font-size:.85rem}
+    /* Skills bars */
+    .skill{margin:12px 0}
+    .skill .label{display:flex; justify-content:space-between; font-weight:700; font-size:13px}
+    .bar{height:10px; border-radius:999px; background:rgba(255,255,255,.08); margin-top:8px; overflow:hidden}
+    .bar>span{display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--brand), var(--brand-2)); width:0}
+    .bar[data-val="85"]>span{width:85%} .bar[data-val="80"]>span{width:80%}
+    .bar[data-val="75"]>span{width:75%} .bar[data-val="70"]>span{width:70%}
 
-    /* Skills */
-    .skill{display:grid;gap:6px}
-    .bar{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--border),#c7d2fe22)}
-    .fill{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--primary-2))}
+    /* Right column apps layout */
+    .apps{display:grid; grid-template-columns: 1fr; gap:18px}
 
-    /* Projects */
-    .projects{display:grid;grid-template-columns:1fr;gap:12px}
-    .project{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid var(--border);border-radius:12px}
-    .project h3{margin:0;font-size:1rem}
-    .project a{padding:8px 12px;border-radius:10px;text-decoration:none;background:var(--primary);color:#fff;font-weight:600}
-    .project a:hover{filter:brightness(.95)}
+    /* Controls */
+    input, select, textarea, button{
+      font:inherit; color:inherit; background:var(--bg-soft);
+      border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:10px 12px;
+      outline:none; transition: box-shadow .2s ease, border-color .2s ease, background .35s ease;
+    }
+    input:focus, select:focus, textarea:focus{ box-shadow: var(--ring); border-color: transparent }
+    button{
+      background: linear-gradient(90deg, var(--brand), var(--brand-2)); color:#fff; border:none; cursor:pointer; font-weight:800;
+    }
+    button.ghost{ background: transparent; border:1px dashed rgba(255,255,255,.25); color:var(--text) }
+    .row{display:flex; gap:10px}
 
-    /* Mini apps grid (2-column feed-like) */
-    .apps{display:grid;grid-template-columns:1fr;gap:14px}
-    @media (min-width:700px){.apps{grid-template-columns:1fr 1fr}}
+    /* Projects grid */
+    .projects{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width:920px){ .projects{grid-template-columns: 1fr} }
+    .project .cta{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
 
-    .app-card{padding:14px;border-radius:16px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);display:grid;gap:10px}
-    .app-card h3{margin:0;font-size:1rem}
-    .actions{display:flex;flex-wrap:wrap;gap:8px}
-    .btn{border:1px solid var(--border);background:transparent;color:var(--text);padding:8px 10px;border-radius:10px;cursor:pointer}
-    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
-    .btn:active{transform:translateY(1px)}
-    input,select,textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text)}
-    input::placeholder,textarea::placeholder{color:var(--muted)}
-    .list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-    .list li{padding:10px;border:1px solid var(--border);border-radius:10px}
+    /* Floating socials */
+    .socials{
+      position:fixed; left:14px; bottom:14px; display:flex; flex-direction:column; gap:10px; z-index:60;
+    }
+    .soc{
+      width:46px; height:46px; border-radius:14px; display:grid; place-items:center; font-weight:800; text-decoration:none;
+      color:#fff; background: linear-gradient(180deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .soc:hover{ transform: translateY(-2px); filter: brightness(1.08) }
 
-    /* Footer bar with quick socials */
-    .footer{max-width:1100px;margin:18px auto 28px;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:12px}
-    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:var(--text)}
-    .chip:hover{box-shadow:var(--shadow-2)}
+    /* Footer */
+    footer{ text-align:center; padding:18px; color:var(--muted) }
 
-    /* Contact form success */
-    .success{display:none;margin-top:8px;padding:8px 10px;border-radius:8px;background:#10b98122;color:#10b981;border:1px solid #10b98155}
+    /* Smooth fades on theme change */
+    .fade{transition: color .35s, background .35s, border-color .35s}
   </style>
 </head>
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="topbar-inner">
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="inner">
       <div class="avatar">MR</div>
-      <div class="brand">
-        <h1>Mihir Ranjan Panda</h1>
-        <p>Software Test Engineer · Automation · API · Selenium · Java</p>
+      <div class="title-group">
+        <p class="name">Mihir Ranjan Panda</p>
+        <p class="tagline">Software Test Engineer · Automation · API · Selenium · Java</p>
       </div>
-      <div class="toggle" id="themeToggle" title="Toggle theme">
+
+      <nav class="row">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#apps">Mini Apps</a>
+        <a href="resume.html">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <label class="toggle" title="Toggle theme">
         <span>Light</span>
-        <div class="switch"><div class="knob"></div></div>
+        <input id="themeSwitch" type="checkbox" />
         <span>Dark</span>
-      </div>
+      </label>
     </div>
-  </div>
+  </header>
 
-  <!-- Two-column layout -->
   <main class="container">
-    <!-- LEFT COLUMN -->
-    <section class="stack">
-      <!-- About / Profile -->
-      <article class="card">
-        <span class="badge">About</span>
-        <h2>Profile</h2>
-        <p>I am a detail-oriented Software Test Engineer with 2+ years of experience in manual, automation, and API testing. Skilled in Selenium, Java, TestNG, Postman, SQL, and Agile. Passionate about building quality software and reliable test automation.</p>
-        <div class="kpis">
-          <div class="kpi"><strong>2+ yrs</strong><span>Experience</span></div>
-          <div class="kpi"><strong>15+</strong><span>Modules Tested</span></div>
-          <div class="kpi"><strong>150+</strong><span>Test Cases/Release</span></div>
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <section class="fade">
+        <!-- About -->
+        <div id="about" class="card">
+          <span class="pill">About</span>
+          <h3>Profile</h3>
+          <p class="muted">
+            I am a detail-oriented Software Test Engineer with 2+ years of experience in manual, automation, and API testing.
+            Skilled in Selenium, Java, TestNG, Postman, SQL, and Agile. Passionate about building quality software and reliable test automation.
+          </p>
+          <div class="stats">
+            <div class="stat"><b>2+ yrs</b><div class="muted">Experience</div></div>
+            <div class="stat"><b>15+</b><div class="muted">Modules Tested</div></div>
+            <div class="stat"><b>150+</b><div class="muted">Test Cases/Release</div></div>
+          </div>
         </div>
-      </article>
 
-      <!-- Skills -->
-      <article class="card">
-        <span class="badge">Skills</span>
-        <div class="skill"><strong>Selenium</strong><div class="bar"><div class="fill" style="width:85%"></div></div></div>
-        <div class="skill"><strong>Java</strong><div class="bar"><div class="fill" style="width:80%"></div></div></div>
-        <div class="skill"><strong>API (Postman)</strong><div class="bar"><div class="fill" style="width:75%"></div></div></div>
-        <div class="skill"><strong>SQL</strong><div class="bar"><div class="fill" style="width:70%"></div></div></div>
-      </article>
+        <!-- Skills -->
+        <div id="skills" class="card">
+          <span class="pill">Skills</span>
+          <div class="skill">
+            <div class="label"><span>Selenium</span><span>85%</span></div>
+            <div class="bar" data-val="85"><span></span></div>
+          </div>
+          <div class="skill">
+            <div class="label"><span>Java</span><span>80%</span></div>
+            <div class="bar" data-val="80"><span></span></div>
+          </div>
+          <div class="skill">
+            <div class="label"><span>API (Postman)</span><span>75%</span></div>
+            <div class="bar" data-val="75"><span></span></div>
+          </div>
+          <div class="skill">
+            <div class="label"><span>SQL</span><span>70%</span></div>
+            <div class="bar" data-val="70"><span></span></div>
+          </div>
+        </div>
 
-      <!-- Projects -->
-      <article class="card">
-        <span class="badge">Projects</span>
-        <div class="projects">
-          <div class="project">
-            <div>
+        <!-- Projects -->
+        <div id="projects" class="card">
+          <span class="pill">Projects</span>
+          <div class="projects">
+            <div class="project card fade">
               <h3>Zyler ERP Suite</h3>
-              <p class="muted">Automated workflows across ERP modules.</p>
+              <p class="muted">ERP suite automating and optimizing business processes.</p>
+              <div class="cta">
+                <a class="ghost button" href="https://zylererp.com/" target="_blank">Live</a>
+                <a class="ghost button" href="https://dbi360.com/" target="_blank">Company</a>
+              </div>
             </div>
-            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
-          </div>
-          <div class="project">
-            <div>
+            <div class="project card fade">
               <h3>ConfluxHR</h3>
-              <p class="muted">HR management: payroll, attendance, leaves.</p>
+              <p class="muted">HR platform for attendance, payroll, and employee management.</p>
+              <div class="cta">
+                <a class="ghost button" href="https://confluxhr.com/" target="_blank">Live</a>
+                <a class="ghost button" href="https://dbi360.com/" target="_blank">Company</a>
+              </div>
             </div>
-            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
-          </div>
-          <div class="project">
-            <div>
+            <div class="project card fade">
               <h3>ASTERDocs</h3>
-              <p class="muted">Document management with audit & compliance.</p>
+              <p class="muted">Document management system ensuring compliance & collaboration.</p>
+              <div class="cta">
+                <a class="ghost button" href="https://asterdocs.com/" target="_blank">Live</a>
+                <a class="ghost button" href="https://dbi360.com/" target="_blank">Company</a>
+              </div>
             </div>
-            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
           </div>
         </div>
-      </article>
 
-      <!-- Contact -->
-      <article class="card">
-        <span class="badge">Contact</span>
-        <h2>Get in touch</h2>
-        <form id="contactForm" action="https://formspree.io/f/movlzppp" method="POST">
-          <input name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-          <div class="actions">
-            <button type="submit" class="btn primary">Send</button>
-            <button type="reset" class="btn">Reset</button>
-          </div>
-          <div class="success" id="contactSuccess">Thanks! Your message has been sent.</div>
-        </form>
-      </article>
-    </section>
-
-    <!-- RIGHT COLUMN: MINI APPS (2-column feed) -->
-    <section class="stack">
-      <article class="card">
-        <span class="badge">Mini Apps</span>
-        <div class="apps">
-          <!-- Calculator -->
-          <div class="app-card" id="calc">
-            <h3>🧮 Calculator</h3>
-            <div class="actions">
-              <input type="number" id="c1" placeholder="First number" />
-              <select id="cop">
-                <option>+</option><option>-</option><option>*</option><option>/</option>
-              </select>
-              <input type="number" id="c2" placeholder="Second number" />
-              <button class="btn primary" onclick="calc()">=</button>
+        <!-- Contact -->
+        <div id="contact" class="card">
+          <span class="pill">Contact</span>
+          <p><b>Bengaluru, Karnataka</b></p>
+          <p><a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a> • <a href="tel:+919937016613">+91 9937016613</a></p>
+          <!-- Formspree (fires email) -->
+          <form action="https://formspree.io/f/movlzppp" method="POST" class="fade" style="margin-top:10px">
+            <div class="row">
+              <input name="name" placeholder="Your name" required />
+              <input type="email" name="email" placeholder="Your email" required />
             </div>
-            <p id="cOut">Result: –</p>
-          </div>
-
-          <!-- To-Do List (persist) -->
-          <div class="app-card" id="todo">
-            <h3>✅ To‑Do</h3>
-            <div class="actions">
-              <input id="todoInput" placeholder="Add a task and press +" />
-              <button class="btn primary" onclick="addTask()">+</button>
-              <button class="btn" onclick="clearTasks()">Clear</button>
+            <textarea name="message" rows="3" placeholder="Your message" required></textarea>
+            <div class="row">
+              <button type="submit">Send</button>
+              <button type="reset" class="ghost">Clear</button>
             </div>
-            <ul class="list" id="todoList"></ul>
-          </div>
-
-          <!-- Notes (persist) -->
-          <div class="app-card" id="notes">
-            <h3>📝 Notes</h3>
-            <textarea id="noteText" rows="3" placeholder="Write a quick note..."></textarea>
-            <div class="actions">
-              <button class="btn primary" onclick="saveNote()">Save</button>
-              <button class="btn" onclick="clearNotes()">Clear</button>
-            </div>
-            <ul class="list" id="notesList"></ul>
-          </div>
-
-          <!-- Quote Generator -->
-          <div class="app-card" id="quotes">
-            <h3>💡 Quote</h3>
-            <div class="actions">
-              <button class="btn primary" onclick="randomQuote()">New Quote</button>
-            </div>
-            <p id="quoteText">“Make it work, make it right, make it fast.” — Kent Beck</p>
-          </div>
-
-          <!-- Stopwatch -->
-          <div class="app-card" id="stopwatch">
-            <h3>⏱️ Stopwatch</h3>
-            <p id="swTime">00:00.0</p>
-            <div class="actions">
-              <button class="btn primary" onclick="swStart()">Start</button>
-              <button class="btn" onclick="swStop()">Stop</button>
-              <button class="btn" onclick="swReset()">Reset</button>
-            </div>
-          </div>
-
-          <!-- Timer -->
-          <div class="app-card" id="timer">
-            <h3>🕒 Timer</h3>
-            <div class="actions">
-              <input type="number" id="tmMin" placeholder="Minutes" min="0" />
-              <input type="number" id="tmSec" placeholder="Seconds" min="0" max="59" />
-              <button class="btn primary" onclick="tmStart()">Start</button>
-              <button class="btn" onclick="tmStop()">Stop</button>
-              <button class="btn" onclick="tmReset()">Reset</button>
-            </div>
-            <p id="tmOut">00:00</p>
-          </div>
-
-          <!-- Unit Converter -->
-          <div class="app-card" id="convert">
-            <h3>🔁 Unit Converter</h3>
-            <div class="actions">
-              <input type="number" id="cvInput" placeholder="Value" />
-              <select id="cvType">
-                <option value="km-mi">Kilometers → Miles</option>
-                <option value="mi-km">Miles → Kilometers</option>
-                <option value="kg-lb">Kilograms → Pounds</option>
-                <option value="lb-kg">Pounds → Kilograms</option>
-                <option value="c-f">Celsius → Fahrenheit</option>
-                <option value="f-c">Fahrenheit → Celsius</option>
-              </select>
-              <button class="btn primary" onclick="convert()">Convert</button>
-            </div>
-            <p id="cvOut">–</p>
-          </div>
-
-          <!-- Weather (no key, geolocation + open-meteo) -->
-          <div class="app-card" id="weather">
-            <h3>🌤️ Weather (Your Location)</h3>
-            <div class="actions">
-              <button class="btn primary" onclick="getWeather()">Get Weather</button>
-            </div>
-            <p id="wxOut">Allow location to fetch weather.</p>
-          </div>
-
+          </form>
         </div>
-      </article>
-    </section>
+      </section>
+
+      <!-- RIGHT COLUMN: MINI APPS -->
+      <section id="apps" class="apps fade">
+        <!-- Calculator -->
+        <div class="card">
+          <span class="pill">Mini Apps</span>
+          <h3>🧮 Calculator</h3>
+          <div class="row">
+            <input id="calc-a" type="number" placeholder="First number">
+            <select id="calc-op">
+              <option value="+">+</option><option value="-">-</option>
+              <option value="*">*</option><option value="/">/</option>
+            </select>
+            <input id="calc-b" type="number" placeholder="Second number">
+            <button onclick="calc()">=</button>
+          </div>
+          <p class="muted">Result: <b id="calc-out">—</b></p>
+        </div>
+
+        <!-- To-Do -->
+        <div class="card">
+          <h3>✅ To-Do</h3>
+          <div class="row">
+            <input id="todo-input" placeholder="Add a task and press +">
+            <button onclick="todoAdd()">+</button>
+            <button class="ghost" onclick="todoClear()">Clear</button>
+          </div>
+          <ul id="todo-list" class="muted" style="list-style:none; padding-left:0; margin-top:10px"></ul>
+        </div>
+
+        <!-- Notes -->
+        <div class="card">
+          <h3>🗒️ Notes</h3>
+          <textarea id="note-text" rows="4" placeholder="Write a quick note..."></textarea>
+          <div class="row" style="margin-top:8px">
+            <button onclick="noteSave()">Save</button>
+            <button class="ghost" onclick="noteClear()">Clear</button>
+          </div>
+          <p class="muted" id="note-status"></p>
+        </div>
+
+        <!-- Quotes -->
+        <div class="card">
+          <h3>💡 Quote</h3>
+          <button onclick="newQuote()">New Quote</button>
+          <p id="quote" class="muted" style="margin-top:10px">“Make it work, make it right, make it fast.” — Kent Beck</p>
+        </div>
+
+        <!-- Stopwatch -->
+        <div class="card">
+          <h3>⏱️ Stopwatch</h3>
+          <div class="row">
+            <button onclick="swStart()">Start</button>
+            <button class="ghost" onclick="swStop()">Stop</button>
+            <button class="ghost" onclick="swReset()">Reset</button>
+          </div>
+          <p class="muted">Time: <b id="sw-time">00:00.0</b></p>
+        </div>
+
+        <!-- Timer -->
+        <div class="card">
+          <h3>⏳ Timer</h3>
+          <div class="row">
+            <input id="timer-min" type="number" min="0" value="0" style="width:90px"> 
+            <input id="timer-sec" type="number" min="0" max="59" value="30" style="width:90px">
+            <button onclick="tmStart()">Start</button>
+            <button class="ghost" onclick="tmStop()">Stop</button>
+            <button class="ghost" onclick="tmReset()">Reset</button>
+          </div>
+          <p class="muted">Remaining: <b id="tm-left">00:30</b></p>
+        </div>
+
+        <!-- Weather (dummy local data) -->
+        <div class="card">
+          <h3>🌤️ Weather — Bengaluru</h3>
+          <div class="row">
+            <button onclick="wxSet('today')">Today</button>
+            <button class="ghost" onclick="wxSet('tomorrow')">Tomorrow</button>
+          </div>
+          <p class="muted" id="wx">Loading...</p>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- Quick Socials -->
-  <div class="footer">
-    <a class="chip" href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank">🔗 LinkedIn</a>
-    <a class="chip" href="https://github.com/mihir-panda" target="_blank">💻 GitHub</a>
-    <a class="chip" href="https://mihir-panda.github.io/mihir-portfolio/" target="_blank">🌐 Portfolio</a>
-    <a class="chip" href="mailto:mhrpanda13@gmail.com">✉️ Email</a>
+  <!-- Floating Socials -->
+  <div class="socials">
+    <a class="soc" href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" title="LinkedIn">in</a>
+    <a class="soc" href="https://github.com/mihir-panda" target="_blank" title="GitHub">GH</a>
+    <a class="soc" href="https://mihir-panda.github.io/mihir-portfolio" target="_blank" title="Portfolio">PF</a>
   </div>
 
+  <footer class="fade">© 2025 Mihir Ranjan Panda</footer>
+
   <script>
-    // =============================
-    // Theme Toggle
-    // =============================
-    const htmlEl = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const THEME_KEY = 'mihir-theme';
-    function applySavedTheme(){
-      const saved = localStorage.getItem(THEME_KEY) || 'light';
-      htmlEl.setAttribute('data-theme', saved);
-    }
-    applySavedTheme();
-    toggle.addEventListener('click', ()=>{
-      const curr = htmlEl.getAttribute('data-theme');
-      const next = curr === 'light' ? 'dark' : 'light';
-      htmlEl.setAttribute('data-theme', next);
-      localStorage.setItem(THEME_KEY, next);
+    // THEME TOGGLE (persists)
+    const root = document.documentElement;
+    const switchEl = document.getElementById('themeSwitch');
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme){ document.documentElement.setAttribute('data-theme', savedTheme); switchEl.checked = (savedTheme === 'dark'); }
+    switchEl.addEventListener('change', () => {
+      const mode = switchEl.checked ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
     });
 
-    // =============================
-    // Contact form inline success (Formspree still sends mail)
-    // =============================
-    const contactForm = document.getElementById('contactForm');
-    const contactSuccess = document.getElementById('contactSuccess');
-    contactForm.addEventListener('submit', function(){
-      // Let Formspree handle submission. Show optimistic success UI.
-      contactSuccess.style.display = 'block';
-      setTimeout(()=> contactSuccess.style.display = 'none', 4000);
+    // Animate skills on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar>span').forEach(b=> b.style.width = getComputedStyle(b.parentElement).getPropertyValue('--w') );
     });
 
-    // =============================
-    // Calculator
-    // =============================
+    // CALCULATOR
     function calc(){
-      const n1 = parseFloat(document.getElementById('c1').value);
-      const n2 = parseFloat(document.getElementById('c2').value);
-      const op = document.getElementById('cop').value;
-      let r = '–';
-      if(!isNaN(n1) && !isNaN(n2)){
-        if(op==='+') r = n1+n2; else if(op==='-') r = n1-n2; else if(op==='*') r = n1*n2; else if(op==='/') r = (n2!==0)?(n1/n2):'Error (÷0)';
-      } else { r = 'Enter both numbers'; }
-      document.getElementById('cOut').textContent = 'Result: ' + r;
+      const a = parseFloat(document.getElementById('calc-a').value);
+      const b = parseFloat(document.getElementById('calc-b').value);
+      const op = document.getElementById('calc-op').value;
+      let r = '—';
+      if(!isNaN(a) && !isNaN(b)){
+        if(op==='+') r=a+b; else if(op==='-') r=a-b; else if(op==='*') r=a*b; else if(op==='/') r= (b!==0)? (a/b).toFixed(4) : 'Error (÷0)';
+      }
+      document.getElementById('calc-out').textContent = r;
     }
 
-    // =============================
-    // To‑Do (persist)
-    // =============================
-    const TODO_KEY = 'mihir-todos';
-    function loadTasks(){
-      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
-      const ul = document.getElementById('todoList');
-      ul.innerHTML = '';
-      data.forEach((t,i)=>{
-        const li = document.createElement('li');
-        li.textContent = t;
-        li.title = 'Click to remove';
-        li.style.cursor='pointer';
-        li.addEventListener('click', ()=>{ deleteTask(i); });
-        ul.appendChild(li);
+    // TO-DO
+    const TODO_KEY='todo-items';
+    function todoRender(){
+      const list = document.getElementById('todo-list');
+      const items = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
+      list.innerHTML='';
+      items.forEach((t, i)=>{
+        const li=document.createElement('li');
+        li.style.cssText='background:var(--bg-soft);border:1px solid rgba(255,255,255,.08);padding:8px 10px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;';
+        const span=document.createElement('span'); span.textContent=t;
+        const del=document.createElement('button'); del.className='ghost'; del.textContent='✕'; del.onclick=()=>{ items.splice(i,1); localStorage.setItem(TODO_KEY, JSON.stringify(items)); todoRender(); };
+        li.append(span, del); list.append(li);
       });
     }
-    function addTask(){
-      const inp = document.getElementById('todoInput');
-      const v = inp.value.trim();
-      if(!v) return;
-      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
-      data.push(v);
-      localStorage.setItem(TODO_KEY, JSON.stringify(data));
-      inp.value='';
-      loadTasks();
+    function todoAdd(){
+      const input=document.getElementById('todo-input'); const v=input.value.trim(); if(!v) return;
+      const items = JSON.parse(localStorage.getItem(TODO_KEY)||'[]'); items.push(v);
+      localStorage.setItem(TODO_KEY, JSON.stringify(items)); input.value=''; todoRender();
     }
-    function deleteTask(i){
-      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
-      data.splice(i,1);
-      localStorage.setItem(TODO_KEY, JSON.stringify(data));
-      loadTasks();
-    }
-    function clearTasks(){ localStorage.removeItem(TODO_KEY); loadTasks(); }
-    loadTasks();
+    function todoClear(){ localStorage.removeItem(TODO_KEY); todoRender(); }
+    todoRender();
 
-    // =============================
-    // Notes (persist)
-    // =============================
-    const NOTES_KEY = 'mihir-notes';
-    function loadNotes(){
-      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
-      const ul = document.getElementById('notesList');
-      ul.innerHTML='';
-      data.forEach((t,i)=>{
-        const li = document.createElement('li');
-        li.textContent = t;
-        li.title = 'Click to remove';
-        li.style.cursor='pointer';
-        li.addEventListener('click', ()=>{ deleteNote(i); });
-        ul.appendChild(li);
-      });
-    }
-    function saveNote(){
-      const ta = document.getElementById('noteText');
-      const v = ta.value.trim();
-      if(!v) return;
-      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
-      data.unshift(v);
-      localStorage.setItem(NOTES_KEY, JSON.stringify(data));
-      ta.value='';
-      loadNotes();
-    }
-    function deleteNote(i){
-      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
-      data.splice(i,1);
-      localStorage.setItem(NOTES_KEY, JSON.stringify(data));
-      loadNotes();
-    }
-    function clearNotes(){ localStorage.removeItem(NOTES_KEY); loadNotes(); }
-    loadNotes();
+    // NOTES
+    const NOTE_KEY='note-text';
+    function noteSave(){ localStorage.setItem(NOTE_KEY, document.getElementById('note-text').value); document.getElementById('note-status').textContent='Saved ✔'; setTimeout(()=>document.getElementById('note-status').textContent='',1200); }
+    function noteClear(){ document.getElementById('note-text').value=''; localStorage.removeItem(NOTE_KEY); }
+    document.getElementById('note-text').value = localStorage.getItem(NOTE_KEY) || '';
 
-    // =============================
-    // Quote
-    // =============================
-    const QUOTES = [
-      'Success is not final, failure is not fatal. — W. Churchill',
-      'Believe you can and you\'re halfway there. — T. Roosevelt',
-      'Don’t watch the clock; do what it does. Keep going. — S. Levenson',
-      'The future depends on what you do today. — M. Gandhi',
-      'Dream big and dare to fail. — N. K. Smith',
-      'Make it work, make it right, make it fast. — K. Beck'
+    // QUOTES
+    const quotes=[
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Believe you can and you're halfway there.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "The future depends on what you do today.",
+      "Dream big and dare to fail."
     ];
-    function randomQuote(){
-      const q = QUOTES[Math.floor(Math.random()*QUOTES.length)];
-      document.getElementById('quoteText').textContent = '“' + q + '”';
-    }
+    function newQuote(){ document.getElementById('quote').textContent = quotes[Math.floor(Math.random()*quotes.length)]; }
 
-    // =============================
-    // Stopwatch
-    // =============================
-    let swInt=null, swStartTime=0, swElapsed=0;
-    function fmt(ms){
-      const total = Math.floor(ms/100);
-      const s = Math.floor(total/10);
-      const ds = total%10;
-      const m = Math.floor(s/60);
-      const sx = s%60;
-      return String(m).padStart(2,'0')+":"+String(sx).padStart(2,'0')+"."+ds;
+    // STOPWATCH
+    let swInt=null, swStartAt=0, swElapsed=0;
+    function swTick(){
+      const t = Date.now()-swStartAt+swElapsed;
+      const m = Math.floor(t/60000), s = Math.floor((t%60000)/1000), d = Math.floor((t%1000)/100);
+      document.getElementById('sw-time').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${d}`;
     }
-    function swTick(){ document.getElementById('swTime').textContent = fmt(Date.now()-swStartTime+swElapsed); }
-    function swStart(){ if(swInt) return; swStartTime=Date.now(); swInt=setInterval(swTick,100); }
-    function swStop(){ if(!swInt) return; clearInterval(swInt); swInt=null; swElapsed = Date.now()-swStartTime+swElapsed; }
-    function swReset(){ swStop(); swElapsed=0; document.getElementById('swTime').textContent='00:00.0'; }
+    function swStart(){ if(swInt) return; swStartAt=Date.now(); swInt=setInterval(swTick,100); }
+    function swStop(){ if(!swInt) return; clearInterval(swInt); swInt=null; swElapsed += Date.now()-swStartAt; }
+    function swReset(){ swStop(); swElapsed=0; document.getElementById('sw-time').textContent='00:00.0'; }
 
-    // =============================
-    // Timer
-    // =============================
-    let tmInt=null, tmRemain=0;
-    function tmRender(){
-      const m = Math.floor(tmRemain/60), s = tmRemain%60;
-      document.getElementById('tmOut').textContent = String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
-    }
+    // TIMER
+    let tmInt=null, tmLeft=30;
+    function tmRender(){ const m=Math.floor(tmLeft/60), s=tmLeft%60; document.getElementById('tm-left').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; }
     function tmStart(){
-      const m = parseInt(document.getElementById('tmMin').value||'0',10);
-      const s = parseInt(document.getElementById('tmSec').value||'0',10);
-      if(!tmInt && tmRemain===0){ tmRemain = Math.max(0, m*60 + s); }
-      if(tmRemain<=0) return;
-      tmInt = setInterval(()=>{ tmRemain--; tmRender(); if(tmRemain<=0){ tmStop(); alert('Time\'s up!'); }}, 1000);
+      const m=parseInt(document.getElementById('timer-min').value||'0',10);
+      const s=parseInt(document.getElementById('timer-sec').value||'0',10);
+      tmLeft=m*60+s; tmRender();
+      if(tmInt) clearInterval(tmInt);
+      tmInt=setInterval(()=>{ tmLeft--; tmRender(); if(tmLeft<=0){ clearInterval(tmInt); tmInt=null; alert('⏳ Timer finished!'); } },1000);
     }
-    function tmStop(){ if(!tmInt) return; clearInterval(tmInt); tmInt=null; }
-    function tmReset(){ tmStop(); tmRemain=0; tmRender(); }
+    function tmStop(){ if(tmInt){ clearInterval(tmInt); tmInt=null; } }
+    function tmReset(){ tmStop(); tmLeft=30; tmRender(); }
     tmRender();
 
-    // =============================
-    // Unit Converter
-    // =============================
-    function convert(){
-      const v = parseFloat(document.getElementById('cvInput').value);
-      if(isNaN(v)) { document.getElementById('cvOut').textContent = 'Enter a value'; return; }
-      const t = document.getElementById('cvType').value; let r;
-      switch(t){
-        case 'km-mi': r = (v*0.621371).toFixed(3)+' mi'; break;
-        case 'mi-km': r = (v/0.621371).toFixed(3)+' km'; break;
-        case 'kg-lb': r = (v*2.20462).toFixed(3)+' lb'; break;
-        case 'lb-kg': r = (v/2.20462).toFixed(3)+' kg'; break;
-        case 'c-f': r = (v*9/5+32).toFixed(2)+' °F'; break;
-        case 'f-c': r = ((v-32)*5/9).toFixed(2)+' °C'; break;
-      }
-      document.getElementById('cvOut').textContent = r;
-    }
-
-    // =============================
-    // Weather via Open‑Meteo (no API key). Requires HTTPS + Geolocation.
-    // =============================
-    async function getWeather(){
-      const out = document.getElementById('wxOut');
-      if(!navigator.geolocation){ out.textContent='Geolocation not supported'; return; }
-      out.textContent = 'Getting your location…';
-      navigator.geolocation.getCurrentPosition(async (pos)=>{
-        try{
-          const { latitude:lat, longitude:lon } = pos.coords;
-          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`;
-          const res = await fetch(url);
-          const data = await res.json();
-          const t = data?.current?.temperature_2m;
-          const code = data?.current?.weather_code;
-          const desc = weatherCodeToText(code);
-          out.textContent = `Current: ${t}°C, ${desc}`;
-        }catch(e){ out.textContent='Weather fetch failed'; }
-      }, ()=>{ out.textContent='Location permission denied'; });
-    }
-    function weatherCodeToText(c){
-      const map = {0:'Clear',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Depositing rime fog',51:'Light drizzle',53:'Drizzle',55:'Dense drizzle',61:'Slight rain',63:'Rain',65:'Heavy rain',71:'Slight snow',73:'Snow',75:'Heavy snow',80:'Rain showers',95:'Thunderstorm'};
-      return map[c]||'—';
-    }
+    // WEATHER (dummy local)
+    const WX = {
+      today:{temp: "28°C", feel:"Feels like 31°C", cond:"Partly cloudy", wind:"9 km/h"},
+      tomorrow:{temp:"27°C", feel:"Feels like 29°C", cond:"Light showers", wind:"11 km/h"}
+    };
+    function wxSet(day){ const d=WX[day]; document.getElementById('wx').textContent = `${d.cond} · ${d.temp} · ${d.feel} · Wind ${d.wind}`; }
+    wxSet('today');
   </script>
 </body>
 </html>
