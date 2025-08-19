@@ -1,288 +1,520 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mihir Ranjan Panda - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mihir Ranjan Panda – Portfolio</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
+    /* =============================
+       THEME (Light / Dark Toggle)
+       ============================= */
+    :root{
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-2: #0ea5e9;
+      --border: #e5e7eb;
+      --shadow: 0 6px 18px rgba(0,0,0,.08);
+      --shadow-2: 0 10px 30px rgba(37,99,235,.15);
     }
-    header {
-      background: linear-gradient(135deg, #1a73e8, #0f4c81);
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    [data-theme="dark"]{
+      --bg: #0f1115;
+      --card: #161a23;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #e11d48; /* Instagram-ish accent in dark */
+      --primary-2: #a78bfa;
+      --border: #222733;
+      --shadow: 0 6px 18px rgba(0,0,0,.45);
+      --shadow-2: 0 10px 30px rgba(225,29,72,.22);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    nav {
-      background: #fff;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #1a73e8;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .card {
-      background: #fff;
-      padding: 25px;
-      margin: 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    h2 {
-      margin-top: 0;
-      color: #1a73e8;
-    }
-    input, textarea, select {
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #1a73e8;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #0f4c81;
-    }
-    ul { list-style: none; padding: 0; }
-    li {
-      margin: 8px 0;
-      padding: 8px;
-      background: #f1f1f1;
-      border-radius: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    li button {
-      background: red;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-    .calc input {
-      width: 70px;
-      text-align: center;
-    }
-    /* ✅ Skills Progress Bars */
-    .skill {
-      margin: 10px 0;
-    }
-    .skill span {
-      font-weight: bold;
-      display: block;
-    }
-    .progress {
-      background: #eee;
-      border-radius: 20px;
-      overflow: hidden;
-      height: 12px;
-    }
-    .progress-bar {
-      height: 12px;
-      background: linear-gradient(90deg, #1a73e8, #0f4c81);
-      width: 0;
-      transition: width 1s ease-in-out;
-    }
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
-    footer a {
-      color: #1a73e8;
-      margin: 0 8px;
-      text-decoration: none;
-    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:var(--text);}
+
+    /* Top bar */
+    .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;padding:14px 16px;box-shadow:var(--shadow-2)}
+    .topbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px}
+    .avatar{width:44px;height:44px;border-radius:50%;background:#fff1;border:2px solid #ffffff55;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .brand{flex:1}
+    .brand h1{margin:0;font-size:1.1rem;letter-spacing:.3px}
+    .brand p{margin:0;opacity:.9;font-size:.85rem}
+
+    /* Theme toggle */
+    .toggle{display:flex;align-items:center;gap:8px}
+    .switch{position:relative;width:56px;height:28px;background:#ffffff44;border-radius:999px;cursor:pointer;border:1px solid #ffffff55}
+    .knob{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .25s}
+    [data-theme="dark"] .knob{transform:translateX(28px)}
+    .toggle span{font-size:.85rem}
+
+    /* Layout */
+    .container{max-width:1100px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns: 1fr 1.15fr;gap:18px}
+    @media (max-width: 900px){.container{grid-template-columns:1fr}}
+
+    /* Cards */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+    .card h2{margin:0 0 10px;color:var(--text);font-size:1.1rem}
+    .card p{margin:6px 0;color:var(--muted);line-height:1.55}
+
+    /* Sections spacing */
+    .stack{display:grid;gap:14px}
+
+    /* Profile / About */
+    .badge{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;padding:6px 10px;border-radius:999px;font-size:.75rem;font-weight:600;margin-bottom:8px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .kpi{padding:12px;border:1px dashed var(--border);border-radius:12px;text-align:center}
+    .kpi strong{display:block;font-size:1.1rem}
+    .kpi span{color:var(--muted);font-size:.85rem}
+
+    /* Skills */
+    .skill{display:grid;gap:6px}
+    .bar{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--border),#c7d2fe22)}
+    .fill{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--primary-2))}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:1fr;gap:12px}
+    .project{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid var(--border);border-radius:12px}
+    .project h3{margin:0;font-size:1rem}
+    .project a{padding:8px 12px;border-radius:10px;text-decoration:none;background:var(--primary);color:#fff;font-weight:600}
+    .project a:hover{filter:brightness(.95)}
+
+    /* Mini apps grid (2-column feed-like) */
+    .apps{display:grid;grid-template-columns:1fr;gap:14px}
+    @media (min-width:700px){.apps{grid-template-columns:1fr 1fr}}
+
+    .app-card{padding:14px;border-radius:16px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);display:grid;gap:10px}
+    .app-card h3{margin:0;font-size:1rem}
+    .actions{display:flex;flex-wrap:wrap;gap:8px}
+    .btn{border:1px solid var(--border);background:transparent;color:var(--text);padding:8px 10px;border-radius:10px;cursor:pointer}
+    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+    .btn:active{transform:translateY(1px)}
+    input,select,textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text)}
+    input::placeholder,textarea::placeholder{color:var(--muted)}
+    .list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+    .list li{padding:10px;border:1px solid var(--border);border-radius:10px}
+
+    /* Footer bar with quick socials */
+    .footer{max-width:1100px;margin:18px auto 28px;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:12px}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:var(--text)}
+    .chip:hover{box-shadow:var(--shadow-2)}
+
+    /* Contact form success */
+    .success{display:none;margin-top:8px;padding:8px 10px;border-radius:8px;background:#10b98122;color:#10b981;border:1px solid #10b98155}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Mihir Ranjan Panda</h1>
-    <p>Software Test Engineer | Automation | API Testing</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#apps">Mini Apps</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about">
-    <div class="card">
-      <h2>About Me</h2>
-      <p>I am a Software Test Engineer with 2+ years of experience in Manual & Automation testing, Selenium, Java, API Testing (Postman), SQL, and Agile.</p>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="avatar">MR</div>
+      <div class="brand">
+        <h1>Mihir Ranjan Panda</h1>
+        <p>Software Test Engineer · Automation · API · Selenium · Java</p>
+      </div>
+      <div class="toggle" id="themeToggle" title="Toggle theme">
+        <span>Light</span>
+        <div class="switch"><div class="knob"></div></div>
+        <span>Dark</span>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section id="projects">
-    <div class="card">
-      <h2>Projects</h2>
-      <ul>
-        <li>Zyler ERP Suite – Automated workflows</li>
-        <li>ConfluxHR – HR management system</li>
-        <li>ASTERDocs – Document management system</li>
-      </ul>
-    </div>
-  </section>
+  <!-- Two-column layout -->
+  <main class="container">
+    <!-- LEFT COLUMN -->
+    <section class="stack">
+      <!-- About / Profile -->
+      <article class="card">
+        <span class="badge">About</span>
+        <h2>Profile</h2>
+        <p>I am a detail-oriented Software Test Engineer with 2+ years of experience in manual, automation, and API testing. Skilled in Selenium, Java, TestNG, Postman, SQL, and Agile. Passionate about building quality software and reliable test automation.</p>
+        <div class="kpis">
+          <div class="kpi"><strong>2+ yrs</strong><span>Experience</span></div>
+          <div class="kpi"><strong>15+</strong><span>Modules Tested</span></div>
+          <div class="kpi"><strong>150+</strong><span>Test Cases/Release</span></div>
+        </div>
+      </article>
 
-  <section id="skills">
-    <div class="card">
-      <h2>Skills</h2>
-      <div class="skill"><span>Selenium</span><div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
-      <div class="skill"><span>Java</span><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
-      <div class="skill"><span>API Testing (Postman)</span><div class="progress"><div class="progress-bar" style="width:75%"></div></div></div>
-      <div class="skill"><span>SQL</span><div class="progress"><div class="progress-bar" style="width:70%"></div></div></div>
-    </div>
-  </section>
+      <!-- Skills -->
+      <article class="card">
+        <span class="badge">Skills</span>
+        <div class="skill"><strong>Selenium</strong><div class="bar"><div class="fill" style="width:85%"></div></div></div>
+        <div class="skill"><strong>Java</strong><div class="bar"><div class="fill" style="width:80%"></div></div></div>
+        <div class="skill"><strong>API (Postman)</strong><div class="bar"><div class="fill" style="width:75%"></div></div></div>
+        <div class="skill"><strong>SQL</strong><div class="bar"><div class="fill" style="width:70%"></div></div></div>
+      </article>
 
-  <section id="apps">
-    <!-- ✅ To-Do List App -->
-    <div class="card">
-      <h2>Mini To-Do List</h2>
-      <input type="text" id="todoInput" placeholder="Enter a task">
-      <button onclick="addTask()">Add Task</button>
-      <ul id="todoList"></ul>
-    </div>
+      <!-- Projects -->
+      <article class="card">
+        <span class="badge">Projects</span>
+        <div class="projects">
+          <div class="project">
+            <div>
+              <h3>Zyler ERP Suite</h3>
+              <p class="muted">Automated workflows across ERP modules.</p>
+            </div>
+            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
+          </div>
+          <div class="project">
+            <div>
+              <h3>ConfluxHR</h3>
+              <p class="muted">HR management: payroll, attendance, leaves.</p>
+            </div>
+            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
+          </div>
+          <div class="project">
+            <div>
+              <h3>ASTERDocs</h3>
+              <p class="muted">Document management with audit & compliance.</p>
+            </div>
+            <a href="#" target="_blank" title="Add your live/case study link">Open</a>
+          </div>
+        </div>
+      </article>
 
-    <!-- ✅ Calculator -->
-    <div class="card calc">
-      <h2>Mini Calculator</h2>
-      <input type="number" id="num1">
-      <select id="operator">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-      </select>
-      <input type="number" id="num2">
-      <button onclick="calculate()">=</button>
-      <p id="calcResult"></p>
-    </div>
+      <!-- Contact -->
+      <article class="card">
+        <span class="badge">Contact</span>
+        <h2>Get in touch</h2>
+        <form id="contactForm" action="https://formspree.io/f/movlzppp" method="POST">
+          <input name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          <div class="actions">
+            <button type="submit" class="btn primary">Send</button>
+            <button type="reset" class="btn">Reset</button>
+          </div>
+          <div class="success" id="contactSuccess">Thanks! Your message has been sent.</div>
+        </form>
+      </article>
+    </section>
 
-    <!-- ✅ Random Quote Generator -->
-    <div class="card">
-      <h2>Quote Generator</h2>
-      <button onclick="generateQuote()">Get Quote</button>
-      <p id="quote"></p>
-    </div>
-  </section>
+    <!-- RIGHT COLUMN: MINI APPS (2-column feed) -->
+    <section class="stack">
+      <article class="card">
+        <span class="badge">Mini Apps</span>
+        <div class="apps">
+          <!-- Calculator -->
+          <div class="app-card" id="calc">
+            <h3>🧮 Calculator</h3>
+            <div class="actions">
+              <input type="number" id="c1" placeholder="First number" />
+              <select id="cop">
+                <option>+</option><option>-</option><option>*</option><option>/</option>
+              </select>
+              <input type="number" id="c2" placeholder="Second number" />
+              <button class="btn primary" onclick="calc()">=</button>
+            </div>
+            <p id="cOut">Result: –</p>
+          </div>
 
-  <section id="contact">
-    <div class="card">
-      <h2>Contact Me</h2>
-      <!-- ✅ Updated with Formspree endpoint -->
-      <form action="https://formspree.io/f/movlzppp" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
+          <!-- To-Do List (persist) -->
+          <div class="app-card" id="todo">
+            <h3>✅ To‑Do</h3>
+            <div class="actions">
+              <input id="todoInput" placeholder="Add a task and press +" />
+              <button class="btn primary" onclick="addTask()">+</button>
+              <button class="btn" onclick="clearTasks()">Clear</button>
+            </div>
+            <ul class="list" id="todoList"></ul>
+          </div>
 
-  <footer>
-    <p>© 2025 Mihir Ranjan Panda | Connect with me:
-      <a href="https://github.com/mihir-panda" target="_blank">GitHub</a> |
-      <a href="https://linkedin.com/in/mihir-panda" target="_blank">LinkedIn</a>
-    </p>
-  </footer>
+          <!-- Notes (persist) -->
+          <div class="app-card" id="notes">
+            <h3>📝 Notes</h3>
+            <textarea id="noteText" rows="3" placeholder="Write a quick note..."></textarea>
+            <div class="actions">
+              <button class="btn primary" onclick="saveNote()">Save</button>
+              <button class="btn" onclick="clearNotes()">Clear</button>
+            </div>
+            <ul class="list" id="notesList"></ul>
+          </div>
+
+          <!-- Quote Generator -->
+          <div class="app-card" id="quotes">
+            <h3>💡 Quote</h3>
+            <div class="actions">
+              <button class="btn primary" onclick="randomQuote()">New Quote</button>
+            </div>
+            <p id="quoteText">“Make it work, make it right, make it fast.” — Kent Beck</p>
+          </div>
+
+          <!-- Stopwatch -->
+          <div class="app-card" id="stopwatch">
+            <h3>⏱️ Stopwatch</h3>
+            <p id="swTime">00:00.0</p>
+            <div class="actions">
+              <button class="btn primary" onclick="swStart()">Start</button>
+              <button class="btn" onclick="swStop()">Stop</button>
+              <button class="btn" onclick="swReset()">Reset</button>
+            </div>
+          </div>
+
+          <!-- Timer -->
+          <div class="app-card" id="timer">
+            <h3>🕒 Timer</h3>
+            <div class="actions">
+              <input type="number" id="tmMin" placeholder="Minutes" min="0" />
+              <input type="number" id="tmSec" placeholder="Seconds" min="0" max="59" />
+              <button class="btn primary" onclick="tmStart()">Start</button>
+              <button class="btn" onclick="tmStop()">Stop</button>
+              <button class="btn" onclick="tmReset()">Reset</button>
+            </div>
+            <p id="tmOut">00:00</p>
+          </div>
+
+          <!-- Unit Converter -->
+          <div class="app-card" id="convert">
+            <h3>🔁 Unit Converter</h3>
+            <div class="actions">
+              <input type="number" id="cvInput" placeholder="Value" />
+              <select id="cvType">
+                <option value="km-mi">Kilometers → Miles</option>
+                <option value="mi-km">Miles → Kilometers</option>
+                <option value="kg-lb">Kilograms → Pounds</option>
+                <option value="lb-kg">Pounds → Kilograms</option>
+                <option value="c-f">Celsius → Fahrenheit</option>
+                <option value="f-c">Fahrenheit → Celsius</option>
+              </select>
+              <button class="btn primary" onclick="convert()">Convert</button>
+            </div>
+            <p id="cvOut">–</p>
+          </div>
+
+          <!-- Weather (no key, geolocation + open-meteo) -->
+          <div class="app-card" id="weather">
+            <h3>🌤️ Weather (Your Location)</h3>
+            <div class="actions">
+              <button class="btn primary" onclick="getWeather()">Get Weather</button>
+            </div>
+            <p id="wxOut">Allow location to fetch weather.</p>
+          </div>
+
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Quick Socials -->
+  <div class="footer">
+    <a class="chip" href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank">🔗 LinkedIn</a>
+    <a class="chip" href="https://github.com/mihir-panda" target="_blank">💻 GitHub</a>
+    <a class="chip" href="https://mihir-panda.github.io/mihir-portfolio/" target="_blank">🌐 Portfolio</a>
+    <a class="chip" href="mailto:mhrpanda13@gmail.com">✉️ Email</a>
+  </div>
 
   <script>
-    // ✅ To-Do App
-    function loadTasks() {
-      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      let list = document.getElementById("todoList");
-      list.innerHTML = "";
-      tasks.forEach((task, index) => {
-        let li = document.createElement("li");
-        li.innerHTML = task + " <button onclick='deleteTask(" + index + ")'>X</button>";
-        list.appendChild(li);
+    // =============================
+    // Theme Toggle
+    // =============================
+    const htmlEl = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const THEME_KEY = 'mihir-theme';
+    function applySavedTheme(){
+      const saved = localStorage.getItem(THEME_KEY) || 'light';
+      htmlEl.setAttribute('data-theme', saved);
+    }
+    applySavedTheme();
+    toggle.addEventListener('click', ()=>{
+      const curr = htmlEl.getAttribute('data-theme');
+      const next = curr === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+
+    // =============================
+    // Contact form inline success (Formspree still sends mail)
+    // =============================
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+    contactForm.addEventListener('submit', function(){
+      // Let Formspree handle submission. Show optimistic success UI.
+      contactSuccess.style.display = 'block';
+      setTimeout(()=> contactSuccess.style.display = 'none', 4000);
+    });
+
+    // =============================
+    // Calculator
+    // =============================
+    function calc(){
+      const n1 = parseFloat(document.getElementById('c1').value);
+      const n2 = parseFloat(document.getElementById('c2').value);
+      const op = document.getElementById('cop').value;
+      let r = '–';
+      if(!isNaN(n1) && !isNaN(n2)){
+        if(op==='+') r = n1+n2; else if(op==='-') r = n1-n2; else if(op==='*') r = n1*n2; else if(op==='/') r = (n2!==0)?(n1/n2):'Error (÷0)';
+      } else { r = 'Enter both numbers'; }
+      document.getElementById('cOut').textContent = 'Result: ' + r;
+    }
+
+    // =============================
+    // To‑Do (persist)
+    // =============================
+    const TODO_KEY = 'mihir-todos';
+    function loadTasks(){
+      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
+      const ul = document.getElementById('todoList');
+      ul.innerHTML = '';
+      data.forEach((t,i)=>{
+        const li = document.createElement('li');
+        li.textContent = t;
+        li.title = 'Click to remove';
+        li.style.cursor='pointer';
+        li.addEventListener('click', ()=>{ deleteTask(i); });
+        ul.appendChild(li);
       });
     }
-    function addTask() {
-      let input = document.getElementById("todoInput");
-      let task = input.value.trim();
-      if(task) {
-        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        tasks.push(task);
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        input.value = "";
-        loadTasks();
-      }
-    }
-    function deleteTask(index) {
-      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+    function addTask(){
+      const inp = document.getElementById('todoInput');
+      const v = inp.value.trim();
+      if(!v) return;
+      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
+      data.push(v);
+      localStorage.setItem(TODO_KEY, JSON.stringify(data));
+      inp.value='';
       loadTasks();
     }
+    function deleteTask(i){
+      const data = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
+      data.splice(i,1);
+      localStorage.setItem(TODO_KEY, JSON.stringify(data));
+      loadTasks();
+    }
+    function clearTasks(){ localStorage.removeItem(TODO_KEY); loadTasks(); }
     loadTasks();
 
-    // ✅ Calculator
-    function calculate() {
-      let num1 = parseFloat(document.getElementById("num1").value);
-      let num2 = parseFloat(document.getElementById("num2").value);
-      let operator = document.getElementById("operator").value;
-      let result;
-      if(operator === "+") result = num1 + num2;
-      else if(operator === "-") result = num1 - num2;
-      else if(operator === "*") result = num1 * num2;
-      else if(operator === "/") result = num2 !== 0 ? num1 / num2 : "Error (÷0)";
-      document.getElementById("calcResult").innerText = "Result: " + result;
+    // =============================
+    // Notes (persist)
+    // =============================
+    const NOTES_KEY = 'mihir-notes';
+    function loadNotes(){
+      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
+      const ul = document.getElementById('notesList');
+      ul.innerHTML='';
+      data.forEach((t,i)=>{
+        const li = document.createElement('li');
+        li.textContent = t;
+        li.title = 'Click to remove';
+        li.style.cursor='pointer';
+        li.addEventListener('click', ()=>{ deleteNote(i); });
+        ul.appendChild(li);
+      });
+    }
+    function saveNote(){
+      const ta = document.getElementById('noteText');
+      const v = ta.value.trim();
+      if(!v) return;
+      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
+      data.unshift(v);
+      localStorage.setItem(NOTES_KEY, JSON.stringify(data));
+      ta.value='';
+      loadNotes();
+    }
+    function deleteNote(i){
+      const data = JSON.parse(localStorage.getItem(NOTES_KEY)||'[]');
+      data.splice(i,1);
+      localStorage.setItem(NOTES_KEY, JSON.stringify(data));
+      loadNotes();
+    }
+    function clearNotes(){ localStorage.removeItem(NOTES_KEY); loadNotes(); }
+    loadNotes();
+
+    // =============================
+    // Quote
+    // =============================
+    const QUOTES = [
+      'Success is not final, failure is not fatal. — W. Churchill',
+      'Believe you can and you\'re halfway there. — T. Roosevelt',
+      'Don’t watch the clock; do what it does. Keep going. — S. Levenson',
+      'The future depends on what you do today. — M. Gandhi',
+      'Dream big and dare to fail. — N. K. Smith',
+      'Make it work, make it right, make it fast. — K. Beck'
+    ];
+    function randomQuote(){
+      const q = QUOTES[Math.floor(Math.random()*QUOTES.length)];
+      document.getElementById('quoteText').textContent = '“' + q + '”';
     }
 
-    // ✅ Random Quote Generator
-    const quotes = [
-      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-      "Believe you can and you're halfway there.",
-      "Don’t watch the clock; do what it does. Keep going.",
-      "The future depends on what you do today.",
-      "Dream big and dare to fail."
-    ];
-    function generateQuote() {
-      let randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById("quote").innerText = quotes[randomIndex];
+    // =============================
+    // Stopwatch
+    // =============================
+    let swInt=null, swStartTime=0, swElapsed=0;
+    function fmt(ms){
+      const total = Math.floor(ms/100);
+      const s = Math.floor(total/10);
+      const ds = total%10;
+      const m = Math.floor(s/60);
+      const sx = s%60;
+      return String(m).padStart(2,'0')+":"+String(sx).padStart(2,'0')+"."+ds;
+    }
+    function swTick(){ document.getElementById('swTime').textContent = fmt(Date.now()-swStartTime+swElapsed); }
+    function swStart(){ if(swInt) return; swStartTime=Date.now(); swInt=setInterval(swTick,100); }
+    function swStop(){ if(!swInt) return; clearInterval(swInt); swInt=null; swElapsed = Date.now()-swStartTime+swElapsed; }
+    function swReset(){ swStop(); swElapsed=0; document.getElementById('swTime').textContent='00:00.0'; }
+
+    // =============================
+    // Timer
+    // =============================
+    let tmInt=null, tmRemain=0;
+    function tmRender(){
+      const m = Math.floor(tmRemain/60), s = tmRemain%60;
+      document.getElementById('tmOut').textContent = String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+    }
+    function tmStart(){
+      const m = parseInt(document.getElementById('tmMin').value||'0',10);
+      const s = parseInt(document.getElementById('tmSec').value||'0',10);
+      if(!tmInt && tmRemain===0){ tmRemain = Math.max(0, m*60 + s); }
+      if(tmRemain<=0) return;
+      tmInt = setInterval(()=>{ tmRemain--; tmRender(); if(tmRemain<=0){ tmStop(); alert('Time\'s up!'); }}, 1000);
+    }
+    function tmStop(){ if(!tmInt) return; clearInterval(tmInt); tmInt=null; }
+    function tmReset(){ tmStop(); tmRemain=0; tmRender(); }
+    tmRender();
+
+    // =============================
+    // Unit Converter
+    // =============================
+    function convert(){
+      const v = parseFloat(document.getElementById('cvInput').value);
+      if(isNaN(v)) { document.getElementById('cvOut').textContent = 'Enter a value'; return; }
+      const t = document.getElementById('cvType').value; let r;
+      switch(t){
+        case 'km-mi': r = (v*0.621371).toFixed(3)+' mi'; break;
+        case 'mi-km': r = (v/0.621371).toFixed(3)+' km'; break;
+        case 'kg-lb': r = (v*2.20462).toFixed(3)+' lb'; break;
+        case 'lb-kg': r = (v/2.20462).toFixed(3)+' kg'; break;
+        case 'c-f': r = (v*9/5+32).toFixed(2)+' °F'; break;
+        case 'f-c': r = ((v-32)*5/9).toFixed(2)+' °C'; break;
+      }
+      document.getElementById('cvOut').textContent = r;
+    }
+
+    // =============================
+    // Weather via Open‑Meteo (no API key). Requires HTTPS + Geolocation.
+    // =============================
+    async function getWeather(){
+      const out = document.getElementById('wxOut');
+      if(!navigator.geolocation){ out.textContent='Geolocation not supported'; return; }
+      out.textContent = 'Getting your location…';
+      navigator.geolocation.getCurrentPosition(async (pos)=>{
+        try{
+          const { latitude:lat, longitude:lon } = pos.coords;
+          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`;
+          const res = await fetch(url);
+          const data = await res.json();
+          const t = data?.current?.temperature_2m;
+          const code = data?.current?.weather_code;
+          const desc = weatherCodeToText(code);
+          out.textContent = `Current: ${t}°C, ${desc}`;
+        }catch(e){ out.textContent='Weather fetch failed'; }
+      }, ()=>{ out.textContent='Location permission denied'; });
+    }
+    function weatherCodeToText(c){
+      const map = {0:'Clear',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Depositing rime fog',51:'Light drizzle',53:'Drizzle',55:'Dense drizzle',61:'Slight rain',63:'Rain',65:'Heavy rain',71:'Slight snow',73:'Snow',75:'Heavy snow',80:'Rain showers',95:'Thunderstorm'};
+      return map[c]||'—';
     }
   </script>
 </body>
