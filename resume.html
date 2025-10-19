@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -9,27 +9,100 @@
       --bg:#f6f8fc; --card:#ffffff; --text:#101727; --muted:#5b6377;
       --brand:#4f46e5; --brand-2:#ec4899; --shadow:0 10px 24px rgba(31,41,55,.08);
     }
-    [data-theme="dark"]{ --bg:#0f1115; --card:#151922; --text:#e9eef7; --muted:#a9b1c3; --brand:#6f6cf6; --brand-2:#d458f6; --shadow:0 10px 24px rgba(0,0,0,.45); }
-    body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-    .top{position:sticky; top:0; background: linear-gradient(90deg,var(--brand),var(--brand-2)); color:#fff; padding:14px 16px; box-shadow:var(--shadow)}
-    .wrap{max-width:1050px; margin:18px auto; padding:0 14px}
+    [data-theme="dark"]{
+      --bg:#0f1115; --card:#151922; --text:#e9eef7; --muted:#a9b1c3;
+      --brand:#6f6cf6; --brand-2:#d458f6; --shadow:0 10px 24px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      line-height:1.6;
+    }
+
+    /* Header bar */
+    .top{
+      position:sticky;top:0;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      color:#fff;
+      padding:14px 16px;
+      box-shadow:var(--shadow);
+      z-index:50;
+    }
+    .wrap{max-width:1050px;margin:18px auto;padding:0 14px;}
     .h{margin:0}
-    .pill{display:inline-block; padding:6px 12px; border-radius:999px; font-weight:800; font-size:12px; color:#fff; background:linear-gradient(90deg,var(--brand),var(--brand-2))}
-    .card{background:var(--card); border-radius:18px; padding:18px; box-shadow:var(--shadow); border:1px solid rgba(0,0,0,.06); margin-bottom:14px}
-    a{color:var(--brand); text-decoration:none}
-    ul{margin:8px 0 0 18px}
-    .head{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
-    .links{display:flex; flex-wrap:wrap; gap:10px}
-    .btn{background:#fff; color:#000; padding:8px 12px; border-radius:10px; font-weight:700}
-    .grid{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-    @media (max-width:900px){ .grid{grid-template-columns: 1fr} }
+    .pill{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:12px;
+      color:#fff;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+    }
+    .card{
+      background:var(--card);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,.06);
+      margin-bottom:14px;
+    }
+    a{color:var(--brand);text-decoration:none;}
+    ul{margin:8px 0 0 18px;}
+    .head{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .btn{
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.3s;
+    }
+    .btn:hover{background:#ffeb3b;color:#000;}
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    /* Responsive layout adjustments */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;}
+      .wrap{padding:0 10px;}
+      body{font-size:15px;}
+      .btn{font-size:14px;}
+    }
+    @media (max-width:600px){
+      .head{flex-direction:column;align-items:flex-start;}
+      .links{flex-wrap:wrap;gap:8px;}
+      .card{padding:14px;}
+      .pill{font-size:11px;padding:4px 8px;}
+      h2,h3{font-size:16px;}
+    }
   </style>
 </head>
+
 <body>
   <div class="top">
     <div class="wrap head">
       <div>
-        <h2 class="h" style="margin:0">Mihir Ranjan Panda</h2>
+        <h2 class="h">Mihir Ranjan Panda</h2>
         <div>Software Test Engineer | Automation & API Testing Specialist</div>
       </div>
       <div class="links">
@@ -43,20 +116,33 @@
   </div>
 
   <main class="wrap">
+
     <div class="card">
       <div class="pill">Contact</div>
-      <p><b>Bengaluru, Karnataka</b> • <a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a> • <a href="tel:+919937016613">+91 9937016613</a> • <a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank">LinkedIn Profile</a> • <a href="https://github.com/mihir-panda" target="_blank">GitHub profile</a> • <a href="https://mihir-panda.github.io/mihir-portfolio" target="_blank">Portfolio</a></p>
+      <p><b>Bengaluru, Karnataka</b> • 
+        <a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a> • 
+        <a href="tel:+919937016613">+91 9937016613</a> • 
+        <a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank">LinkedIn</a> • 
+        <a href="https://github.com/mihir-panda" target="_blank">GitHub</a> • 
+        <a href="https://mihir-panda.github.io/mihir-portfolio" target="_blank">Portfolio</a>
+      </p>
     </div>
 
     <div class="card">
       <div class="pill">Summary</div>
-      <p>Detail-oriented Software Test Engineer with 2+ years of experience in manual, automation, and API testing across ERP, HR, and Document Management systems. Skilled in designing and maintaining hybrid automation frameworks using Selenium, Java, TestNG, and Maven, ensuring faster and more reliable test cycles. Proficient in SQL, Postman API testing, and Agile Scrum practices with proven achievements including a 97% defect detection rate and 60% reduction in regression execution time. Recognized as Employee of the Month (Mar 2024) for excellence in test coverage and defect reporting.</p>
+      <p>
+        Detail-oriented Software Test Engineer with 2+ years of experience in manual, automation, and API testing across ERP, HR, and Document Management systems. 
+        Skilled in designing and maintaining hybrid automation frameworks using Selenium, Java, TestNG, and Maven — ensuring faster and reliable test cycles. 
+        Proficient in SQL, Postman API testing, and Agile Scrum practices. Achieved 97% defect detection rate and 60% reduction in regression execution time. 
+        Awarded <b>Employee of the Month (Mar 2024)</b> for excellence in test coverage and defect reporting.
+      </p>
+
       <div class="grid">
         <div>
           <h3>Testing & QA</h3>
           <ul>
             <li>Manual Testing, STLC, SDLC, Defect Life Cycle</li>
-            <li>Agile (Scrum), Regression/UAT/Smoke Testing</li>
+            <li>Agile (Scrum), Regression / UAT / Smoke Testing</li>
           </ul>
         </div>
         <div>
@@ -64,7 +150,7 @@
           <ul>
             <li>Selenium WebDriver, TestNG, Maven, Java (OOPs), BDD (Cucumber), Jenkins</li>
             <li>SQL (Joins, CRUD), API Testing (Postman, REST), JSON, XML</li>
-            <li>GitHub, Jira, Bitrix24, Excel, ChatGPT, Microsoft Copilot, Google Gemini</li>
+            <li>GitHub, Jira, Bitrix24, Excel, ChatGPT, Copilot, Gemini</li>
           </ul>
         </div>
       </div>
@@ -72,70 +158,70 @@
 
     <div class="card">
       <div class="pill">Professional Experience</div>
-      <h3>Software Test Engineer — Dietary Business Intelligence Pvt Ltd (formerly Jeeva Organic Pvt. Ltd.) | Bhubaneshwar, Odisha</h3>
-      <div><a href="https://dbi360.com/" target="_blank">Company</a> • <a href="https://jeevaorganic.com/" target="_blank">Formerly</a> • <b>Feb 2024 – Dec 2024</b></div>
+      <h3>Software Test Engineer — Dietary Business Intelligence Pvt Ltd (formerly Jeeva Organic Pvt Ltd.)</h3>
+      <div><a href="https://dbi360.com/" target="_blank">Company</a> • <b>Feb 2023 – Dec 2024</b> • Bhubaneshwar, Odisha</div>
       <ul>
-        <li>Contributed to 3 successful product launches (Zyler ERP, ConfluxHR, ASTERDocs) by coordinating with stakeholders and cross-functional teams under shifting priorities.</li>
-        <li>Designed and executed 300+ test cases covering functional, UAT, smoke, and regression phases, achieving a 97% defect detection rate.</li>
-        <li>Built and maintained a hybrid automation framework (Data + Keyword-Driven) using Selenium, Java, TestNG, Maven, reducing regression execution time by 60%.</li>
-        <li>Automated 50+ UI test scenarios and implemented WebDriver waits and locator strategies to improve test reliability by 40%.</li>
-        <li>Performed SQL-based backend testing on normalized schemas with CRUD operations and joins across 5+ relational modules.</li>
-        <li>Conducted API testing using Postman, validating over 50 RESTful requests and HTTP responses (200, 401, 404, 500).</li>
-        <li>Tracked defects and collaborated with developers using Jira and Bitrix24 under Agile Scrum methodology.</li>
+        <li>Contributed to 3 product launches (Zyler ERP, ConfluxHR, ASTERDocs) collaborating with cross-functional teams.</li>
+        <li>Designed and executed 300+ test cases covering functional, UAT, smoke, and regression phases.</li>
+        <li>Built a hybrid (Data + Keyword Driven) automation framework with Selenium + TestNG + Maven reducing regression time by 60%.</li>
+        <li>Automated 50+ UI test scenarios using WebDriver waits and optimized locators improving reliability by 40%.</li>
+        <li>Performed SQL-based backend testing and Postman API validation for 50+ RESTful requests.</li>
+        <li>Tracked defects via Jira and Bitrix24 under Agile Scrum methodology.</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="pill">Projects</div>
-      <h3>ZYLER ERP SUITE — Dietary Business Intelligence (DBI) <a href="https://zylererp.com/" target="_blank">(Link)</a></h3>
+
+      <h3>ZYLER ERP SUITE — <a href="https://zylererp.com/" target="_blank">View</a></h3>
       <p><b>May 2023 – Dec 2024</b></p>
       <ul>
-        <li>Designed and executed 150+ functional, regression, and integration test cases across modules like Sales, Inventory, and Procurement.</li>
-        <li>Automated 50+ test workflows using Selenium, TestNG, Maven, reducing regression cycle time by 60%.</li>
-        <li>Collaborated with developers and BAs to resolve 80+ defects during UAT, improving overall product stability by 45%.</li>
+        <li>Designed and executed 150+ functional and regression test cases for Sales, Inventory and Procurement modules.</li>
+        <li>Automated 50+ workflows using Selenium and Maven reducing cycle time by 60%.</li>
+        <li>Resolved 80+ UAT defects enhancing product stability by 45%.</li>
       </ul>
 
-      <h3>ASTERDOCS DOCUMENT MANAGEMENT SYSTEM — DBI <a href="https://asterdocs.com/" target="_blank">(Link)</a></h3>
+      <h3>ASTERDocs Document Management System — <a href="https://asterdocs.com/" target="_blank">View</a></h3>
       <p><b>Feb 2023 – May 2023</b></p>
       <ul>
-        <li>Led testing of document upload, approval workflow, and role-based access modules with 100% functional coverage.</li>
-        <li>Performed exploratory and cross-browser testing to validate dynamic UI behavior and enhance user experience.</li>
-        <li>Coordinated with the dev team to resolve 60+ issues, reducing post-release defects by 35%.</li>
+        <li>Led testing of document upload and workflow modules achieving 100% functional coverage.</li>
+        <li>Performed cross-browser and exploratory testing to validate dynamic UI behavior.</li>
       </ul>
 
-      <h3>CONFLUXHR — HUMAN RESOURCE PLATFORM — DBI <a href="https://confluxhr.com/" target="_blank">(Link)</a></h3>
+      <h3>ConfluxHR — HR Platform — <a href="https://confluxhr.com/" target="_blank">View</a></h3>
       <p><b>Feb 2023 – May 2023</b></p>
       <ul>
-        <li>Developed and executed 100+ test cases for modules including attendance tracking, payroll, and employee management.</li>
-        <li>Performed API testing using Postman, validating 40+ endpoints and backend data flow across integrated modules.</li>
-        <li>Identified and logged 70+ defects in Jira, achieving a 98% issue resolution rate before production release.</li>
+        <li>Developed and executed 100+ test cases for attendance, payroll, and employee modules.</li>
+        <li>Validated 40+ API endpoints and identified 70+ defects with 98% resolution rate.</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="pill">Education</div>
       <ul>
-        <li><b>Sophitorium College of Engineering, Khorda — BPUT</b> • Civil Engineering • <b>2018–2021</b> • CGPA 8.5 • Bhubaneswar, Odisha</li>
+        <li><b>Sophitorium College of Engineering (BPUT)</b> — B.Tech in Civil Engineering (2018–2021) — CGPA 8.5 — Bhubaneswar</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="pill">Certifications</div>
       <ul>
-        <li>Lean Six Sigma Green Belt | HRD University | 2024 — <a href="https://www.hrduniversity.org/certificates/txpxohwjmv" target="_blank">Certificate</a></li>
-        <li>Certified Software Tester | QSPIDERS | 2023</li>
-        <li>Selectors Hub Certification Program | 2025 — <a href="https://drive.google.com/file/d/1o0HhTBwJsas891KFelAYDr_zwKisErHV/view" target="_blank">Certificate</a></li>
+        <li>Lean Six Sigma Green Belt | HRD University | 2024 — <a href="https://www.hrduniversity.org/certificates/txpxohwjmv" target="_blank">View Certificate</a></li>
+        <li>Certified Software Tester | QSpiders | 2023</li>
+        <li>Selectors Hub Certification | 2025 — <a href="https://drive.google.com/file/d/1o0HhTBwJsas891KFelAYDr_zwKisErHV/view" target="_blank">View Certificate</a></li>
       </ul>
     </div>
 
     <div class="card">
       <div class="pill">Awards</div>
       <ul>
-        <li>Employee of the Month — Mar 2024 for exceptional test coverage and defect reporting at DBI.</li>
+        <li><b>Employee of the Month</b> — March 2024 for exceptional test coverage and defect reporting at DBI.</li>
       </ul>
     </div>
 
-    <p style="text-align:center; color:var(--muted); margin-top:12px">© 2025 Mihir Ranjan Panda</p>
+    <p style="text-align:center;color:var(--muted);margin-top:12px;">© 2025 Mihir Ranjan Panda</p>
   </main>
 </body>
 </html>
+
+
