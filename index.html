@@ -28,8 +28,8 @@
       --ring: 0 0 0 2px rgba(79,70,229,.25);
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
     body{
       font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
       background: radial-gradient(1200px 500px at 20% -10%, rgba(111,108,246,.25), transparent 60%),
@@ -37,6 +37,7 @@
                   var(--bg);
       color:var(--text);
       transition: background .4s ease, color .4s ease;
+      line-height:1.6;
     }
 
     /* Top bar */
@@ -48,7 +49,8 @@
       box-shadow: var(--shadow);
     }
     .topbar .inner{
-      max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:16px;
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      gap:10px;
     }
     .avatar{
       width:40px; height:40px; border-radius:50%;
@@ -56,19 +58,21 @@
       background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
       border:1px solid rgba(255,255,255,.25);
     }
-    .title-group{flex:1}
+    .title-group{flex:1; min-width:200px}
     .name{font-weight:800; font-size:18px; margin:0}
     .tagline{margin:2px 0 0; font-size:12px; opacity:.95}
 
+    nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+    }
     nav a{
-      color:#fff; text-decoration:none; font-weight:600; padding:10px 12px; border-radius:10px;
+      color:#fff; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px;
       transition: transform .2s ease, background .2s ease;
     }
     nav a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.15);}
     .toggle{
       display:flex; align-items:center; gap:8px; font-weight:700; font-size:13px;
       background: rgba(255,255,255,.15); padding:6px 10px; border-radius:999px; cursor:pointer;
-      user-select:none;
     }
     .toggle input{appearance:none; width:44px; height:24px; background:#0f172a; border-radius:999px; position:relative; outline:none; border:1px solid rgba(255,255,255,.4)}
     .toggle input:after{
@@ -103,13 +107,13 @@
       color:#fff; background: linear-gradient(90deg, var(--brand), var(--brand-2)); box-shadow: var(--ring);
     }
 
-    /* About stats */
+    /* Stats */
     .stats{display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:14px}
     .stat{background:var(--bg-soft); border-radius:14px; padding:14px; text-align:center; border:1px solid rgba(255,255,255,.06)}
     .stat b{font-size:20px}
     .muted{color:var(--muted)}
 
-    /* Skills bars */
+    /* Skills */
     .skill{margin:12px 0}
     .skill .label{display:flex; justify-content:space-between; font-weight:700; font-size:13px}
     .bar{height:10px; border-radius:999px; background:rgba(255,255,255,.08); margin-top:8px; overflow:hidden}
@@ -117,7 +121,7 @@
     .bar[data-val="85"]>span{width:85%} .bar[data-val="80"]>span{width:80%}
     .bar[data-val="75"]>span{width:75%} .bar[data-val="70"]>span{width:70%}
 
-    /* Right column apps layout */
+    /* Right column */
     .apps{display:grid; grid-template-columns: 1fr; gap:18px}
 
     /* Controls */
@@ -131,14 +135,13 @@
       background: linear-gradient(90deg, var(--brand), var(--brand-2)); color:#fff; border:none; cursor:pointer; font-weight:800;
     }
     button.ghost{ background: transparent; border:1px dashed rgba(255,255,255,.25); color:var(--text) }
-    .row{display:flex; gap:10px}
+    .row{display:flex; gap:10px; flex-wrap:wrap;}
 
-    /* Projects grid */
-    .projects{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    @media (max-width:920px){ .projects{grid-template-columns: 1fr} }
+    /* Projects */
+    .projects{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px}
     .project .cta{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
 
-    /* Floating socials */
+    /* Socials */
     .socials{
       position:fixed; left:14px; bottom:14px; display:flex; flex-direction:column; gap:10px; z-index:60;
     }
@@ -149,15 +152,33 @@
     }
     .soc:hover{ transform: translateY(-2px); filter: brightness(1.08) }
 
-    /* Footer */
     footer{ text-align:center; padding:18px; color:var(--muted) }
 
-    /* Smooth fades on theme change */
-    .fade{transition: color .35s, background .35s, border-color .35s}
+    /* Responsive mobile fixes */
+    @media (max-width: 768px) {
+      .topbar .inner {flex-direction: column; align-items: flex-start;}
+      nav {width:100%; flex-direction: column;}
+      nav a {display:block; width:100%; text-align:left;}
+      .grid, .projects, .apps {grid-template-columns: 1fr !important;}
+      .stats {grid-template-columns: repeat(2, 1fr);}
+      .socials {flex-direction: row; left:50%; transform:translateX(-50%); bottom:10px; gap:12px;}
+      .container {padding: 0 10px;}
+      .card {padding:14px;}
+      .name {font-size:16px;}
+      .tagline {font-size:11px;}
+    }
+
+    @media (max-width: 480px) {
+      body {font-size:14px;}
+      .card h3 {font-size:16px;}
+      nav a {font-size:14px;}
+      .pill {font-size:10px; padding:4px 8px;}
+      .soc {width:40px; height:40px;}
+    }
   </style>
 </head>
+
 <body>
-  <!-- Top bar -->
   <header class="topbar">
     <div class="inner">
       <div class="avatar">MR</div>
@@ -166,7 +187,7 @@
         <p class="tagline">Software Test Engineer · Automation · API · Selenium · Java</p>
       </div>
 
-      <nav class="row">
+      <nav>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
@@ -185,9 +206,8 @@
 
   <main class="container">
     <div class="grid">
-      <!-- LEFT COLUMN -->
-      <section class="fade">
-        <!-- About -->
+      <!-- Left -->
+      <section>
         <div id="about" class="card">
           <span class="pill">About</span>
           <h3>Profile</h3>
@@ -202,28 +222,14 @@
           </div>
         </div>
 
-        <!-- Skills -->
         <div id="skills" class="card">
           <span class="pill">Skills</span>
-          <div class="skill">
-            <div class="label"><span>Selenium</span><span>85%</span></div>
-            <div class="bar" data-val="85"><span></span></div>
-          </div>
-          <div class="skill">
-            <div class="label"><span>Java</span><span>80%</span></div>
-            <div class="bar" data-val="80"><span></span></div>
-          </div>
-          <div class="skill">
-            <div class="label"><span>API (Postman)</span><span>75%</span></div>
-            <div class="bar" data-val="75"><span></span></div>
-          </div>
-          <div class="skill">
-            <div class="label"><span>SQL</span><span>70%</span></div>
-            <div class="bar" data-val="70"><span></span></div>
-          </div>
+          <div class="skill"><div class="label"><span>Selenium</span><span>85%</span></div><div class="bar" data-val="85"><span></span></div></div>
+          <div class="skill"><div class="label"><span>Java</span><span>80%</span></div><div class="bar" data-val="80"><span></span></div></div>
+          <div class="skill"><div class="label"><span>API (Postman)</span><span>75%</span></div><div class="bar" data-val="75"><span></span></div></div>
+          <div class="skill"><div class="label"><span>SQL</span><span>70%</span></div><div class="bar" data-val="70"><span></span></div></div>
         </div>
 
-        <!-- Projects -->
         <div id="projects" class="card">
           <span class="pill">Projects</span>
           <div class="projects">
@@ -254,13 +260,11 @@
           </div>
         </div>
 
-        <!-- Contact -->
         <div id="contact" class="card">
           <span class="pill">Contact</span>
           <p><b>Bengaluru, Karnataka</b></p>
           <p><a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a> • <a href="tel:+919937016613">+91 9937016613</a></p>
-          <!-- Formspree (fires email) -->
-          <form action="https://formspree.io/f/movlzppp" method="POST" class="fade" style="margin-top:10px">
+          <form action="https://formspree.io/f/movlzppp" method="POST">
             <div class="row">
               <input name="name" placeholder="Your name" required />
               <input type="email" name="email" placeholder="Your email" required />
@@ -274,17 +278,15 @@
         </div>
       </section>
 
-      <!-- RIGHT COLUMN: MINI APPS -->
+      <!-- Right column -->
       <section id="apps" class="apps fade">
-        <!-- Calculator -->
         <div class="card">
           <span class="pill">Mini Apps</span>
           <h3>🧮 Calculator</h3>
           <div class="row">
             <input id="calc-a" type="number" placeholder="First number">
             <select id="calc-op">
-              <option value="+">+</option><option value="-">-</option>
-              <option value="*">*</option><option value="/">/</option>
+              <option value="+">+</option><option value="-">-</option><option value="*">*</option><option value="/">/</option>
             </select>
             <input id="calc-b" type="number" placeholder="Second number">
             <button onclick="calc()">=</button>
@@ -292,18 +294,15 @@
           <p class="muted">Result: <b id="calc-out">—</b></p>
         </div>
 
-        <!-- To-Do -->
-        <div class="card">
-          <h3>✅ To-Do</h3>
+        <div class="card"><h3>✅ To-Do</h3>
           <div class="row">
-            <input id="todo-input" placeholder="Add a task and press +">
+            <input id="todo-input" placeholder="Add a task">
             <button onclick="todoAdd()">+</button>
             <button class="ghost" onclick="todoClear()">Clear</button>
           </div>
           <ul id="todo-list" class="muted" style="list-style:none; padding-left:0; margin-top:10px"></ul>
         </div>
 
-        <!-- Notes -->
         <div class="card">
           <h3>🗒️ Notes</h3>
           <textarea id="note-text" rows="4" placeholder="Write a quick note..."></textarea>
@@ -313,159 +312,16 @@
           </div>
           <p class="muted" id="note-status"></p>
         </div>
-
-        <!-- Quotes -->
-        <div class="card">
-          <h3>💡 Quote</h3>
-          <button onclick="newQuote()">New Quote</button>
-          <p id="quote" class="muted" style="margin-top:10px">“Make it work, make it right, make it fast.” — Kent Beck</p>
-        </div>
-
-        <!-- Stopwatch -->
-        <div class="card">
-          <h3>⏱️ Stopwatch</h3>
-          <div class="row">
-            <button onclick="swStart()">Start</button>
-            <button class="ghost" onclick="swStop()">Stop</button>
-            <button class="ghost" onclick="swReset()">Reset</button>
-          </div>
-          <p class="muted">Time: <b id="sw-time">00:00.0</b></p>
-        </div>
-
-        <!-- Timer -->
-        <div class="card">
-          <h3>⏳ Timer</h3>
-          <div class="row">
-            <input id="timer-min" type="number" min="0" value="0" style="width:90px"> 
-            <input id="timer-sec" type="number" min="0" max="59" value="30" style="width:90px">
-            <button onclick="tmStart()">Start</button>
-            <button class="ghost" onclick="tmStop()">Stop</button>
-            <button class="ghost" onclick="tmReset()">Reset</button>
-          </div>
-          <p class="muted">Remaining: <b id="tm-left">00:30</b></p>
-        </div>
-
-        <!-- Weather (dummy local data) -->
-        <div class="card">
-          <h3>🌤️ Weather — Bengaluru</h3>
-          <div class="row">
-            <button onclick="wxSet('today')">Today</button>
-            <button class="ghost" onclick="wxSet('tomorrow')">Tomorrow</button>
-          </div>
-          <p class="muted" id="wx">Loading...</p>
-        </div>
       </section>
     </div>
   </main>
 
-  <!-- Floating Socials -->
   <div class="socials">
-    <a class="soc" href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" title="LinkedIn">in</a>
-    <a class="soc" href="https://github.com/mihir-panda" target="_blank" title="GitHub">GH</a>
-    <a class="soc" href="https://mihir-panda.github.io/mihir-portfolio" target="_blank" title="Portfolio">PF</a>
+    <a class="soc" href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank">in</a>
+    <a class="soc" href="https://github.com/mihir-panda" target="_blank">GH</a>
+    <a class="soc" href="https://mihir-panda.github.io/mihir-portfolio" target="_blank">PF</a>
   </div>
 
-  <footer class="fade">© 2025 Mihir Ranjan Panda</footer>
-
-  <script>
-    // THEME TOGGLE (persists)
-    const root = document.documentElement;
-    const switchEl = document.getElementById('themeSwitch');
-    const savedTheme = localStorage.getItem('theme');
-    if(savedTheme){ document.documentElement.setAttribute('data-theme', savedTheme); switchEl.checked = (savedTheme === 'dark'); }
-    switchEl.addEventListener('change', () => {
-      const mode = switchEl.checked ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', mode);
-      localStorage.setItem('theme', mode);
-    });
-
-    // Animate skills on load
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.bar>span').forEach(b=> b.style.width = getComputedStyle(b.parentElement).getPropertyValue('--w') );
-    });
-
-    // CALCULATOR
-    function calc(){
-      const a = parseFloat(document.getElementById('calc-a').value);
-      const b = parseFloat(document.getElementById('calc-b').value);
-      const op = document.getElementById('calc-op').value;
-      let r = '—';
-      if(!isNaN(a) && !isNaN(b)){
-        if(op==='+') r=a+b; else if(op==='-') r=a-b; else if(op==='*') r=a*b; else if(op==='/') r= (b!==0)? (a/b).toFixed(4) : 'Error (÷0)';
-      }
-      document.getElementById('calc-out').textContent = r;
-    }
-
-    // TO-DO
-    const TODO_KEY='todo-items';
-    function todoRender(){
-      const list = document.getElementById('todo-list');
-      const items = JSON.parse(localStorage.getItem(TODO_KEY)||'[]');
-      list.innerHTML='';
-      items.forEach((t, i)=>{
-        const li=document.createElement('li');
-        li.style.cssText='background:var(--bg-soft);border:1px solid rgba(255,255,255,.08);padding:8px 10px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;';
-        const span=document.createElement('span'); span.textContent=t;
-        const del=document.createElement('button'); del.className='ghost'; del.textContent='✕'; del.onclick=()=>{ items.splice(i,1); localStorage.setItem(TODO_KEY, JSON.stringify(items)); todoRender(); };
-        li.append(span, del); list.append(li);
-      });
-    }
-    function todoAdd(){
-      const input=document.getElementById('todo-input'); const v=input.value.trim(); if(!v) return;
-      const items = JSON.parse(localStorage.getItem(TODO_KEY)||'[]'); items.push(v);
-      localStorage.setItem(TODO_KEY, JSON.stringify(items)); input.value=''; todoRender();
-    }
-    function todoClear(){ localStorage.removeItem(TODO_KEY); todoRender(); }
-    todoRender();
-
-    // NOTES
-    const NOTE_KEY='note-text';
-    function noteSave(){ localStorage.setItem(NOTE_KEY, document.getElementById('note-text').value); document.getElementById('note-status').textContent='Saved ✔'; setTimeout(()=>document.getElementById('note-status').textContent='',1200); }
-    function noteClear(){ document.getElementById('note-text').value=''; localStorage.removeItem(NOTE_KEY); }
-    document.getElementById('note-text').value = localStorage.getItem(NOTE_KEY) || '';
-
-    // QUOTES
-    const quotes=[
-      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-      "Believe you can and you're halfway there.",
-      "Don’t watch the clock; do what it does. Keep going.",
-      "The future depends on what you do today.",
-      "Dream big and dare to fail."
-    ];
-    function newQuote(){ document.getElementById('quote').textContent = quotes[Math.floor(Math.random()*quotes.length)]; }
-
-    // STOPWATCH
-    let swInt=null, swStartAt=0, swElapsed=0;
-    function swTick(){
-      const t = Date.now()-swStartAt+swElapsed;
-      const m = Math.floor(t/60000), s = Math.floor((t%60000)/1000), d = Math.floor((t%1000)/100);
-      document.getElementById('sw-time').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${d}`;
-    }
-    function swStart(){ if(swInt) return; swStartAt=Date.now(); swInt=setInterval(swTick,100); }
-    function swStop(){ if(!swInt) return; clearInterval(swInt); swInt=null; swElapsed += Date.now()-swStartAt; }
-    function swReset(){ swStop(); swElapsed=0; document.getElementById('sw-time').textContent='00:00.0'; }
-
-    // TIMER
-    let tmInt=null, tmLeft=30;
-    function tmRender(){ const m=Math.floor(tmLeft/60), s=tmLeft%60; document.getElementById('tm-left').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; }
-    function tmStart(){
-      const m=parseInt(document.getElementById('timer-min').value||'0',10);
-      const s=parseInt(document.getElementById('timer-sec').value||'0',10);
-      tmLeft=m*60+s; tmRender();
-      if(tmInt) clearInterval(tmInt);
-      tmInt=setInterval(()=>{ tmLeft--; tmRender(); if(tmLeft<=0){ clearInterval(tmInt); tmInt=null; alert('⏳ Timer finished!'); } },1000);
-    }
-    function tmStop(){ if(tmInt){ clearInterval(tmInt); tmInt=null; } }
-    function tmReset(){ tmStop(); tmLeft=30; tmRender(); }
-    tmRender();
-
-    // WEATHER (dummy local)
-    const WX = {
-      today:{temp: "28°C", feel:"Feels like 31°C", cond:"Partly cloudy", wind:"9 km/h"},
-      tomorrow:{temp:"27°C", feel:"Feels like 29°C", cond:"Light showers", wind:"11 km/h"}
-    };
-    function wxSet(day){ const d=WX[day]; document.getElementById('wx').textContent = `${d.cond} · ${d.temp} · ${d.feel} · Wind ${d.wind}`; }
-    wxSet('today');
-  </script>
+  <footer>© 2025 Mihir Ranjan Panda</footer>
 </body>
 </html>
