@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Professional profile of Mihir Ranjan Panda, Software Quality Engineer and SDET.">
-  <title>Profile | Mihir Panda</title>
+  <title>Resume | Mihir Panda</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,6 +92,7 @@
     .project{padding:14px;margin-bottom:9px;border-radius:11px;background:var(--bg-subtle);border:1px solid var(--border)}
     .project:last-child{margin:0}
     .project h3{font-size:.92rem}
+    .proj-meta{display:block;margin-top:3px;color:var(--text-muted);font-size:.68rem;font-weight:500;letter-spacing:0}
     .project p,.skill p{margin:5px 0 0;color:var(--text-secondary);font-size:.78rem;line-height:1.65}
 
     .skill{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--border)}
@@ -130,7 +131,7 @@
       .overview{padding:22px}
       .content{padding:14px}
       .foot{flex-direction:column}
-      .actions .action:not(.primary){display:none}
+      .actions .action:not(.primary):not(.cv-download){display:none}
     }
     @media(max-width:430px){
       .mast h1{font-size:2.3rem}
@@ -165,17 +166,18 @@
       </button>
       <a class="action" href="index.html">← Portfolio</a>
       <a class="action" href="profile.html">Profile</a>
+      <a class="action cv-download" href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a>
       <button class="action primary" onclick="print()">Print / Save PDF</button>
     </div>
   </div></header>
   <main class="page">
     <section class="mast">
       <div><p class="status"><i></i>PROFESSIONAL PROFILE / 2026</p><h1>Mihir Ranjan <span>Panda</span></h1><p class="role">Software Quality Engineer · SDET<br>Helping teams ship reliable software through automation, manual testing &amp; API validation.</p></div>
-      <div class="contacts"><span>Available worldwide · Remote</span><a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a><span>+91 9937016613</span><a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <div class="contacts"><span>Bengaluru, Karnataka · Remote-friendly</span><a href="mailto:mhrpanda13@gmail.com">mhrpanda13@gmail.com</a><span>+91 9937016613</span><a href="https://www.linkedin.com/in/mihirpanda-sdet" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div>
     </section>
     <section class="overview">
       <h2>Overview</h2>
-      <p>Software Quality Engineer with 3+ years of hands-on experience in manual, automation, and API testing across healthcare, ERP, HR, and document-management applications. Fluent in Playwright with TypeScript, Java Selenium ATAF, Selenium WebDriver, TestNG, Maven, Rest Assured, Postman, SQL, and Jenkins CI/CD, with a track record of pairing sound test strategy with developer-level coding skills to cut regression time and ship with confidence.</p>
+      <p>Software Quality Engineer and SDET with 2.5+ years of hands-on experience in manual testing, test automation, and API testing across healthcare, ERP, HRMS, and document-management applications. Fluent in Playwright with TypeScript, Java Selenium ATAF, Selenium WebDriver, TestNG, Maven, Rest Assured, Postman, SQL, and Jenkins CI/CD, with a track record of pairing sound test strategy with developer-level coding skills — and AI tools like ChatGPT, Copilot, and Gemini — to cut regression time and ship with confidence.</p>
     </section>
     <div class="content">
       <div class="col">
@@ -192,50 +194,53 @@
             </ul>
           </article>
           <article class="job">
-            <div class="jobtop"><div><h3>Software Test Engineer</h3><p class="company">Dietary Business Intelligence Pvt. Ltd. · Bhubaneshwar, Odisha</p></div><span class="date">FEB 2023 – DEC 2024</span></div>
+            <div class="jobtop"><div><h3>Software Test Engineer</h3><p class="company">Dietary Business Intelligence Pvt. Ltd. (formerly Jeeva Organic Pvt. Ltd.) · Bhubaneshwar, Odisha</p></div><span class="date">FEB 2023 – DEC 2024</span></div>
             <ul>
-              <li>Designed and executed 300+ functional, regression, and UAT test cases, achieving 97% defect detection.</li>
-              <li>Built a hybrid Selenium, TestNG, and Maven framework that reduced regression time by 60%.</li>
-              <li>Automated 50+ UI scenarios and validated 50+ REST endpoints using Postman and Rest Assured.</li>
-              <li>Integrated automation suites with Jenkins CI/CD and performed SQL backend validation across relational modules.</li>
-              <li>Tracked and resolved 150+ defects through Jira and Bitrix24; mentored juniors in Java and Agile QA practices.</li>
+              <li>Designed and executed 300+ test cases across functional, regression, and UAT phases, achieving 97% defect detection.</li>
+              <li>Developed and maintained a hybrid automation framework (Selenium WebDriver, TestNG, Maven), reducing regression time by 60%.</li>
+              <li>Automated 50+ UI test scenarios using WebDriver waits, locator strategies, and reusable Java methods.</li>
+              <li>Performed API testing and automation with Postman and Rest Assured, validating 50+ REST endpoints.</li>
+              <li>Integrated the automation suite with Jenkins CI/CD, embedding regression testing into delivery workflows.</li>
+              <li>Performed SQL-based backend testing to validate data across multiple relational modules.</li>
+              <li>Tracked and resolved 150+ defects with developers using Jira and Bitrix24.</li>
+              <li>Mentored junior testers on Java coding practices for automation and Agile QA methodology.</li>
             </ul>
           </article>
         </section>
         <section class="section">
           <h2>Selected project experience</h2>
-          <article class="project"><h3>Availity UI Healthcare Portal</h3><p>300+ tests across functional, regression, exploratory, UAT, and cross-browser coverage; maintained UI automation using Playwright with TypeScript and Java Selenium ATAF.</p></article>
-          <article class="project"><h3>Zyler ERP Suite</h3><p>Automated 50+ workflows, used Java Streams for test-data validation, and resolved 80+ UAT defects—improving stability by 45%.</p></article>
-          <article class="project"><h3>ASTERDocs Document Management System</h3><p>Led testing of document upload, approval, and role-based access workflows with complete coverage and exception-safe file automation utilities.</p></article>
-          <article class="project"><h3>ConfluxHR Human Resource Platform</h3><p>Tested attendance, payroll, and employee modules with 100+ test cases; automated REST API validation and achieved 98% defect resolution.</p></article>
+          <article class="project"><h3>Zyler ERP Suite <span class="proj-meta">zylererp.com · May 2023 – Dec 2024</span></h3><p>Automated 50+ test workflows, reducing the regression cycle by 60%. Used the Java Streams API for test-data filtering and validations. Resolved 80+ defects during UAT, improving application stability by 45%.</p></article>
+          <article class="project"><h3>AsterDocs Document Management System <span class="proj-meta">asterdocs.com · Feb 2023 – May 2023</span></h3><p>Led testing of document upload, approval workflows, and role-based access with 100% requirement coverage. Built Java utilities for file handling and exception-safe automation scripts.</p></article>
+          <article class="project"><h3>ConfluxHR Human Resource Platform <span class="proj-meta">confluxhr.com · Feb 2023 – May 2023</span></h3><p>Tested attendance, payroll, and employee modules with 100+ test cases. Automated REST API validation using Postman and Rest Assured. Logged and tracked 70+ defects in Jira, achieving 98% resolution.</p></article>
         </section>
       </div>
       <aside class="col">
         <section class="section">
           <h2>Technical toolkit</h2>
-          <div class="skill"><h3>Automation &amp; programming</h3><p>Playwright, TypeScript, Java Selenium ATAF, Selenium WebDriver, TestNG, Maven, Java, Cucumber, POM, Page Factory, Data/Keyword-Driven Frameworks</p></div>
-          <div class="skill"><h3>API, data &amp; CI/CD</h3><p>Postman, Rest Assured, REST APIs, OAuth2, JWT, JSON/XML, SQL, CRUD, Joins, Stored Procedures, Jenkins, GitHub</p></div>
-          <div class="skill"><h3>Testing &amp; delivery</h3><p>Manual Testing, STLC, SDLC, Functional, Exploratory, Regression, Smoke, UAT, Cross-Browser, BVA, RCA, Jira, Bitrix24, Confluence</p></div>
+          <div class="skill"><h3>Automation &amp; programming</h3><p>Playwright, TypeScript, Java Selenium ATAF, Selenium WebDriver, TestNG, Maven, Cucumber (BDD, Gherkin), POM, Page Factory, Data/Keyword-Driven &amp; Hybrid Frameworks, Java (OOPs, Collections, Multithreading, Streams &amp; Lambdas), SOLID principles</p></div>
+          <div class="skill"><h3>API, data &amp; CI/CD</h3><p>Postman, Rest Assured, REST APIs, CRUD, JSON/XML &amp; schema validation, OAuth2, JWT, API mocking, SQL, Joins, Stored Procedures, Triggers, Jenkins, Git, GitHub, Docker (basics), Linux, BrowserStack, Sauce Labs</p></div>
+          <div class="skill"><h3>Testing &amp; delivery</h3><p>Manual Testing, STLC, SDLC, Functional, Exploratory, Regression, Smoke, UAT, Cross-Browser, Performance basics (JMeter), BVA, Equivalence Partitioning, Decision Table, RCA, Agile/Scrum, Jira, Bitrix24, Confluence, MS Excel</p></div>
+          <div class="skill"><h3>AI-assisted QA</h3><p>ChatGPT, Microsoft Copilot, Google Gemini — for test case generation, bug analysis, and code optimization</p></div>
         </section>
         <section class="section">
           <h2>Core capabilities</h2>
-          <div class="chips"><span>TEST STRATEGY</span><span>UI AUTOMATION</span><span>API TESTING</span><span>SQL VALIDATION</span><span>CI/CD</span><span>DEFECT TRIAGE</span><span>AGILE QA</span><span>UAT SUPPORT</span></div>
+          <div class="chips"><span>TEST STRATEGY</span><span>UI AUTOMATION</span><span>API TESTING</span><span>SQL VALIDATION</span><span>CI/CD</span><span>DEFECT TRIAGE</span><span>AGILE QA</span><span>UAT SUPPORT</span><span>AI-ASSISTED QA</span></div>
         </section>
         <section class="section">
           <h2>Recognition</h2>
-          <div class="award"><b>Employee of the Month</b><span>March 2024 · DBI · Test coverage and defect-reporting excellence</span></div>
-          <div class="award"><b>Insta Rise Award</b><span>April 2026</span></div>
+          <div class="award"><b>Insta Rise Award</b><span>Infosys Limited · April 2026</span></div>
+          <div class="award"><b>Employee of the Month</b><span>Dietary Business Intelligence · March 2024, for exceptional test coverage and defect reporting</span></div>
         </section>
         <section class="section">
           <h2>Certifications</h2>
+          <div class="certificate">Healthcare Certification · TestYantra Software Solutions · September 2025</div>
+          <div class="certificate">SelectorsHub Certification Program · 2025</div>
           <div class="certificate">Lean Six Sigma Green Belt · HRD University · 2024</div>
           <div class="certificate">Certified Software Tester · QSpiders · 2023</div>
-          <div class="certificate">SelectorsHub Certification Program · 2025</div>
-          <div class="certificate">Healthcare Certification · TestYantra · September 2025</div>
         </section>
         <section class="section">
           <h2>Education</h2>
-          <p class="education"><b>Sophitorium College of Engineering, Khorda</b><br>Civil Engineering, Biju Pattanaik University of Technology, Rourkela<br>2018–2021 · CGPA: 8.5</p>
+          <p class="education"><b>Sophitorium College of Engineering, Khorda</b><br>Civil Engineering, Biju Patnaik University of Technology, Rourkela<br>2018–2021 · CGPA: 8.5</p>
         </section>
         <section class="contact-card">
           <h2>Let's build a stronger release process.</h2>
