@@ -665,8 +665,18 @@
       else{ el.style.backgroundImage=''; }
     }
 
+    function canEdit(){
+      try{
+        if(new URLSearchParams(location.search).get('edit')==='1'){ localStorage.setItem('profile_edit_unlocked','1'); }
+        if(localStorage.getItem('profile_edit_unlocked')==='1') return true;
+      }catch(e){}
+      return location.protocol==='file:' || location.hostname==='localhost' || location.hostname==='127.0.0.1';
+    }
+
     const editToggle=document.getElementById('editToggle');
+    if(!canEdit()){ editToggle.style.display='none'; }
     function setEditing(on){
+      if(on && !canEdit())return;
       document.body.setAttribute('data-editing',on?'true':'false');
       editToggle.textContent=on?'Done Editing':'Edit Profile';
       document.querySelectorAll('.editable').forEach(el=>el.setAttribute('contenteditable',on?'true':'false'));
