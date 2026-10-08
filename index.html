@@ -4,23 +4,349 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Mihir Ranjan Panda — Software Quality Engineer, SDET, and independent QA partner.">
+  <meta property="og:title" content="Mihir Panda — QA / SDET">
+  <meta property="og:description" content="Software Quality Engineer and SDET helping product teams ship with confidence through testing, automation, and release quality.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="sdet-testing-workspace.png">
   <title>Mihir Panda — QA / SDET</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#070b16;--surface:#0d1425;--surface-2:#111b31;--line:rgba(190,211,245,.16);--text:#f4f7ff;--muted:#9caac1;--blue:#5b8cff;--blue-2:#8bd4ff;--mint:#61f1c0;--orange:#ff916b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif}body::before{position:fixed;z-index:-1;inset:0;opacity:.42;background-image:linear-gradient(rgba(125,165,234,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(125,165,234,.07) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent 82%);content:''}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1220px,calc(100% - 48px));margin:auto}.nav{position:sticky;z-index:30;top:0;background:rgba(7,11,22,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.navin{display:flex;align-items:center;justify-content:space-between;min-height:76px}.brand{display:flex;align-items:center;gap:11px;font-size:.92rem;font-weight:800;letter-spacing:-.03em}.brand-mark{display:grid;place-items:center;width:35px;height:35px;border-radius:11px;color:#08101f;background:linear-gradient(135deg,var(--mint),#8bd4ff);font:800 .68rem 'DM Mono',monospace}.links{display:flex;gap:29px;color:#b7c4d9;font-size:.73rem;font-weight:700}.links a:hover{color:#fff}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border:1px solid transparent;border-radius:10px;color:#07101f;background:linear-gradient(135deg,#9be7ff,#5b8cff);box-shadow:0 10px 25px rgba(91,140,255,.22);font-size:.73rem;font-weight:800;transition:.25s}.button:hover{transform:translateY(-2px);filter:brightness(1.08)}.button.secondary{border-color:var(--line);color:#eaf1ff;background:rgba(255,255,255,.04);box-shadow:none}.button.secondary:hover{background:rgba(255,255,255,.09)}.menu{display:none;border:0;color:#fff;background:transparent;font-weight:800}.hero{position:relative;padding:78px 0 0;overflow:hidden}.hero::before{position:absolute;top:-220px;right:-150px;width:740px;height:740px;border-radius:50%;background:radial-gradient(circle,rgba(61,125,255,.34),rgba(30,75,170,.09) 43%,transparent 68%);content:''}.hero-top{position:relative;display:grid;grid-template-columns:1fr .86fr;gap:66px;align-items:center}.signal{display:inline-flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid rgba(97,241,192,.24);border-radius:999px;color:#b9fce5;background:rgba(97,241,192,.07);font:500 .63rem 'DM Mono',monospace;letter-spacing:.05em}.signal i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(97,241,192,.12)}.hero h1{max-width:700px;margin:23px 0 0;font-size:clamp(3.8rem,7.2vw,7rem);line-height:.9;letter-spacing:-.09em}.hero h1 .gradient{background:linear-gradient(105deg,#fff 15%,#95dfff 54%,#7084ff);background-clip:text;color:transparent}.hero-copy>p{max-width:570px;margin:26px 0 29px;color:#aebbd0;font-size:1rem;line-height:1.78}.actions{display:flex;flex-wrap:wrap;gap:10px}.microproof{display:flex;align-items:center;gap:18px;margin-top:32px;color:#99aac3;font-size:.71rem}.avatars{display:flex}.avatars i{width:24px;height:24px;margin-right:-7px;border:2px solid var(--bg);border-radius:50%;background:linear-gradient(135deg,#6a8fff,#b4ecff)}.avatars i:nth-child(2){background:linear-gradient(135deg,#ff9773,#ffca9b)}.avatars i:nth-child(3){background:linear-gradient(135deg,#63eac3,#85acff)}.showcase{position:relative;padding:14px;border:1px solid rgba(173,204,255,.24);border-radius:24px;background:linear-gradient(145deg,rgba(25,43,79,.9),rgba(13,20,37,.92));box-shadow:0 30px 60px rgba(0,0,0,.3)}.showcase-head{display:flex;align-items:center;justify-content:space-between;padding:3px 3px 14px;font:500 .61rem 'DM Mono',monospace;color:#b5c5dd}.dots{display:flex;gap:5px}.dots i{width:6px;height:6px;border-radius:50%;background:#475873}.dots i:first-child{background:var(--orange)}.dots i:nth-child(2){background:#f9d268}.showcase-main{display:grid;grid-template-columns:.8fr 1.2fr;gap:10px}.operator{position:relative;min-height:365px;overflow:hidden;border-radius:15px;background:#172a47}.operator img{width:100%;height:100%;object-fit:cover;object-position:center 17%;filter:saturate(.85) contrast(1.05)}.operator::after{position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,rgba(3,9,19,.82));content:''}.operator b{position:absolute;z-index:1;bottom:17px;left:15px;font-size:.82rem}.operator span{position:absolute;z-index:1;bottom:5px;left:15px;color:#a9bdd5;font-size:.58rem}.dashboard{display:grid;grid-template-rows:auto 1fr auto;gap:10px;padding:15px;border-radius:15px;background:#0a1020}.dashboard-top{display:flex;justify-content:space-between;color:#dce9ff;font-size:.65rem;font-weight:700}.live{color:var(--mint);font:500 .56rem 'DM Mono',monospace}.live::before{display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:var(--mint);content:''}.chart{position:relative;overflow:hidden;display:flex;align-items:end;gap:8px;padding:12px 6px;border-bottom:1px solid rgba(184,209,244,.15);background:linear-gradient(180deg,rgba(91,140,255,.12),transparent)}.chart i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(#89d7ff,#4d7fff)}.chart i:nth-child(1){height:31%}.chart i:nth-child(2){height:55%}.chart i:nth-child(3){height:43%}.chart i:nth-child(4){height:78%}.chart i:nth-child(5){height:63%}.chart i:nth-child(6){height:92%}.chart i:nth-child(7){height:74%}.dashboard-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid rgba(184,209,244,.1);color:#92a5bf;font-size:.58rem}.dashboard-row:last-child{border:0}.dashboard-row b{color:#d8e8ff}.status{padding:3px 6px;border-radius:5px;color:#b9fce5;background:rgba(97,241,192,.11);font-size:.53rem}.hero-bottom{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:1px;overflow:hidden;margin-top:68px;border:1px solid var(--line);border-radius:20px 20px 0 0;background:var(--line)}.hero-message{padding:29px 34px;background:var(--surface);font-size:1.28rem;font-weight:700;line-height:1.28;letter-spacing:-.045em}.hero-message em{font-style:normal;color:#91d9ff}.hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface)}.metric{padding:25px 18px;border-left:1px solid var(--line)}.metric b{display:block;color:#fff;font-size:1.48rem;letter-spacing:-.06em}.metric span{display:block;margin-top:4px;color:#91a4be;font-size:.61rem;line-height:1.4}.section{padding:110px 0}.light{color:#121a2a;background:#f7f9fc}.section-label{margin:0 0 14px;color:var(--blue-2);font:700 .65rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.light .section-label{color:#266ee8}.headline{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.headline h2{max-width:780px;margin:0;font-size:clamp(2.6rem,5vw,5rem);line-height:.93;letter-spacing:-.08em}.headline p{max-width:310px;margin:0;color:#a4b2c6;font-size:.84rem;line-height:1.75}.light .headline p{color:#667085}.command-grid{display:grid;grid-template-columns:1.12fr .88fr .88fr;gap:15px}.command{min-height:258px;padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.04);transition:.25s}.light .command{border-color:#dbe5f0;background:#fff;box-shadow:0 11px 26px rgba(32,73,120,.045)}.command:hover{transform:translateY(-5px);border-color:rgba(139,212,255,.5)}.command.feature{grid-row:span 2;display:flex;flex-direction:column;min-height:530px;background:linear-gradient(145deg,#142d58,#0a1223)}.command-number{color:#83cfff;font:500 .62rem 'DM Mono',monospace}.command-icon{display:grid;place-items:center;width:42px;height:42px;margin-top:auto;border-radius:12px;color:#0d1a31;background:linear-gradient(135deg,#a1e6ff,#608eff);font:800 .78rem 'DM Mono',monospace}.command h3{margin:22px 0 9px;font-size:1.32rem;letter-spacing:-.05em}.feature h3{max-width:390px;color:#fff;font-size:2.35rem;line-height:1.02;letter-spacing:-.075em}.command p{margin:0;color:#9eafc5;font-size:.8rem;line-height:1.7}.light .command p{color:#68758a}.command-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto}.command-list span{padding:9px 0;border-top:1px solid rgba(194,218,248,.16);color:#c1d8f4;font:500 .58rem 'DM Mono',monospace}.data-section{background:linear-gradient(135deg,#0c1630,#09101f)}.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.impact article{min-height:230px;padding:25px;border:1px solid var(--line);border-radius:19px;background:rgba(255,255,255,.035)}.impact b{display:block;color:var(--mint);font-size:2.8rem;letter-spacing:-.09em}.impact h3{margin:43px 0 7px;font-size:.98rem}.impact p{margin:0;color:#a7b6ca;font-size:.76rem;line-height:1.65}.case-list{display:grid;gap:12px}.case{display:grid;grid-template-columns:58px 1fr .85fr auto;gap:23px;align-items:center;padding:24px 26px;border:1px solid #dce5ef;border-radius:16px;background:#fff;transition:.22s}.case:hover{transform:translateX(7px);border-color:#a5c5ed;box-shadow:0 12px 22px rgba(39,91,144,.08)}.case-no{display:grid;place-items:center;width:39px;height:39px;border-radius:10px;color:#246dde;background:#edf6ff;font:500 .68rem 'DM Mono',monospace}.case h3{margin:0;font-size:1.14rem;letter-spacing:-.045em}.case p{margin:0;color:#65728a;font-size:.75rem;line-height:1.6}.case-tag{padding:7px 9px;border-radius:6px;color:#1763d4;background:#ecf5ff;font:700 .58rem 'DM Mono',monospace}.work-metric{justify-self:end;color:#286ce0;font-size:1.18rem;font-weight:800}.operating-model{display:grid;grid-template-columns:.78fr 1.22fr;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--surface)}.model-intro{padding:43px;border-right:1px solid var(--line);background:linear-gradient(145deg,#142a50,#0d1527)}.model-intro h2{max-width:390px;margin:0;font-size:clamp(2.3rem,4vw,3.9rem);line-height:.95;letter-spacing:-.075em}.model-intro p{margin:18px 0 0;color:#b4c4d9;font-size:.84rem;line-height:1.7}.phases{display:grid;grid-template-columns:1fr 1fr}.phase{min-height:200px;padding:25px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}.phase:nth-child(even){border-right:0}.phase:nth-child(n+3){border-bottom:0}.phase span{color:#8bd4ff;font:500 .62rem 'DM Mono',monospace}.phase h3{margin:29px 0 7px;font-size:1.02rem}.phase p{margin:0;color:#9eafc5;font-size:.75rem;line-height:1.65}.cta{padding:0 0 67px}.cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;padding:58px;border:1px solid rgba(135,206,255,.25);border-radius:26px;background:radial-gradient(circle at 88% 14%,rgba(93,173,255,.3),transparent 27%),linear-gradient(130deg,#173c79,#111c42)}.cta-card::after{position:absolute;right:-78px;bottom:-110px;width:330px;height:330px;border:1px solid rgba(172,225,255,.27);border-radius:50%;box-shadow:0 0 0 43px rgba(161,221,255,.07);content:''}.cta-card>*{position:relative;z-index:1}.cta-card h2{max-width:700px;margin:0;font-size:clamp(2.6rem,5vw,5rem);line-height:.93;letter-spacing:-.08em}.cta-card p{margin:17px 0 0;color:#c1d7f1;font-size:.86rem}.cta-card .button{color:#081426;background:#b4ebff}footer{padding:0 0 32px;color:#7f92ac;font:500 .64rem 'DM Mono',monospace}.foot{display:flex;justify-content:space-between;gap:18px}.social{display:flex;gap:17px}.social a:hover{color:#a9dfff}.reveal{opacity:0;transform:translateY(18px);transition:.6s}.reveal.visible{opacity:1;transform:none}@media(max-width:940px){.hero-top{gap:35px}.showcase-main{grid-template-columns:.78fr 1.22fr}.hero-metrics{grid-template-columns:1fr 1fr}.metric:nth-child(3){border-left:0}.command-grid{grid-template-columns:1fr 1fr}.command.feature{grid-column:span 2;grid-row:auto;min-height:430px}.impact{grid-template-columns:1fr 1fr}.operating-model{grid-template-columns:1fr}.model-intro{border-right:0;border-bottom:1px solid var(--line)}}@media(max-width:650px){.wrap{width:min(100% - 32px,600px)}.navin{min-height:63px}.menu{display:block}.links{position:absolute;top:63px;right:16px;left:16px;display:none;flex-direction:column;gap:14px;padding:17px;border:1px solid var(--line);border-radius:15px;background:#0e1628;box-shadow:0 15px 28px rgba(0,0,0,.35)}.links.open{display:flex}.navin>.button{display:none}.hero{padding-top:44px}.hero-top,.hero-bottom,.cta-card{grid-template-columns:1fr}.hero h1{font-size:clamp(3.35rem,14vw,4.8rem)}.showcase{max-width:520px}.operator{min-height:330px}.hero-bottom{margin-top:43px}.hero-message{padding:26px}.hero-metrics{border-top:1px solid var(--line)}.metric:nth-child(3){border-left:1px solid var(--line)}.metric{padding:18px}.section{padding:72px 0}.headline{display:block;margin-bottom:28px}.headline p{margin-top:16px}.command-grid,.impact{grid-template-columns:1fr}.command.feature{grid-column:auto;min-height:430px}.case{grid-template-columns:44px 1fr;gap:13px;padding:20px}.case p{grid-column:2}.case-tag,.work-metric{display:none}.phases{grid-template-columns:1fr}.phase,.phase:nth-child(n+3){min-height:160px;border-right:0;border-bottom:1px solid var(--line)}.phase:last-child{border-bottom:0}.cta-card{padding:37px 27px}.cta-card .button{justify-self:start}.foot{flex-direction:column}.reveal{opacity:1;transform:none}}@media(max-width:390px){.hero h1{font-size:3.15rem}.showcase-main{grid-template-columns:1fr}.operator{display:none}.hero-metrics{grid-template-columns:1fr 1fr}.actions .button{width:100%}}
+    :root{
+      color-scheme:light;
+      --bg:#ffffff;--bg-subtle:#f6f8fa;--surface:#ffffff;--surface-2:#f1f4f8;
+      --border:#e2e5ea;--border-strong:#d0d5dd;
+      --text:#0f172a;--text-secondary:#475569;--text-muted:#64748b;
+      --primary:#2563eb;--primary-hover:#1d4ed8;--primary-soft:#eaf1ff;
+      --accent:#0a8f5b;--accent-soft:#e7f8f0;
+      --btn-bg:#0f172a;--btn-text:#ffffff;--btn-hover:#27324a;
+      --nav-bg:rgba(255,255,255,.86);
+      --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+      --shadow-md:0 10px 28px rgba(15,23,42,.08);
+      --shadow-lg:0 24px 56px rgba(15,23,42,.12);
+    }
+    [data-theme="dark"]{
+      color-scheme:dark;
+      --bg:#0a0c10;--bg-subtle:#0d1016;--surface:#12151c;--surface-2:#181c25;
+      --border:rgba(230,237,243,.09);--border-strong:rgba(230,237,243,.16);
+      --text:#e6edf3;--text-secondary:#aab4c0;--text-muted:#7d8794;
+      --primary:#5b9dff;--primary-hover:#7eb1ff;--primary-soft:rgba(91,157,255,.14);
+      --accent:#3fcf8e;--accent-soft:rgba(63,207,142,.13);
+      --btn-bg:#e6edf3;--btn-text:#0a0c10;--btn-hover:#ffffff;
+      --nav-bg:rgba(10,12,16,.82);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+      --shadow-md:0 10px 28px rgba(0,0,0,.45);
+      --shadow-lg:0 24px 56px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;transition:background-color .25s ease,color .25s ease}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    :focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
+    .wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+
+    /* nav */
+    .nav{position:sticky;z-index:30;top:0;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background-color .25s ease,border-color .25s ease}
+    .navin{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:.92rem;font-weight:700;letter-spacing:-.01em}
+    .brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;color:#fff;background:var(--primary);font:700 .65rem 'DM Mono',monospace}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .links{display:flex;gap:26px;color:var(--text-secondary);font-size:.84rem;font-weight:500}
+    .links a:hover{color:var(--text)}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 18px;border:1px solid transparent;border-radius:999px;color:var(--btn-text);background:var(--btn-bg);box-shadow:var(--shadow-sm);font-size:.82rem;font-weight:600;transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease}
+    .button:hover{transform:translateY(-1px);background:var(--btn-hover);box-shadow:var(--shadow-md)}
+    .button.secondary{border-color:var(--border-strong);color:var(--text);background:transparent;box-shadow:none}
+    .button.secondary:hover{background:var(--surface-2);transform:none}
+    .menu{display:none;border:1px solid var(--border-strong);border-radius:8px;padding:7px 10px;color:var(--text);background:var(--surface);font-weight:600;font-size:.78rem}
+    .theme-toggle{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:9px;color:var(--text-secondary);background:var(--surface);cursor:pointer;flex:none}
+    .theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
+    .theme-toggle svg{width:17px;height:17px}
+    .theme-toggle .icon-moon{display:none}
+    [data-theme="dark"] .theme-toggle .icon-sun{display:none}
+    [data-theme="dark"] .theme-toggle .icon-moon{display:block}
+
+    /* hero */
+    .hero{position:relative;padding:72px 0 0;overflow:hidden}
+    .hero::before{position:absolute;top:-260px;right:-220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.08;content:'';pointer-events:none}
+    .hero-top{position:relative;display:grid;grid-template-columns:1fr .86fr;gap:60px;align-items:center}
+    .signal{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--border-strong);border-radius:999px;color:var(--accent);background:var(--accent-soft);font:600 .72rem 'DM Mono',monospace;letter-spacing:.03em}
+    .signal i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+    .hero h1{max-width:660px;margin:22px 0 0;font-size:clamp(2.6rem,5.4vw,4.1rem);line-height:1.08;letter-spacing:-.02em;font-weight:800}
+    .hero h1 .accent{color:var(--primary)}
+    .hero-copy>p{max-width:540px;margin:22px 0 28px;color:var(--text-secondary);font-size:1.05rem;line-height:1.7}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    .microproof{display:flex;align-items:center;gap:10px;margin-top:30px;color:var(--text-muted);font-size:.84rem}
+    .microproof i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);flex:none}
+    .microproof b{color:var(--text)}
+
+    .showcase{position:relative;padding:12px;border:1px solid var(--border-strong);border-radius:18px;background:#121722;box-shadow:var(--shadow-lg)}
+    .showcase-head{display:flex;align-items:center;justify-content:space-between;padding:4px 4px 12px;font:500 .64rem 'DM Mono',monospace;color:#8ea0bd}
+    .dots{display:flex;gap:5px}
+    .dots i{width:6px;height:6px;border-radius:50%;background:#3a4454}
+    .dots i:first-child{background:#ff8f6b}
+    .dots i:nth-child(2){background:#f6cf5e}
+    .dashboard{display:grid;grid-template-rows:auto 1fr auto;gap:9px;padding:18px;border-radius:13px;background:#0b0f18}
+    .dashboard-top{display:flex;justify-content:space-between;color:#dce9ff;font-size:.68rem;font-weight:600}
+    .live{color:#3fcf8e;font:500 .58rem 'DM Mono',monospace}
+    .live::before{display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:#3fcf8e;content:''}
+    .chart{position:relative;overflow:hidden;display:flex;align-items:end;gap:9px;min-height:150px;padding:14px 8px;border-bottom:1px solid rgba(184,209,244,.14);background:linear-gradient(180deg,rgba(91,140,255,.1),transparent)}
+    .chart i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(#7fb0ff,#4d7fff)}
+    .chart i:nth-child(1){height:31%}.chart i:nth-child(2){height:55%}.chart i:nth-child(3){height:43%}.chart i:nth-child(4){height:78%}.chart i:nth-child(5){height:63%}.chart i:nth-child(6){height:92%}.chart i:nth-child(7){height:74%}
+    .dashboard-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid rgba(184,209,244,.09);color:#8695ab;font-size:.64rem}
+    .dashboard-row:last-child{border:0}
+    .dashboard-row b{color:#d8e8ff;font-weight:500}
+    .status{padding:3px 7px;border-radius:5px;color:#3fcf8e;background:rgba(63,207,142,.13);font-size:.56rem;font-weight:600}
+    .showcase-owner{display:flex;align-items:center;gap:10px;margin:11px 2px 2px;padding:13px 8px 2px;border-top:1px solid rgba(255,255,255,.08);border-radius:8px;cursor:pointer;transition:background-color .15s ease}
+    .showcase-owner:hover{background:rgba(255,255,255,.05)}
+    .owner-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center 18%;flex:none;filter:saturate(.95) contrast(1.02)}
+    .showcase-owner b{display:block;color:#fff;font-size:.76rem;font-weight:600}
+    .showcase-owner span{display:block;margin-top:2px;color:#8ea0bd;font-size:.6rem;letter-spacing:.02em}
+    .owner-arrow{width:14px;height:14px;margin-left:auto;flex:none;color:#8ea0bd;opacity:0;transform:translateX(-4px);transition:opacity .15s ease,transform .15s ease}
+    .showcase-owner:hover .owner-arrow{opacity:1;transform:none}
+
+    .hero-bottom{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:1px;overflow:hidden;margin-top:62px;border:1px solid var(--border);border-radius:16px 16px 0 0;background:var(--border)}
+    .hero-message{padding:28px 32px;background:var(--surface);font-size:1.2rem;font-weight:600;line-height:1.35;letter-spacing:-.01em}
+    .hero-message em{font-style:normal;color:var(--primary)}
+    .hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface)}
+    .metric{padding:24px 18px;border-left:1px solid var(--border)}
+    .metric b{display:block;color:var(--text);font-size:1.6rem;letter-spacing:-.02em;font-weight:800}
+    .metric span{display:block;margin-top:4px;color:var(--text-muted);font-size:.72rem;line-height:1.4}
+
+    .section{padding:100px 0}
+    .section-alt{background:var(--bg-subtle)}
+    .section-label{margin:0 0 14px;color:var(--primary);font:600 .72rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+    .headline{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}
+    .headline h2{max-width:720px;margin:0;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.14;letter-spacing:-.02em;font-weight:800}
+    .headline p{max-width:300px;margin:0;color:var(--text-secondary);font-size:.92rem;line-height:1.7}
+
+    .command-grid{display:grid;grid-template-columns:1.12fr .88fr .88fr;gap:14px}
+    .command{min-height:250px;padding:26px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-sm);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+    .command:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
+    .command.feature{grid-row:span 2;display:flex;flex-direction:column;min-height:520px;background:var(--surface-2)}
+    .command-number{color:var(--text-muted);font:500 .68rem 'DM Mono',monospace}
+    .command-icon{display:grid;place-items:center;width:40px;height:40px;margin-top:auto;border-radius:10px;color:var(--primary);background:var(--primary-soft);font:700 .74rem 'DM Mono',monospace}
+    .command h3{margin:20px 0 9px;font-size:1.22rem;letter-spacing:-.015em;font-weight:700}
+    .feature h3{max-width:380px;color:var(--text);font-size:1.95rem;line-height:1.14;letter-spacing:-.02em}
+    .command p{margin:0;color:var(--text-secondary);font-size:.86rem;line-height:1.7}
+    .command-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto}
+    .command-list span{padding:9px 0;border-top:1px solid var(--border);color:var(--text-secondary);font:500 .62rem 'DM Mono',monospace}
+
+    .impact{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .impact article{min-height:220px;padding:24px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-sm)}
+    .impact b{display:block;color:var(--primary);font-size:2.5rem;letter-spacing:-.03em;font-weight:800}
+    .impact h3{margin:38px 0 7px;font-size:1rem;font-weight:700}
+    .impact p{margin:0;color:var(--text-secondary);font-size:.8rem;line-height:1.65}
+
+    .case-list{display:grid;gap:11px}
+    .case{display:grid;grid-template-columns:52px 1fr .85fr auto auto;gap:22px;align-items:center;padding:22px 24px;border:1px solid var(--border);border-radius:14px;background:var(--surface);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+    .case:hover{transform:translateX(5px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
+    .case-no{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;color:var(--primary);background:var(--primary-soft);font:600 .72rem 'DM Mono',monospace}
+    .case h3{margin:0;font-size:1.08rem;font-weight:700;letter-spacing:-.01em}
+    .case p{margin:0;color:var(--text-secondary);font-size:.82rem;line-height:1.6}
+    .case-tag{padding:7px 9px;border-radius:6px;color:var(--primary);background:var(--primary-soft);font:600 .62rem 'DM Mono',monospace}
+    .work-metric{justify-self:end;color:var(--primary);font-size:1.14rem;font-weight:800}
+
+    .operating-model{display:grid;grid-template-columns:.78fr 1.22fr;overflow:hidden;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow-sm)}
+    .model-intro{position:relative;padding:40px;border-right:1px solid var(--border);background:linear-gradient(175deg,rgba(8,13,27,.82),rgba(8,13,26,.94) 70%),url(sdet-testing-workspace.png) center 38%/cover}
+    .model-intro .section-label{color:#9fc4ff}
+    .model-intro h2{max-width:380px;margin:0;font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.12;letter-spacing:-.02em;font-weight:800;color:#fff}
+    .model-intro p{margin:16px 0 0;color:#c2cfe2;font-size:.86rem;line-height:1.7}
+    .phases{display:grid;grid-template-columns:1fr 1fr}
+    .phase{min-height:190px;padding:24px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+    .phase:nth-child(even){border-right:0}
+    .phase:nth-child(n+3){border-bottom:0}
+    .phase span{color:var(--primary);font:600 .68rem 'DM Mono',monospace}
+    .phase h3{margin:26px 0 7px;font-size:1.02rem;font-weight:700}
+    .phase p{margin:0;color:var(--text-secondary);font-size:.8rem;line-height:1.65}
+
+    .cta{padding:0 0 64px}
+    .cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;padding:52px;border:1px solid var(--border-strong);border-radius:20px;background:var(--surface-2)}
+    .cta-card::after{position:absolute;right:-90px;bottom:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--primary),transparent 70%);opacity:.1;content:'';pointer-events:none}
+    .cta-card>*{position:relative;z-index:1}
+    .cta-card h2{max-width:640px;margin:0;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.14;letter-spacing:-.02em;font-weight:800}
+    .cta-card p{margin:14px 0 0;color:var(--text-secondary);font-size:.9rem}
+
+    footer{padding:0 0 32px;color:var(--text-muted);font:500 .74rem 'DM Mono',monospace}
+    .foot{display:flex;justify-content:space-between;gap:18px}
+    .social{display:flex;gap:17px}
+    .social a:hover{color:var(--text)}
+
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:940px){
+      .hero-top{gap:34px}
+      .hero-metrics{grid-template-columns:1fr 1fr}
+      .metric:nth-child(3){border-left:0}
+      .command-grid{grid-template-columns:1fr 1fr}
+      .command.feature{grid-column:span 2;grid-row:auto;min-height:400px}
+      .impact{grid-template-columns:1fr 1fr}
+      .operating-model{grid-template-columns:1fr}
+      .model-intro{border-right:0;border-bottom:1px solid var(--border)}
+    }
+    @media(max-width:650px){
+      .wrap{width:min(100% - 32px,600px)}
+      .navin{min-height:60px}
+      .menu{display:block}
+      .links{position:absolute;top:60px;right:16px;left:16px;display:none;flex-direction:column;gap:14px;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow-lg)}
+      .links.open{display:flex}
+      .nav-right>.button{display:none}
+      .hero{padding-top:36px}
+      .hero-top,.hero-bottom,.cta-card{grid-template-columns:1fr}
+      .showcase{max-width:520px}
+      .hero-bottom{margin-top:38px}
+      .hero-message{padding:24px}
+      .hero-metrics{border-top:1px solid var(--border)}
+      .metric:nth-child(3){border-left:1px solid var(--border)}
+      .metric{padding:16px}
+      .section{padding:64px 0}
+      .headline{display:block;margin-bottom:26px}
+      .headline p{margin-top:14px;max-width:none}
+      .command-grid,.impact{grid-template-columns:1fr}
+      .command.feature{grid-column:auto;min-height:400px}
+      .case{grid-template-columns:40px 1fr;gap:12px;padding:18px}
+      .case p{grid-column:2}
+      .case-tag,.work-metric{display:none}
+      .phases{grid-template-columns:1fr}
+      .phase,.phase:nth-child(n+3){min-height:150px;border-right:0;border-bottom:1px solid var(--border)}
+      .phase:last-child{border-bottom:0}
+      .cta-card{padding:32px 24px}
+      .cta-card .button{justify-self:start}
+      .foot{flex-direction:column}
+      .reveal{opacity:1;transform:none}
+    }
+    @media(max-width:390px){
+      .hero-metrics{grid-template-columns:1fr 1fr}
+      .actions .button{width:100%}
+    }
   </style>
 </head>
 <body>
-  <header class="nav"><div class="wrap navin"><a class="brand" href="#home"><span class="brand-mark">MP</span>Mihir Panda</a><button class="menu" aria-label="Open navigation">Menu</button><nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="#model">Approach</a><a href="resume.html">Resume</a></nav><a class="button" href="#contact">Start a project ↗</a></div></header>
-  <main id="home"><section class="hero"><div class="wrap"><div class="hero-top"><div class="hero-copy reveal"><span class="signal"><i></i>AVAILABLE FOR QA PROJECTS</span><h1>Quality is your <span class="gradient">product advantage.</span></h1><p>I partner with teams to turn testing, automation, and release quality into a dependable system for shipping software your customers can trust.</p><div class="actions"><a class="button" href="#contact">Discuss your project ↗</a><a class="button secondary" href="#work">Explore case studies</a></div><div class="microproof"><span class="avatars"><i></i><i></i><i></i></span><span><b>Available worldwide</b> for remote &amp; freelance engagements</span></div></div><div class="showcase reveal"><div class="showcase-head"><span>QUALITY CONTROL / LIVE</span><span class="dots"><i></i><i></i><i></i></span></div><div class="showcase-main"><div class="operator"><img src="mihir-photo.jpeg" alt="Mihir Ranjan Panda"><b>Mihir Ranjan Panda</b><span>QA ENGINEER / SDET</span></div><div class="dashboard"><div class="dashboard-top"><span>Release readiness</span><span class="live">LIVE</span></div><div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div><div class="dashboard-row"><b>Critical journeys</b><span class="status">COVERED</span></div><div class="dashboard-row"><b>API validation</b><span class="status">PASSING</span></div><div class="dashboard-row"><b>Regression signal</b><span class="status">STABLE</span></div></div></div></div></div></div><div class="hero-bottom reveal"><div class="hero-message">A stronger release starts with a <em>clearer signal</em>—not a longer checklist.</div><div class="hero-metrics"><article class="metric"><b>3+</b><span>Years in quality engineering</span></article><article class="metric"><b>300+</b><span>Test cases delivered</span></article><article class="metric"><b>100+</b><span>Defects managed &amp; verified</span></article><article class="metric"><b>50+</b><span>Critical workflows automated</span></article></div></div></div></section>
-  <section class="section light" id="capabilities"><div class="wrap"><p class="section-label">What I bring</p><div class="headline"><h2>Quality engineering, designed for modern product teams.</h2><p>Technical depth where it counts—paired with practical communication that keeps releases moving.</p></div><div class="command-grid"><article class="command feature reveal"><span class="command-number">01 / QUALITY PARTNERSHIP</span><h3>Build release confidence into the way your team works.</h3><p>I combine test strategy, exploratory thinking, automation, API checks, and clear defect signals around your highest-risk workflows.</p><div class="command-list"><span>PLAYWRIGHT + TS</span><span>SELENIUM + JAVA</span><span>REST ASSURED</span><span>JENKINS CI/CD</span></div></article><article class="command reveal"><span class="command-number">02 / AUTOMATION</span><span class="command-icon">UI</span><h3>Coverage that scales.</h3><p>Maintainable UI automation engineered around the customer journeys your product cannot afford to break.</p></article><article class="command reveal"><span class="command-number">03 / API &amp; DATA</span><span class="command-icon">API</span><h3>Confidence below the surface.</h3><p>Reliable validation for APIs, authentication, payloads, service behaviour, and data integrity.</p></article><article class="command reveal"><span class="command-number">04 / RELEASE QUALITY</span><span class="command-icon">✓</span><h3>Clear go / no-go decisions.</h3><p>Risk-led testing, UAT support, defect triage, and practical release reporting.</p></article><article class="command reveal"><span class="command-number">05 / TEST STRATEGY</span><span class="command-icon">◎</span><h3>Quality with business context.</h3><p>Test priorities that match user impact, product risk, and delivery outcomes.</p></article></div></div></section>
-  <section class="section data-section" id="impact"><div class="wrap"><p class="section-label">Measured impact</p><div class="headline"><h2>Evidence that quality work changes the delivery outcome.</h2><p>Hands-on ownership across complex, workflow-heavy products in healthcare, ERP, HR, and document management.</p></div><div class="impact"><article class="reveal"><b>300+</b><h3>Tests executed</h3><p>Functional, regression, exploratory, UAT, and cross-browser coverage for healthcare workflows.</p></article><article class="reveal"><b>100+</b><h3>Defects verified</h3><p>Clear reporting and fix validation alongside developers and delivery teams.</p></article><article class="reveal"><b>60%</b><h3>Less regression time</h3><p>Hybrid Selenium, TestNG, and Maven automation framework built at DBI.</p></article><article class="reveal"><b>50+</b><h3>Flows automated</h3><p>Critical UI scenarios automated with reusable methods and resilient test practices.</p></article></div></div></section>
-  <section class="section light" id="work"><div class="wrap"><p class="section-label">Selected case studies</p><div class="headline"><h2>Complex systems. Clearer release decisions.</h2><p>Quality ownership applied to the systems that customers, teams, and operations depend on every day.</p></div><div class="case-list"><article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal</h3><p>US patient-management platform: 300+ tests, UI automation, and release readiness across critical workflows.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article><article class="case reveal"><span class="case-no">02</span><h3>Zyler ERP Suite</h3><p>Automated business workflows and UAT validation that improved platform stability by 45%.</p><span class="case-tag">ERP</span><b class="work-metric">45%</b></article><article class="case reveal"><span class="case-no">03</span><h3>ASTERDocs</h3><p>Document upload, approvals, role-based access, and exception-safe automation coverage.</p><span class="case-tag">DOCUMENTS</span><b class="work-metric">100%</b></article><article class="case reveal"><span class="case-no">04</span><h3>ConfluxHR</h3><p>Attendance, payroll, employee modules, REST API testing, and 98% defect resolution tracking.</p><span class="case-tag">HR TECH</span><b class="work-metric">98%</b></article></div></div></section>
-  <section class="section" id="model"><div class="wrap"><div class="operating-model reveal"><div class="model-intro"><p class="section-label">Operating model</p><h2>From risk discovery to release clarity.</h2><p>Quality work that fits the way your team actually builds, communicates, and ships.</p></div><div class="phases"><article class="phase"><span>01 / DISCOVER</span><h3>Map the risk</h3><p>Identify critical journeys, dependencies, and the quality gaps worth solving first.</p></article><article class="phase"><span>02 / COVER</span><h3>Build focused coverage</h3><p>Blend exploratory testing, automation, API checks, and data validation.</p></article><article class="phase"><span>03 / SIGNAL</span><h3>Make quality visible</h3><p>Give the team timely, honest information to make release decisions.</p></article><article class="phase"><span>04 / EVOLVE</span><h3>Compound confidence</h3><p>Grow quality systems alongside the product and delivery team.</p></article></div></div></div></section>
-  <section class="cta" id="contact"><div class="wrap"><div class="cta-card"><div><p class="section-label">Let's work together</p><h2>Make the next release the one your team trusts.</h2><p>Available worldwide for freelance QA, test automation, API validation, and release-quality engagements.</p></div><a class="button" href="mailto:mhrpanda13@gmail.com?subject=QA%20Project%20Enquiry">Start a conversation ↗</a></div></div></section></main>
-  <footer><div class="wrap foot"><span>© <span id="year"></span> MIHIR RANJAN PANDA</span><div class="social"><a href="resume.html">Resume ↗</a><a href="mailto:mhrpanda13@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></footer>
-  <script>const menu=document.querySelector('.menu'),links=document.querySelector('.links');menu.addEventListener('click',()=>links.classList.toggle('open'));links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(item=>observer.observe(item));document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <header class="nav"><div class="wrap navin">
+    <a class="brand" href="profile.html" title="View personal profile"><span class="brand-mark">MP</span>Mihir Panda</a>
+    <nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="#model">Approach</a><a href="profile.html">Profile</a><a href="resume.html">Resume</a></nav>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu" aria-label="Open navigation">Menu</button>
+      <a class="button" href="#contact">Start a project ↗</a>
+    </div>
+  </div></header>
+  <main id="home">
+    <section class="hero"><div class="wrap">
+      <div class="hero-top">
+        <div class="hero-copy reveal">
+          <span class="signal"><i></i>AVAILABLE FOR QA PROJECTS</span>
+          <h1>Great releases aren't lucky. <span class="accent">They're tested.</span></h1>
+          <p>I help engineering teams catch what matters before customers do — blending manual testing, automation, and API validation into a release process people actually trust.</p>
+          <div class="actions"><a class="button" href="#contact">Discuss your project ↗</a><a class="button secondary" href="#work">View case studies</a></div>
+          <div class="microproof"><i></i><span><b>Remote-friendly</b> &amp; available for freelance QA engagements</span></div>
+        </div>
+        <div class="showcase reveal">
+          <div class="showcase-head"><span>QUALITY CONTROL / LIVE</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="dashboard">
+            <div class="dashboard-top"><span>Release readiness</span><span class="live">LIVE</span></div>
+            <div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div>
+              <div class="dashboard-row"><b>Critical journeys</b><span class="status">COVERED</span></div>
+              <div class="dashboard-row"><b>API validation</b><span class="status">PASSING</span></div>
+              <div class="dashboard-row"><b>Regression signal</b><span class="status">STABLE</span></div>
+            </div>
+          </div>
+          <a class="showcase-owner" href="profile.html" title="View personal profile"><img class="owner-avatar" src="mihir-photo.jpeg" alt="Mihir Ranjan Panda"><div><b>Mihir Ranjan Panda</b><span>QA ENGINEER / SDET</span></div><svg class="owner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-bottom reveal">
+        <div class="hero-message">A confident release starts with a <em>clearer signal</em>—not a longer checklist.</div>
+        <div class="hero-metrics">
+          <article class="metric"><b>3+</b><span>Years in quality engineering</span></article>
+          <article class="metric"><b>300+</b><span>Test cases delivered</span></article>
+          <article class="metric"><b>100+</b><span>Defects managed &amp; verified</span></article>
+          <article class="metric"><b>50+</b><span>Critical workflows automated</span></article>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section section-alt" id="capabilities"><div class="wrap">
+      <p class="section-label">What I bring</p>
+      <div class="headline"><h2>Testing built around how modern teams actually ship.</h2><p>Deep technical execution, paired with the communication that keeps releases moving instead of stalling in sign-off.</p></div>
+      <div class="command-grid">
+        <article class="command feature reveal">
+          <span class="command-number">01 / QUALITY PARTNERSHIP</span>
+          <h3>A testing partner embedded in how your team already ships.</h3>
+          <p>I pair test strategy and exploratory thinking with automation and API checks — focused on the workflows your business genuinely can't afford to break.</p>
+          <div class="command-list"><span>PLAYWRIGHT + TS</span><span>SELENIUM + JAVA</span><span>REST ASSURED</span><span>JENKINS CI/CD</span></div>
+        </article>
+        <article class="command reveal"><span class="command-number">02 / AUTOMATION</span><span class="command-icon">UI</span><h3>Coverage that scales.</h3><p>Maintainable UI automation engineered around the customer journeys your product cannot afford to break.</p></article>
+        <article class="command reveal"><span class="command-number">03 / API &amp; DATA</span><span class="command-icon">API</span><h3>Confidence below the surface.</h3><p>Reliable validation for APIs, authentication, payloads, service behaviour, and data integrity.</p></article>
+        <article class="command reveal"><span class="command-number">04 / RELEASE QUALITY</span><span class="command-icon">✓</span><h3>Clear go / no-go decisions.</h3><p>Risk-led testing, UAT support, defect triage, and practical release reporting.</p></article>
+        <article class="command reveal"><span class="command-number">05 / TEST STRATEGY</span><span class="command-icon">◎</span><h3>Quality with business context.</h3><p>Test priorities that match user impact, product risk, and delivery outcomes.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section" id="impact"><div class="wrap">
+      <p class="section-label">Measured impact</p>
+      <div class="headline"><h2>Numbers that show what disciplined testing actually changes.</h2><p>Hands-on ownership of complex, workflow-heavy products across healthcare, ERP, HR, and document management.</p></div>
+      <div class="impact">
+        <article class="reveal"><b>300+</b><h3>Tests executed</h3><p>Functional, regression, exploratory, UAT, and cross-browser coverage for healthcare workflows.</p></article>
+        <article class="reveal"><b>100+</b><h3>Defects verified</h3><p>Clear reporting and fix validation alongside developers and delivery teams.</p></article>
+        <article class="reveal"><b>60%</b><h3>Less regression time</h3><p>Hybrid Selenium, TestNG, and Maven automation framework built at DBI.</p></article>
+        <article class="reveal"><b>50+</b><h3>Flows automated</h3><p>Critical UI scenarios automated with reusable methods and resilient test practices.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section section-alt" id="work"><div class="wrap">
+      <p class="section-label">Selected case studies</p>
+      <div class="headline"><h2>Real products. Measurable release outcomes.</h2><p>Quality ownership applied to the systems that customers, teams, and operations depend on every day.</p></div>
+      <div class="case-list">
+        <article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal</h3><p>US patient-management platform: 300+ tests, UI automation, and release readiness across critical workflows.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article>
+        <article class="case reveal"><span class="case-no">02</span><h3>Zyler ERP Suite</h3><p>Automated business workflows and UAT validation that improved platform stability by 45%.</p><span class="case-tag">ERP</span><b class="work-metric">45%</b></article>
+        <article class="case reveal"><span class="case-no">03</span><h3>ASTERDocs</h3><p>Document upload, approvals, role-based access, and exception-safe automation coverage.</p><span class="case-tag">DOCUMENTS</span><b class="work-metric">100%</b></article>
+        <article class="case reveal"><span class="case-no">04</span><h3>ConfluxHR</h3><p>Attendance, payroll, employee modules, REST API testing, and 98% defect resolution tracking.</p><span class="case-tag">HR TECH</span><b class="work-metric">98%</b></article>
+      </div>
+    </div></section>
+
+    <section class="section" id="model"><div class="wrap">
+      <div class="operating-model reveal">
+        <div class="model-intro"><p class="section-label">Operating model</p><h2>How I plug into your release cycle.</h2><p>Quality work that fits the way your team actually builds, communicates, and ships.</p></div>
+        <div class="phases">
+          <article class="phase"><span>01 / DISCOVER</span><h3>Map the risk</h3><p>Identify critical journeys, dependencies, and the quality gaps worth solving first.</p></article>
+          <article class="phase"><span>02 / COVER</span><h3>Build focused coverage</h3><p>Blend exploratory testing, automation, API checks, and data validation.</p></article>
+          <article class="phase"><span>03 / SIGNAL</span><h3>Make quality visible</h3><p>Give the team timely, honest information to make release decisions.</p></article>
+          <article class="phase"><span>04 / EVOLVE</span><h3>Compound confidence</h3><p>Grow quality systems alongside the product and delivery team.</p></article>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="cta" id="contact"><div class="wrap">
+      <div class="cta-card">
+        <div><p class="section-label">Let's work together</p><h2>Make the next release the one your team trusts.</h2><p>Available worldwide for freelance QA, test automation, API validation, and release-quality engagements.</p></div>
+        <a class="button" href="mailto:mhrpanda13@gmail.com?subject=QA%20Project%20Enquiry">Start a conversation ↗</a>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="wrap foot">
+    <span>© <span id="year"></span> MIHIR RANJAN PANDA</span>
+    <div class="social"><a href="resume.html">Resume ↗</a><a href="mailto:mhrpanda13@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+  </div></footer>
+  <script>
+    const menu=document.querySelector('.menu'),links=document.querySelector('.links');
+    menu.addEventListener('click',()=>links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(item=>observer.observe(item));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('themeToggle').addEventListener('click',()=>{
+      const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next)}catch(e){}
+    });
+  </script>
 </body>
 </html>

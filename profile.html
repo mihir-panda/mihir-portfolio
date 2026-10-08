@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mihir Ranjan Panda — personal profile: interests, hobbies, favorite things, and the life outside work.">
+  <title>Profile | Mihir Panda</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      color-scheme:light;
+      --bg:#ffffff;--bg-subtle:#f6f8fa;--surface:#ffffff;--surface-2:#f1f4f8;
+      --border:#e2e5ea;--border-strong:#d0d5dd;
+      --text:#0f172a;--text-secondary:#475569;--text-muted:#64748b;
+      --primary:#2563eb;--primary-hover:#1d4ed8;--primary-soft:#eaf1ff;
+      --accent:#0a8f5b;--accent-soft:#e7f8f0;
+      --btn-bg:#0f172a;--btn-text:#ffffff;--btn-hover:#27324a;
+      --nav-bg:rgba(255,255,255,.86);
+      --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+      --shadow-md:0 10px 28px rgba(15,23,42,.08);
+      --shadow-lg:0 24px 56px rgba(15,23,42,.12);
+    }
+    [data-theme="dark"]{
+      color-scheme:dark;
+      --bg:#0a0c10;--bg-subtle:#0d1016;--surface:#12151c;--surface-2:#181c25;
+      --border:rgba(230,237,243,.09);--border-strong:rgba(230,237,243,.16);
+      --text:#e6edf3;--text-secondary:#aab4c0;--text-muted:#7d8794;
+      --primary:#5b9dff;--primary-hover:#7eb1ff;--primary-soft:rgba(91,157,255,.14);
+      --accent:#3fcf8e;--accent-soft:rgba(63,207,142,.13);
+      --btn-bg:#e6edf3;--btn-text:#0a0c10;--btn-hover:#ffffff;
+      --nav-bg:rgba(10,12,16,.82);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+      --shadow-md:0 10px 28px rgba(0,0,0,.45);
+      --shadow-lg:0 24px 56px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;transition:background-color .25s ease,color .25s ease}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    :focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
+    .wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+
+    /* nav (shared with site) */
+    .nav{position:sticky;z-index:30;top:0;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background-color .25s ease,border-color .25s ease}
+    .navin{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:.92rem;font-weight:700;letter-spacing:-.01em}
+    .brand-mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;color:#fff;background:var(--primary);font:700 .65rem 'DM Mono',monospace}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .links{display:flex;gap:26px;color:var(--text-secondary);font-size:.84rem;font-weight:500}
+    .links a:hover{color:var(--text)}
+    .links a[aria-current="page"]{color:var(--text)}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 18px;border:1px solid transparent;border-radius:999px;color:var(--btn-text);background:var(--btn-bg);box-shadow:var(--shadow-sm);font-size:.82rem;font-weight:600;transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease;cursor:pointer}
+    .button:hover{transform:translateY(-1px);background:var(--btn-hover);box-shadow:var(--shadow-md)}
+    .button.secondary{border-color:var(--border-strong);color:var(--text);background:transparent;box-shadow:none}
+    .button.secondary:hover{background:var(--surface-2);transform:none}
+    .button.sm{padding:8px 14px;font-size:.74rem}
+    .menu{display:none;border:1px solid var(--border-strong);border-radius:8px;padding:7px 10px;color:var(--text);background:var(--surface);font-weight:600;font-size:.78rem}
+    .theme-toggle{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:9px;color:var(--text-secondary);background:var(--surface);cursor:pointer;flex:none}
+    .theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
+    .theme-toggle svg{width:17px;height:17px}
+    .theme-toggle .icon-moon{display:none}
+    [data-theme="dark"] .theme-toggle .icon-sun{display:none}
+    [data-theme="dark"] .theme-toggle .icon-moon{display:block}
+
+    footer{padding:0 0 32px;color:var(--text-muted);font:500 .74rem 'DM Mono',monospace}
+    .foot{display:flex;justify-content:space-between;gap:18px}
+    .social{display:flex;gap:17px}
+    .social a:hover{color:var(--text)}
+
+    /* ---------- profile page ---------- */
+    .profile-page{padding:28px 0 72px}
+
+    .cover{position:relative;height:clamp(150px,24vw,280px);border-radius:20px;overflow:hidden;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:var(--shadow-md);background-size:cover;background-position:center}
+    .cover-edit{position:absolute;right:14px;bottom:14px;z-index:5;display:none}
+    [data-editing="true"] .cover-edit{display:inline-flex}
+
+    .profile-id{position:relative;display:flex;flex-wrap:wrap;align-items:end;gap:18px;padding:0 6px;margin-top:-54px}
+    .avatar-wrap{position:relative;flex:none}
+    .avatar{width:124px;height:124px;border-radius:50%;object-fit:cover;object-position:center 18%;border:5px solid var(--bg);background:var(--surface-2);box-shadow:var(--shadow-md);display:block;cursor:zoom-in}
+    .avatar-edit{position:absolute;right:0;bottom:4px;display:none;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--btn-bg);color:var(--btn-text);border:3px solid var(--bg);cursor:pointer}
+    [data-editing="true"] .avatar-edit{display:grid}
+    .avatar-edit svg{width:15px;height:15px}
+
+    .profile-id-text{flex:1;min-width:220px;padding-bottom:8px}
+    .profile-id-text h1{margin:0;font-size:clamp(1.5rem,3vw,2.05rem);font-weight:800;letter-spacing:-.02em}
+    .tagline{margin:6px 0 0;color:var(--text-secondary);font-size:.92rem;max-width:520px;line-height:1.55}
+    .location-row{display:flex;align-items:center;gap:6px;margin-top:9px;color:var(--text-muted);font-size:.8rem}
+    .location-row svg{width:14px;height:14px;flex:none}
+
+    .profile-id-actions{padding-bottom:8px;display:flex;align-items:center;gap:8px}
+
+    .edit-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 2px 0;padding:10px 14px;border:1px solid var(--border-strong);border-radius:12px;background:var(--primary-soft);color:var(--primary);font-size:.76rem;font-weight:600}
+    [data-editing="true"] .edit-bar{display:flex}
+    .edit-bar .reset-link{margin-left:auto;color:var(--text-muted);font-weight:600;background:none;border:0;cursor:pointer;font-size:.74rem;text-decoration:underline;text-underline-offset:2px}
+    .save-status{color:var(--accent);font-weight:600;opacity:0;transition:opacity .3s ease}
+    .save-status.show{opacity:1}
+
+    .editable[contenteditable="true"]{outline:2px dashed var(--border-strong);outline-offset:4px;border-radius:6px;cursor:text}
+    .editable[contenteditable="true"]:hover{outline-color:var(--text-muted)}
+    .editable[contenteditable="true"]:focus{outline-color:var(--primary);outline-style:solid}
+
+    .pro-strip{display:flex;flex-wrap:wrap;align-items:center;gap:22px;justify-content:space-between;margin-top:26px;padding:22px 26px;border:1px solid var(--border-strong);border-radius:16px;background:linear-gradient(120deg,var(--primary-soft),var(--surface) 65%);box-shadow:var(--shadow-sm)}
+    .pro-strip-text{flex:1;min-width:240px}
+    .pro-strip-label{display:block;margin-bottom:6px;color:var(--primary);font:700 .66rem 'DM Mono',monospace;letter-spacing:.07em;text-transform:uppercase}
+    .pro-strip-text p{margin:0;color:var(--text);font-size:.92rem;line-height:1.6;max-width:480px}
+    .pro-strip-stats{display:flex;gap:24px;flex:none}
+    .pro-stat{text-align:center}
+    .pro-stat b{display:block;color:var(--primary);font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+    .pro-stat span{display:block;margin-top:2px;color:var(--text-muted);font-size:.62rem;font-weight:600;white-space:nowrap}
+    .pro-strip-actions{display:flex;gap:8px;flex:none}
+    @media(max-width:760px){
+      .pro-strip{flex-direction:column;align-items:stretch;gap:16px}
+      .pro-strip-stats{justify-content:space-between}
+      .pro-strip-actions{justify-content:stretch}
+      .pro-strip-actions .button{flex:1}
+    }
+
+    .profile-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:30px;grid-template-areas:
+      "about personal"
+      "hobbies interests"
+      "hobbies favorites"
+      "gallery travel"
+      "gallery lifestyle"
+      "journey journey"}
+
+    .sec-about{grid-area:about}
+    .sec-personal{grid-area:personal}
+    .sec-interests{grid-area:interests}
+    .sec-favorites{grid-area:favorites}
+    .sec-travel{grid-area:travel}
+    .sec-lifestyle{grid-area:lifestyle}
+    .sec-hobbies{grid-area:hobbies}
+    .sec-gallery{grid-area:gallery}
+    .sec-journey{grid-area:journey}
+
+    .pcard{padding:24px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-sm)}
+    .pcard h2{margin:0 0 4px;font-size:1.02rem;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+    .pcard .pcard-sub{margin:0 0 18px;color:var(--text-muted);font-size:.76rem}
+    .pcard-head{display:flex;align-items:start;justify-content:space-between;gap:10px;margin-bottom:18px}
+    .pcard-head h2{margin:0}
+
+    .about-text{margin:0;color:var(--text-secondary);font-size:.92rem;line-height:1.8}
+
+    .pd-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--border)}
+    .pd-row:first-child{border-top:0;padding-top:0}
+    .pd-row .pd-label{color:var(--text-muted);font-size:.74rem;flex:none}
+    .pd-row .pd-value{color:var(--text);font-size:.82rem;font-weight:600;text-align:right}
+
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{display:inline-flex;align-items:center;gap:7px;padding:8px 8px 8px 13px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface-2);color:var(--text-secondary);font-size:.78rem;font-weight:600}
+    .chip button{display:none;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:0;background:none;color:var(--text-muted);cursor:pointer;font-size:.85rem;line-height:1;padding:0}
+    [data-editing="true"] .chip button{display:inline-flex}
+    .chip-add{display:none;align-items:center;gap:6px;padding:8px 13px;border:1px dashed var(--border-strong);border-radius:999px;background:transparent;color:var(--primary);font-size:.78rem;font-weight:700;cursor:pointer}
+    [data-editing="true"] .chip-add{display:inline-flex}
+
+    .fav-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .fav-item{padding:14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border)}
+    .fav-item .fav-label{display:block;color:var(--text-muted);font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+    .fav-item .fav-value{display:block;margin-top:6px;font-size:.85rem;font-weight:700;line-height:1.4}
+
+    .dream-card{position:relative;overflow:hidden;padding:20px;border-radius:14px;min-height:130px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(175deg,rgba(10,15,25,.2),rgba(7,11,19,.82)),linear-gradient(135deg,#3d6690,#152030);color:#fff}
+    .dream-card .dream-label{font:600 .62rem 'DM Mono',monospace;letter-spacing:.06em;opacity:.85}
+    .dream-card .dream-name{font-size:1.15rem;margin-top:4px;font-weight:700}
+    .dream-card .dream-note{margin:6px 0 0;font-size:.76rem;opacity:.88;max-width:300px;line-height:1.5}
+    .wishlist-title{display:flex;align-items:center;justify-content:space-between;margin:16px 0 10px}
+    .wishlist-title span{color:var(--text-muted);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+    .wishlist{display:grid;gap:8px}
+    .wishlist-item{display:flex;justify-content:space-between;align-items:start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2)}
+    .wishlist-item b{font-size:.82rem;display:block}
+    .wishlist-item span{display:block;margin-top:2px;color:var(--text-muted);font-size:.72rem;line-height:1.5}
+    .wishlist-item button{flex:none;border:0;background:none;color:var(--text-muted);cursor:pointer;font-size:.9rem;display:none}
+    [data-editing="true"] .wishlist-item button{display:inline}
+    .wishlist-empty{margin:0;color:var(--text-muted);font-size:.78rem}
+    .wishlist-add{display:none;align-items:center;gap:6px;margin-top:4px;padding:9px 12px;border:1px dashed var(--border-strong);border-radius:10px;background:transparent;color:var(--primary);font-size:.76rem;font-weight:700;cursor:pointer;width:100%;justify-content:center}
+    [data-editing="true"] .wishlist-add{display:inline-flex}
+
+    .lifestyle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .life-chip{display:flex;align-items:center;gap:9px;padding:11px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);font-size:.8rem;font-weight:600}
+    .life-chip i{font-style:normal;font-size:1.05rem}
+
+    .hobby-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .hobby-card{padding:18px;border-radius:14px;background:var(--surface-2);border:1px solid var(--border)}
+    .hobby-card .hicon{font-size:1.4rem}
+    .hobby-card h3{margin:10px 0 4px;font-size:.9rem;font-weight:700}
+    .hobby-card p{margin:0;color:var(--text-secondary);font-size:.78rem;line-height:1.6}
+
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery-grid figure{position:relative;margin:0;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface-2)}
+    .gallery-grid img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;display:block}
+    .gallery-remove{position:absolute;top:6px;right:6px;display:none;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;font-size:.85rem}
+    [data-editing="true"] .gallery-remove{display:flex}
+    .gallery-add-tile{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1.5px dashed var(--border-strong);border-radius:12px;aspect-ratio:1;color:var(--text-muted);font-size:.68rem;font-weight:600;cursor:pointer;background:var(--surface-2)}
+    [data-editing="true"] .gallery-add-tile{display:flex}
+    .gallery-add-tile b{font-size:1.3rem;font-weight:400;line-height:1}
+    .gallery-empty-note{grid-column:1/-1;margin:0;padding:20px;text-align:center;color:var(--text-muted);font-size:.8rem;border:1px dashed var(--border-strong);border-radius:12px}
+
+    .journey{display:grid;gap:0;position:relative;padding-left:20px}
+    .journey::before{content:'';position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:var(--border)}
+    .journey-item{position:relative;padding:0 0 20px 18px}
+    .journey-item:last-child{padding-bottom:0}
+    .journey-item::before{content:'';position:absolute;left:-20px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:3px solid var(--bg)}
+    .journey-item b{display:block;color:var(--primary);font:700 .68rem 'DM Mono',monospace;letter-spacing:.04em}
+    .journey-item p{margin:4px 0 0;color:var(--text-secondary);font-size:.84rem;line-height:1.6}
+    .journey-remove{position:absolute;right:0;top:0;display:none;border:0;background:none;color:var(--text-muted);cursor:pointer;font-size:.9rem}
+    [data-editing="true"] .journey-remove{display:inline}
+    .journey-add{display:none;align-items:center;gap:6px;margin-top:4px;padding:9px 12px;border:1px dashed var(--border-strong);border-radius:10px;background:transparent;color:var(--primary);font-size:.76rem;font-weight:700;cursor:pointer}
+    [data-editing="true"] .journey-add{display:inline-flex}
+
+    .lightbox{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(5,8,14,.86);padding:24px}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:min(90vw,820px);max-height:85vh;border-radius:14px;box-shadow:var(--shadow-lg)}
+    .lightbox-close{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;font-size:1rem}
+
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .profile-layout{grid-template-columns:1fr;grid-template-areas:none}
+      .sec-about,.sec-personal,.sec-interests,.sec-favorites,.sec-travel,.sec-lifestyle,.sec-hobbies,.sec-gallery,.sec-journey{grid-area:auto}
+    }
+    @media(max-width:650px){
+      .wrap{width:min(100% - 32px,600px)}
+      .navin{min-height:60px}
+      .menu{display:block}
+      .links{position:absolute;top:60px;right:16px;left:16px;display:none;flex-direction:column;gap:14px;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow-lg)}
+      .links.open{display:flex}
+      .navin>.button{display:none}
+      .avatar{width:96px;height:96px}
+      .profile-id{margin-top:-40px}
+      .fav-grid,.hobby-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .foot{flex-direction:column}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav"><div class="wrap navin">
+    <a class="brand" href="index.html#home"><span class="brand-mark">MP</span>Mihir Panda</a>
+    <nav class="links"><a href="index.html#capabilities">Capabilities</a><a href="index.html#impact">Impact</a><a href="index.html#work">Case studies</a><a href="index.html#model">Approach</a><a href="profile.html" aria-current="page">Profile</a><a href="resume.html">Resume</a></nav>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu" aria-label="Open navigation">Menu</button>
+      <a class="button" href="index.html#contact">Start a project ↗</a>
+    </div>
+  </div></header>
+
+  <main class="profile-page"><div class="wrap">
+
+    <div class="cover reveal" id="coverEl">
+      <div class="cover-edit"><button type="button" class="button sm secondary" id="coverEditBtn">Change cover</button></div>
+    </div>
+
+    <div class="profile-id reveal">
+      <div class="avatar-wrap">
+        <img class="avatar" id="avatarImg" src="mihir-photo.jpeg" alt="Mihir Ranjan Panda">
+        <button type="button" class="avatar-edit" id="avatarEditBtn" aria-label="Change profile picture" title="Change profile picture">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </button>
+      </div>
+      <div class="profile-id-text">
+        <h1 class="editable" id="f-name" contenteditable="false">Mihir Ranjan Panda</h1>
+        <p class="tagline editable" id="f-tagline" contenteditable="false">Exploring life, chasing experiences, and always learning something new.</p>
+        <div class="location-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="editable" id="f-location" contenteditable="false">Bhubaneswar, Odisha, India</span>
+        </div>
+      </div>
+      <div class="profile-id-actions">
+        <button type="button" class="button" id="editToggle">Edit Profile</button>
+      </div>
+    </div>
+
+    <div class="edit-bar">
+      <span>You're editing — changes save automatically to this browser.</span>
+      <span class="save-status" id="saveStatus">All changes saved</span>
+      <button type="button" class="reset-link" id="resetBtn">Reset to default</button>
+    </div>
+
+    <div class="pro-strip reveal">
+      <div class="pro-strip-text">
+        <span class="pro-strip-label">Also — what I do for a living</span>
+        <p class="editable" id="f-pro-summary" contenteditable="false">Software Quality Engineer · SDET helping product teams ship with confidence through testing, automation, and release quality.</p>
+      </div>
+      <div class="pro-strip-stats" id="proStatsRow"></div>
+      <div class="pro-strip-actions">
+        <a class="button sm" href="mailto:mhrpanda13@gmail.com?subject=QA%20Project%20Enquiry">Hire Me ↗</a>
+        <a class="button sm secondary" href="index.html#work">Case Studies</a>
+      </div>
+    </div>
+
+    <div class="profile-layout">
+
+      <section class="sec-about pcard reveal">
+        <h2>About Me</h2>
+        <p class="about-text editable" id="f-about" contenteditable="false">I am a simple person who enjoys exploring new places, traveling, riding bikes, driving cars, learning new things, and experiencing different sides of life. I enjoy technology and learning, but outside of work I like keeping things simple — good conversations, road trips, exploring places, and spending time with people who matter.</p>
+      </section>
+
+      <section class="sec-personal pcard reveal">
+        <h2>Personal Details</h2>
+        <div class="pd-row"><span class="pd-label">Name</span><span class="pd-value" id="pd-name">Mihir Ranjan Panda</span></div>
+        <div class="pd-row"><span class="pd-label">Date of Birth</span><span class="pd-value editable" id="f-dob" contenteditable="false">09 March 1999</span></div>
+        <div class="pd-row"><span class="pd-label">Hometown</span><span class="pd-value editable" id="f-hometown" contenteditable="false">Bhubaneswar, Odisha</span></div>
+        <div class="pd-row"><span class="pd-label">Current Location</span><span class="pd-value editable" id="f-currentlocation" contenteditable="false">Bhubaneswar, Odisha, India</span></div>
+      </section>
+
+      <section class="sec-hobbies pcard reveal">
+        <h2>Hobbies</h2>
+        <p class="pcard-sub">Things I keep coming back to.</p>
+        <div class="hobby-grid" id="hobbyGrid"></div>
+      </section>
+
+      <section class="sec-interests pcard reveal">
+        <h2>My Interests</h2>
+        <div class="chip-row" id="interestsRow">
+          <button type="button" class="chip-add" id="interestAddBtn">+ Add</button>
+        </div>
+      </section>
+
+      <section class="sec-favorites pcard reveal">
+        <h2>Favorite Things</h2>
+        <div class="fav-grid">
+          <div class="fav-item"><span class="fav-label">Favorite Place</span><span class="fav-value editable" id="f-fav-place" contenteditable="false">Kedarnath</span></div>
+          <div class="fav-item"><span class="fav-label">Favorite Vehicle</span><span class="fav-value editable" id="f-fav-vehicle" contenteditable="false">Hyundai Creta</span></div>
+          <div class="fav-item"><span class="fav-label">Favorite Activity</span><span class="fav-value editable" id="f-fav-activity" contenteditable="false">Traveling &amp; Road Trips</span></div>
+          <div class="fav-item"><span class="fav-label">Free Time</span><span class="fav-value editable" id="f-fav-freetime" contenteditable="false">Riding, exploring new places and spending time with good people</span></div>
+        </div>
+      </section>
+
+      <section class="sec-travel pcard reveal">
+        <h2>Travel</h2>
+        <div class="dream-card">
+          <span class="dream-label">DREAM DESTINATION</span>
+          <span class="dream-name editable" id="f-dream-name" contenteditable="false">Kedarnath</span>
+          <p class="dream-note editable" id="f-dream-note" contenteditable="false">The mountains have a way of putting everything into perspective.</p>
+        </div>
+        <div class="wishlist-title"><span>Places I Want to Explore</span></div>
+        <div class="wishlist" id="wishlistList"></div>
+        <button type="button" class="wishlist-add" id="wishlistAddBtn">+ Add a destination</button>
+      </section>
+
+      <section class="sec-lifestyle pcard reveal">
+        <h2>My Lifestyle</h2>
+        <div class="lifestyle-grid" id="lifestyleGrid"></div>
+      </section>
+
+      <section class="sec-gallery pcard reveal">
+        <div class="pcard-head"><h2>Personal Gallery</h2></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <input type="file" id="galleryFile" accept="image/*" multiple style="display:none">
+      </section>
+
+      <section class="sec-journey pcard reveal">
+        <h2>My Journey</h2>
+        <p class="pcard-sub">The short version of how I got here.</p>
+        <div class="journey" id="journeyList"></div>
+        <button type="button" class="journey-add" id="journeyAddBtn">+ Add a milestone</button>
+      </section>
+
+    </div>
+  </div></main>
+
+  <footer><div class="wrap foot">
+    <span>© <span id="year"></span> MIHIR RANJAN PANDA</span>
+    <div class="social"><a href="index.html">Portfolio ↗</a><a href="resume.html">Resume ↗</a><a href="mailto:mhrpanda13@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/mihir-ranjan-panda-28b160266" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+  </div></footer>
+
+  <div class="lightbox" id="lightbox">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <img id="lightboxImg" src="" alt="Preview">
+  </div>
+  <input type="file" id="avatarFile" accept="image/*" style="display:none">
+  <input type="file" id="coverFile" accept="image/*" style="display:none">
+
+  <script>
+    const menu=document.querySelector('.menu'),links=document.querySelector('.links');
+    menu.addEventListener('click',()=>links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('themeToggle').addEventListener('click',()=>{
+      const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next)}catch(e){}
+    });
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(item=>observer.observe(item));
+
+    /* ---------- profile data + editing ---------- */
+    const STORAGE_KEY='portfolio_profile_v1';
+
+    const DEFAULTS={
+      name:'Mihir Ranjan Panda',
+      tagline:'Exploring life, chasing experiences, and always learning something new.',
+      location:'Bhubaneswar, Odisha, India',
+      proSummary:'Software Quality Engineer · SDET helping product teams ship with confidence through testing, automation, and release quality.',
+      proStats:[{value:'3+',label:'Years experience'},{value:'300+',label:'Tests delivered'},{value:'50+',label:'Flows automated'}],
+      about:'I am a simple person who enjoys exploring new places, traveling, riding bikes, driving cars, learning new things, and experiencing different sides of life. I enjoy technology and learning, but outside of work I like keeping things simple — good conversations, road trips, exploring places, and spending time with people who matter.',
+      personal:{dob:'09 March 1999',hometown:'Bhubaneswar, Odisha',location:'Bhubaneswar, Odisha, India'},
+      interests:['Traveling','Bike Riding','Cars','Road Trips','Exploring New Places','Photography','Technology','Learning New Things','Music','Food','Nature','Planting Trees'],
+      hobbies:[
+        {icon:'🌍',title:'Traveling',desc:'I enjoy visiting new places and experiencing different cultures, landscapes and environments.'},
+        {icon:'🏍️',title:'Bike Riding',desc:'Long rides, exploring roads and discovering new places are some of the things I enjoy.'},
+        {icon:'🚗',title:'Cars',desc:'I have a strong interest in cars and enjoy driving and exploring different places by road.'},
+        {icon:'📸',title:'Photography',desc:'I like capturing interesting places, moments and experiences.'},
+        {icon:'💻',title:'Exploring Technology',desc:'I enjoy learning about new technologies and experimenting with new tools.'},
+        {icon:'🌱',title:'Nature',desc:'I like nature and have an interest in planting trees and contributing to a greener environment.'}
+      ],
+      favorites:{place:'Kedarnath',vehicle:'Hyundai Creta',activity:'Traveling & Road Trips',freeTime:'Riding, exploring new places and spending time with good people'},
+      dreamDestination:{name:'Kedarnath',note:'The mountains have a way of putting everything into perspective.'},
+      wishlist:[],
+      lifestyle:[
+        {icon:'🏍️',label:'Ride'},{icon:'🚗',label:'Drive'},{icon:'🌍',label:'Travel'},
+        {icon:'📸',label:'Capture Moments'},{icon:'💻',label:'Learn'},{icon:'🌱',label:'Grow'},{icon:'🤝',label:'Connect'}
+      ],
+      gallery:[],
+      journey:[
+        {year:'1999',text:'Born in Odisha.'},
+        {year:'GROWING UP',text:'School, friends, family, and everyday experiences that shaped who I am.'}
+      ],
+      avatar:'mihir-photo.jpeg',
+      cover:null
+    };
+
+    function clone(o){ return typeof structuredClone==='function' ? structuredClone(o) : JSON.parse(JSON.stringify(o)); }
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+    function loadData(){
+      try{
+        const raw=localStorage.getItem(STORAGE_KEY);
+        if(!raw) return clone(DEFAULTS);
+        const saved=JSON.parse(raw);
+        const merged=clone(DEFAULTS);
+        Object.assign(merged,saved);
+        merged.personal=Object.assign(clone(DEFAULTS.personal),saved.personal||{});
+        merged.favorites=Object.assign(clone(DEFAULTS.favorites),saved.favorites||{});
+        merged.dreamDestination=Object.assign(clone(DEFAULTS.dreamDestination),saved.dreamDestination||{});
+        return merged;
+      }catch(e){ return clone(DEFAULTS); }
+    }
+
+    let data=loadData();
+    let saveTimer;
+    function persist(){
+      clearTimeout(saveTimer);
+      saveTimer=setTimeout(()=>{
+        try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); }catch(e){}
+        const el=document.getElementById('saveStatus');
+        el.classList.add('show');
+        clearTimeout(persist._t);
+        persist._t=setTimeout(()=>el.classList.remove('show'),1600);
+      },350);
+    }
+
+    function isEditing(){ return document.body.getAttribute('data-editing')==='true'; }
+
+    function bindText(id,setter){
+      const el=document.getElementById(id);
+      el.addEventListener('input',()=>{ setter(el.textContent.trim()); persist(); });
+    }
+    bindText('f-name', v=>{ data.name=v; document.getElementById('pd-name').textContent=v||'Mihir Ranjan Panda'; });
+    bindText('f-tagline', v=>data.tagline=v);
+    bindText('f-location', v=>data.location=v);
+    bindText('f-pro-summary', v=>data.proSummary=v);
+    bindText('f-about', v=>data.about=v);
+    bindText('f-dob', v=>data.personal.dob=v);
+    bindText('f-hometown', v=>data.personal.hometown=v);
+    bindText('f-currentlocation', v=>data.personal.location=v);
+    bindText('f-fav-place', v=>data.favorites.place=v);
+    bindText('f-fav-vehicle', v=>data.favorites.vehicle=v);
+    bindText('f-fav-activity', v=>data.favorites.activity=v);
+    bindText('f-fav-freetime', v=>data.favorites.freeTime=v);
+    bindText('f-dream-name', v=>data.dreamDestination.name=v);
+    bindText('f-dream-note', v=>data.dreamDestination.note=v);
+
+    function renderInterests(){
+      const row=document.getElementById('interestsRow');
+      row.querySelectorAll('.chip').forEach(c=>c.remove());
+      const addBtn=document.getElementById('interestAddBtn');
+      data.interests.forEach((label,i)=>{
+        const chip=document.createElement('span');
+        chip.className='chip';
+        chip.innerHTML=`<span>${escapeHtml(label)}</span><button type="button" aria-label="Remove ${escapeHtml(label)}">&times;</button>`;
+        chip.querySelector('button').addEventListener('click',()=>{ data.interests.splice(i,1); renderInterests(); persist(); });
+        row.insertBefore(chip,addBtn);
+      });
+    }
+    document.getElementById('interestAddBtn').addEventListener('click',()=>{
+      const v=prompt('Add an interest');
+      if(v&&v.trim()){ data.interests.push(v.trim()); renderInterests(); persist(); }
+    });
+
+    function renderHobbies(){
+      const grid=document.getElementById('hobbyGrid');
+      grid.innerHTML='';
+      data.hobbies.forEach((h,i)=>{
+        const card=document.createElement('article');
+        card.className='hobby-card';
+        card.innerHTML=`<div class="hicon">${h.icon}</div><h3 class="editable" contenteditable="false">${escapeHtml(h.title)}</h3><p class="editable" contenteditable="false">${escapeHtml(h.desc)}</p>`;
+        const h3=card.querySelector('h3'),p=card.querySelector('p');
+        h3.setAttribute('contenteditable',isEditing()?'true':'false');
+        p.setAttribute('contenteditable',isEditing()?'true':'false');
+        h3.addEventListener('input',()=>{ data.hobbies[i].title=h3.textContent.trim(); persist(); });
+        p.addEventListener('input',()=>{ data.hobbies[i].desc=p.textContent.trim(); persist(); });
+        grid.appendChild(card);
+      });
+    }
+
+    function renderLifestyle(){
+      const grid=document.getElementById('lifestyleGrid');
+      grid.innerHTML='';
+      data.lifestyle.forEach((l,i)=>{
+        const chip=document.createElement('div');
+        chip.className='life-chip';
+        chip.innerHTML=`<i>${l.icon}</i><span class="editable" contenteditable="false">${escapeHtml(l.label)}</span>`;
+        const span=chip.querySelector('span');
+        span.setAttribute('contenteditable',isEditing()?'true':'false');
+        span.addEventListener('input',()=>{ data.lifestyle[i].label=span.textContent.trim(); persist(); });
+        grid.appendChild(chip);
+      });
+    }
+
+    function renderProStats(){
+      const row=document.getElementById('proStatsRow');
+      row.innerHTML='';
+      data.proStats.forEach((s,i)=>{
+        const cell=document.createElement('div');
+        cell.className='pro-stat';
+        cell.innerHTML=`<b class="editable" contenteditable="false">${escapeHtml(s.value)}</b><span class="editable" contenteditable="false">${escapeHtml(s.label)}</span>`;
+        const b=cell.querySelector('b'),span=cell.querySelector('span');
+        b.setAttribute('contenteditable',isEditing()?'true':'false');
+        span.setAttribute('contenteditable',isEditing()?'true':'false');
+        b.addEventListener('input',()=>{ data.proStats[i].value=b.textContent.trim(); persist(); });
+        span.addEventListener('input',()=>{ data.proStats[i].label=span.textContent.trim(); persist(); });
+        row.appendChild(cell);
+      });
+    }
+
+    function renderWishlist(){
+      const list=document.getElementById('wishlistList');
+      list.innerHTML='';
+      if(data.wishlist.length===0){
+        const p=document.createElement('p');
+        p.className='wishlist-empty';
+        p.textContent='No destinations added yet.';
+        list.appendChild(p);
+      }else{
+        data.wishlist.forEach((item,i)=>{
+          const row=document.createElement('div');
+          row.className='wishlist-item';
+          row.innerHTML=`<div><b>${escapeHtml(item.name)}</b>${item.note?`<span>${escapeHtml(item.note)}</span>`:''}</div><button type="button" aria-label="Remove ${escapeHtml(item.name)}">&times;</button>`;
+          row.querySelector('button').addEventListener('click',()=>{ data.wishlist.splice(i,1); renderWishlist(); persist(); });
+          list.appendChild(row);
+        });
+      }
+    }
+    document.getElementById('wishlistAddBtn').addEventListener('click',()=>{
+      const name=prompt('Destination name');
+      if(!name||!name.trim())return;
+      const note=prompt('Short note (optional)')||'';
+      data.wishlist.push({name:name.trim(),note:note.trim()});
+      renderWishlist(); persist();
+    });
+
+    function renderJourney(){
+      const list=document.getElementById('journeyList');
+      list.innerHTML='';
+      data.journey.forEach((item,i)=>{
+        const row=document.createElement('div');
+        row.className='journey-item';
+        row.innerHTML=`<button type="button" class="journey-remove" aria-label="Remove milestone">&times;</button><b class="editable" contenteditable="false">${escapeHtml(item.year)}</b><p class="editable" contenteditable="false">${escapeHtml(item.text)}</p>`;
+        const b=row.querySelector('b'),p=row.querySelector('p');
+        b.setAttribute('contenteditable',isEditing()?'true':'false');
+        p.setAttribute('contenteditable',isEditing()?'true':'false');
+        b.addEventListener('input',()=>{ data.journey[i].year=b.textContent.trim(); persist(); });
+        p.addEventListener('input',()=>{ data.journey[i].text=p.textContent.trim(); persist(); });
+        row.querySelector('.journey-remove').addEventListener('click',()=>{ data.journey.splice(i,1); renderJourney(); persist(); });
+        list.appendChild(row);
+      });
+    }
+    document.getElementById('journeyAddBtn').addEventListener('click',()=>{
+      const year=prompt('Year or stage label (e.g. 2021)');
+      if(!year||!year.trim())return;
+      const text=prompt('What happened?')||'';
+      data.journey.push({year:year.trim(),text:text.trim()});
+      renderJourney(); persist();
+    });
+
+    function renderGallery(){
+      const grid=document.getElementById('galleryGrid');
+      grid.innerHTML='';
+      if(data.gallery.length===0){
+        const note=document.createElement('p');
+        note.className='gallery-empty-note';
+        note.textContent='No photos yet — add your first one.';
+        grid.appendChild(note);
+      }else{
+        data.gallery.forEach((photo,i)=>{
+          const fig=document.createElement('figure');
+          fig.innerHTML=`<img src="${photo.src}" alt="Personal photo ${i+1}"><button type="button" class="gallery-remove" aria-label="Remove photo">&times;</button>`;
+          fig.querySelector('img').addEventListener('click',()=>openLightbox(photo.src));
+          fig.querySelector('.gallery-remove').addEventListener('click',(ev)=>{ ev.stopPropagation(); data.gallery.splice(i,1); renderGallery(); persist(); });
+          grid.appendChild(fig);
+        });
+      }
+      const addTile=document.createElement('button');
+      addTile.type='button';
+      addTile.className='gallery-add-tile';
+      addTile.innerHTML='<b>+</b><span>Add Photo</span>';
+      addTile.addEventListener('click',()=>document.getElementById('galleryFile').click());
+      grid.appendChild(addTile);
+    }
+    document.getElementById('galleryFile').addEventListener('change',e=>{
+      const files=Array.from(e.target.files||[]);
+      if(!files.length)return;
+      let remaining=files.length;
+      files.forEach(file=>{
+        const reader=new FileReader();
+        reader.onload=()=>{
+          data.gallery.push({src:reader.result});
+          remaining--;
+          if(remaining===0){ renderGallery(); persist(); }
+        };
+        reader.readAsDataURL(file);
+      });
+      e.target.value='';
+    });
+
+    function openLightbox(src){
+      document.getElementById('lightboxImg').src=src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    document.getElementById('avatarImg').addEventListener('click',()=>openLightbox(data.avatar));
+    document.getElementById('lightboxClose').addEventListener('click',()=>document.getElementById('lightbox').classList.remove('open'));
+    document.getElementById('lightbox').addEventListener('click',e=>{ if(e.target.id==='lightbox') e.currentTarget.classList.remove('open'); });
+
+    document.getElementById('avatarFile').addEventListener('change',e=>{
+      const file=e.target.files[0]; if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{ data.avatar=reader.result; document.getElementById('avatarImg').src=data.avatar; persist(); };
+      reader.readAsDataURL(file);
+      e.target.value='';
+    });
+    document.getElementById('avatarEditBtn').addEventListener('click',()=>document.getElementById('avatarFile').click());
+
+    document.getElementById('coverFile').addEventListener('change',e=>{
+      const file=e.target.files[0]; if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{ data.cover=reader.result; applyCover(); persist(); };
+      reader.readAsDataURL(file);
+      e.target.value='';
+    });
+    document.getElementById('coverEditBtn').addEventListener('click',()=>document.getElementById('coverFile').click());
+
+    function applyCover(){
+      const el=document.getElementById('coverEl');
+      if(data.cover){ el.style.backgroundImage=`url(${data.cover})`; }
+      else{ el.style.backgroundImage=''; }
+    }
+
+    const editToggle=document.getElementById('editToggle');
+    function setEditing(on){
+      document.body.setAttribute('data-editing',on?'true':'false');
+      editToggle.textContent=on?'Done Editing':'Edit Profile';
+      document.querySelectorAll('.editable').forEach(el=>el.setAttribute('contenteditable',on?'true':'false'));
+    }
+    editToggle.addEventListener('click',()=>setEditing(!isEditing()));
+
+    document.getElementById('resetBtn').addEventListener('click',()=>{
+      if(!confirm('Reset this profile page back to its original defaults? This clears your local edits on this device.'))return;
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+      data=clone(DEFAULTS);
+      render();
+    });
+
+    function render(){
+      document.getElementById('f-name').textContent=data.name;
+      document.getElementById('f-tagline').textContent=data.tagline;
+      document.getElementById('f-location').textContent=data.location;
+      document.getElementById('f-pro-summary').textContent=data.proSummary;
+      document.getElementById('f-about').textContent=data.about;
+      document.getElementById('pd-name').textContent=data.name;
+      document.getElementById('f-dob').textContent=data.personal.dob;
+      document.getElementById('f-hometown').textContent=data.personal.hometown;
+      document.getElementById('f-currentlocation').textContent=data.personal.location;
+      document.getElementById('f-fav-place').textContent=data.favorites.place;
+      document.getElementById('f-fav-vehicle').textContent=data.favorites.vehicle;
+      document.getElementById('f-fav-activity').textContent=data.favorites.activity;
+      document.getElementById('f-fav-freetime').textContent=data.favorites.freeTime;
+      document.getElementById('f-dream-name').textContent=data.dreamDestination.name;
+      document.getElementById('f-dream-note').textContent=data.dreamDestination.note;
+      document.getElementById('avatarImg').src=data.avatar;
+      applyCover();
+      renderProStats();
+      renderInterests();
+      renderHobbies();
+      renderLifestyle();
+      renderWishlist();
+      renderGallery();
+      renderJourney();
+      document.querySelectorAll('.editable').forEach(el=>el.setAttribute('contenteditable',isEditing()?'true':'false'));
+    }
+    render();
+  </script>
+</body>
+</html>
