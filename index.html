@@ -11,6 +11,7 @@
   <title>Mihir Panda — QA / SDET</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+  <script>window.__auditErrors=[];window.addEventListener('error',function(e){window.__auditErrors.push(e.message)});var __ce=console.error;console.error=function(){window.__auditErrors.push(Array.prototype.slice.call(arguments).join(' '));__ce.apply(console,arguments)};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -145,6 +146,8 @@
     .case{display:grid;grid-template-columns:52px 1fr .85fr auto auto;gap:22px;align-items:center;padding:22px 24px;border:1px solid var(--border);border-radius:14px;background:var(--surface);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
     .case:hover{transform:translateX(5px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
     .case-no{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;color:var(--primary);background:var(--primary-soft);font:600 .72rem 'DM Mono',monospace}
+    .status-badge{display:inline-flex;align-items:center;gap:5px;margin-left:9px;padding:4px 9px;border-radius:999px;color:var(--accent);background:var(--accent-soft);font:700 .6rem 'DM Mono',monospace;letter-spacing:.04em;vertical-align:middle}
+    .status-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
     .case h3{margin:0;font-size:1.08rem;font-weight:700;letter-spacing:-.01em}
     .case p{margin:0;color:var(--text-secondary);font-size:.82rem;line-height:1.6}
     .case-tag{padding:7px 9px;border-radius:6px;color:var(--primary);background:var(--primary-soft);font:600 .62rem 'DM Mono',monospace}
@@ -165,6 +168,16 @@
 
     .cta{padding:0 0 64px}
     .cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;padding:52px;border:1px solid var(--border-strong);border-radius:20px;background:var(--surface-2)}
+    .teaser{padding:0 0 100px}
+    .teaser-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:46px 52px;border:1px solid var(--border-strong);border-radius:20px;background:#0b0f18;box-shadow:var(--shadow-lg)}
+    .teaser-card::before{position:absolute;top:-180px;left:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,#5b9dff,transparent 68%);opacity:.14;content:'';pointer-events:none}
+    .teaser-card>*{position:relative;z-index:1}
+    .teaser-label{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:6px 11px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#9fe0bd;background:rgba(63,207,142,.1);font:600 .66rem 'DM Mono',monospace;letter-spacing:.05em}
+    .teaser-label i{width:6px;height:6px;border-radius:50%;background:#3fcf8e}
+    .teaser-card h2{margin:0;max-width:520px;color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+    .teaser-card p{margin:12px 0 0;max-width:480px;color:#aebcd4;font-size:.88rem;line-height:1.7}
+    .teaser-card .button{color:#081426;background:#b4ebff;white-space:nowrap}
+    .teaser-card .button:hover{background:#d2f4ff}
     .cta-card::after{position:absolute;right:-90px;bottom:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--primary),transparent 70%);opacity:.1;content:'';pointer-events:none}
     .cta-card>*{position:relative;z-index:1}
     .cta-card h2{max-width:640px;margin:0;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.14;letter-spacing:-.02em;font-weight:800}
@@ -196,7 +209,10 @@
       .links.open{display:flex}
       .nav-right>.button{display:none}
       .hero{padding-top:36px}
-      .hero-top,.hero-bottom,.cta-card{grid-template-columns:1fr}
+      .hero-top,.hero-bottom,.cta-card,.teaser-card{grid-template-columns:1fr}
+      .teaser-card{padding:32px 24px}
+      .teaser-card .button{justify-self:start}
+      .teaser{padding-bottom:64px}
       .showcase{max-width:520px}
       .hero-bottom{margin-top:38px}
       .hero-message{padding:24px}
@@ -228,7 +244,7 @@
 <body>
   <header class="nav"><div class="wrap navin">
     <a class="brand" href="profile.html" title="View personal profile"><span class="brand-mark">MP</span>Mihir Panda</a>
-    <nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="#model">Approach</a><a href="profile.html">Profile</a><a href="resume.html">Resume</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
+    <nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="playground.html">Playground</a><a href="#model">Approach</a><a href="profile.html">Profile</a><a href="resume.html">Resume</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -290,6 +306,17 @@
       </div>
     </div></section>
 
+    <section class="teaser"><div class="wrap">
+      <div class="teaser-card reveal">
+        <div>
+          <span class="teaser-label"><i></i>INTERACTIVE DEMO</span>
+          <h2>Don't just take my word for it. Watch it happen.</h2>
+          <p>Run a simulated test suite live and watch a real QA workflow play out — then try to spot three bugs planted in a sample sign-up form.</p>
+        </div>
+        <a class="button" href="playground.html">Open the QA Playground ↗</a>
+      </div>
+    </div></section>
+
     <section class="section" id="impact"><div class="wrap">
       <p class="section-label">Measured impact</p>
       <div class="headline"><h2>Numbers that show what disciplined testing actually changes.</h2><p>Hands-on ownership of complex, workflow-heavy products across healthcare, ERP, HRMS, and document management.</p></div>
@@ -305,7 +332,7 @@
       <p class="section-label">Selected case studies</p>
       <div class="headline"><h2>Real products. Measurable release outcomes.</h2><p>Quality ownership applied to the systems that customers, teams, and operations depend on every day.</p></div>
       <div class="case-list">
-        <article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal</h3><p>US patient-management platform: 300+ tests, UI automation, and release readiness across critical workflows.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article>
+        <article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal<span class="status-badge"><i></i>ONGOING</span></h3><p>US patient-management platform: 300+ tests, UI automation, and release readiness across critical workflows.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article>
         <article class="case reveal"><span class="case-no">02</span><h3>Zyler ERP Suite</h3><p>Automated business workflows and UAT validation that improved platform stability by 45%.</p><span class="case-tag">ERP</span><b class="work-metric">45%</b></article>
         <article class="case reveal"><span class="case-no">03</span><h3>ASTERDocs</h3><p>Document upload, approvals, role-based access, and exception-safe automation coverage.</p><span class="case-tag">DOCUMENTS</span><b class="work-metric">100%</b></article>
         <article class="case reveal"><span class="case-no">04</span><h3>ConfluxHR</h3><p>Attendance, payroll, employee modules, REST API testing, and 98% defect resolution tracking.</p><span class="case-tag">HR TECH</span><b class="work-metric">98%</b></article>
@@ -348,5 +375,6 @@
       try{localStorage.setItem('theme',next)}catch(e){}
     });
   </script>
+  <script src="audit-widget.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
   <title>Resume | Mihir Panda</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+  <script>window.__auditErrors=[];window.addEventListener('error',function(e){window.__auditErrors.push(e.message)});var __ce=console.error;console.error=function(){window.__auditErrors.push(Array.prototype.slice.call(arguments).join(' '));__ce.apply(console,arguments)};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -93,6 +94,9 @@
     .project:last-child{margin:0}
     .project h3{font-size:.92rem}
     .proj-meta{display:block;margin-top:3px;color:var(--text-muted);font-size:.68rem;font-weight:500;letter-spacing:0}
+    .project-no{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin-right:7px;border-radius:6px;color:var(--primary);background:var(--primary-soft);font:700 .64rem 'DM Mono',monospace;vertical-align:middle}
+    .status-badge{display:inline-flex;align-items:center;gap:5px;margin-left:8px;padding:3px 8px;border-radius:999px;color:var(--accent);background:var(--accent-soft);font:700 .58rem 'DM Mono',monospace;letter-spacing:.04em;vertical-align:middle}
+    .status-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
     .project p,.skill p{margin:5px 0 0;color:var(--text-secondary);font-size:.78rem;line-height:1.65}
 
     .skill{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--border)}
@@ -165,6 +169,7 @@
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <a class="action" href="index.html">← Portfolio</a>
+      <a class="action" href="playground.html">Playground</a>
       <a class="action" href="profile.html">Profile</a>
       <a class="action cv-download" href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a>
       <button class="action primary" onclick="print()">Print / Save PDF</button>
@@ -209,9 +214,10 @@
         </section>
         <section class="section">
           <h2>Selected project experience</h2>
-          <article class="project"><h3>Zyler ERP Suite <span class="proj-meta">zylererp.com · May 2023 – Dec 2024</span></h3><p>Automated 50+ test workflows, reducing the regression cycle by 60%. Used the Java Streams API for test-data filtering and validations. Resolved 80+ defects during UAT, improving application stability by 45%.</p></article>
-          <article class="project"><h3>AsterDocs Document Management System <span class="proj-meta">asterdocs.com · Feb 2023 – May 2023</span></h3><p>Led testing of document upload, approval workflows, and role-based access with 100% requirement coverage. Built Java utilities for file handling and exception-safe automation scripts.</p></article>
-          <article class="project"><h3>ConfluxHR Human Resource Platform <span class="proj-meta">confluxhr.com · Feb 2023 – May 2023</span></h3><p>Tested attendance, payroll, and employee modules with 100+ test cases. Automated REST API validation using Postman and Rest Assured. Logged and tracked 70+ defects in Jira, achieving 98% resolution.</p></article>
+          <article class="project"><h3><span class="project-no">01</span>Availity UI Healthcare Portal<span class="status-badge"><i></i>ONGOING</span> <span class="proj-meta">Nov 2025 – Present</span></h3><p>300+ tests across functional, regression, exploratory, UAT, and cross-browser coverage; maintained UI automation using Playwright with TypeScript and Java Selenium ATAF.</p></article>
+          <article class="project"><h3><span class="project-no">02</span>Zyler ERP Suite <span class="proj-meta">zylererp.com · May 2023 – Dec 2024</span></h3><p>Automated 50+ test workflows, reducing the regression cycle by 60%. Used the Java Streams API for test-data filtering and validations. Resolved 80+ defects during UAT, improving application stability by 45%.</p></article>
+          <article class="project"><h3><span class="project-no">03</span>AsterDocs Document Management System <span class="proj-meta">asterdocs.com · Feb 2023 – May 2023</span></h3><p>Led testing of document upload, approval workflows, and role-based access with 100% requirement coverage. Built Java utilities for file handling and exception-safe automation scripts.</p></article>
+          <article class="project"><h3><span class="project-no">04</span>ConfluxHR Human Resource Platform <span class="proj-meta">confluxhr.com · Feb 2023 – May 2023</span></h3><p>Tested attendance, payroll, and employee modules with 100+ test cases. Automated REST API validation using Postman and Rest Assured. Logged and tracked 70+ defects in Jira, achieving 98% resolution.</p></article>
         </section>
       </div>
       <aside class="col">
@@ -259,5 +265,6 @@
       try{localStorage.setItem('theme',next)}catch(e){}
     });
   </script>
+  <script src="audit-widget.js"></script>
 </body>
 </html>

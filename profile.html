@@ -7,6 +7,7 @@
   <title>Profile | Mihir Panda</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+  <script>window.__auditErrors=[];window.addEventListener('error',function(e){window.__auditErrors.push(e.message)});var __ce=console.error;console.error=function(){window.__auditErrors.push(Array.prototype.slice.call(arguments).join(' '));__ce.apply(console,arguments)};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -242,7 +243,7 @@
 <body>
   <header class="nav"><div class="wrap navin">
     <a class="brand" href="index.html#home"><span class="brand-mark">MP</span>Mihir Panda</a>
-    <nav class="links"><a href="index.html#capabilities">Capabilities</a><a href="index.html#impact">Impact</a><a href="index.html#work">Case studies</a><a href="index.html#model">Approach</a><a href="profile.html" aria-current="page">Profile</a><a href="resume.html">Resume</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
+    <nav class="links"><a href="index.html#capabilities">Capabilities</a><a href="index.html#impact">Impact</a><a href="index.html#work">Case studies</a><a href="playground.html">Playground</a><a href="index.html#model">Approach</a><a href="profile.html" aria-current="page">Profile</a><a href="resume.html">Resume</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -355,7 +356,7 @@
       <section class="sec-gallery pcard reveal">
         <div class="pcard-head"><h2>Personal Gallery</h2></div>
         <div class="gallery-grid" id="galleryGrid"></div>
-        <input type="file" id="galleryFile" accept="image/*" multiple style="display:none">
+        <input type="file" id="galleryFile" aria-label="Add photos to gallery" accept="image/*" multiple style="display:none">
       </section>
 
       <section class="sec-journey pcard reveal">
@@ -377,8 +378,8 @@
     <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
     <img id="lightboxImg" src="" alt="Preview">
   </div>
-  <input type="file" id="avatarFile" accept="image/*" style="display:none">
-  <input type="file" id="coverFile" accept="image/*" style="display:none">
+  <input type="file" id="avatarFile" aria-label="Upload profile picture" accept="image/*" style="display:none">
+  <input type="file" id="coverFile" aria-label="Upload cover photo" accept="image/*" style="display:none">
 
   <script>
     const menu=document.querySelector('.menu'),links=document.querySelector('.links');
@@ -719,5 +720,6 @@
     }
     render();
   </script>
+  <script src="audit-widget.js"></script>
 </body>
 </html>
