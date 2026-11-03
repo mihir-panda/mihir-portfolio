@@ -440,13 +440,13 @@
               <div class="conv-field">
                 <label for="convFromValue">From</label>
                 <input type="number" id="convFromValue" value="1" inputmode="decimal">
-                <select id="convFromUnit"></select>
+                <select id="convFromUnit" aria-label="Convert from unit"></select>
               </div>
               <button type="button" class="conv-swap" id="convSwap" aria-label="Swap units">⇄</button>
               <div class="conv-field">
                 <label for="convToValue">To</label>
                 <input type="text" id="convToValue" readonly>
-                <select id="convToUnit"></select>
+                <select id="convToUnit" aria-label="Convert to unit"></select>
               </div>
             </div>
           </div>
@@ -456,7 +456,7 @@
               <input type="text" id="pwdOutput" readonly aria-label="Generated password" value="">
               <button type="button" class="pwd-copy" id="pwdCopyBtn">Copy</button>
             </div>
-            <div class="pwd-row">Length <input type="range" id="pwdLength" min="6" max="32" value="16"><b id="pwdLengthVal">16</b></div>
+            <div class="pwd-row"><label for="pwdLength">Length</label> <input type="range" id="pwdLength" min="6" max="32" value="16"><b id="pwdLengthVal">16</b></div>
             <div class="pwd-checks">
               <label><input type="checkbox" id="pwdUpper" checked> Uppercase (A-Z)</label>
               <label><input type="checkbox" id="pwdLower" checked> Lowercase (a-z)</label>
