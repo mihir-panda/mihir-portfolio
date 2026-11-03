@@ -483,6 +483,15 @@
 
     /* ---------------- agent demo ---------------- */
     const KB=[
+      {id:'greeting',keywords:['hi','hello','hey','howdy','yo'],
+        trace:['parse_intent → "greeting"','tool: none — conversational opener, no resume lookup needed'],
+        answer:'Hey! I can answer questions about Mihir\'s QA experience, skills, projects, or availability. Try one of the suggestions below, or ask your own — things like "What\'s your experience?" or "Tell me about the Availity project" work well.'},
+      {id:'about-agent',keywords:['who are you','what are you','what can you do','what can i ask','how do you work'],
+        trace:['parse_intent → "meta_about_agent"','tool: none — explaining own scope, not a resume lookup'],
+        answer:"I'm a scripted agent, not a live language model — I match your question against a small knowledge base built from Mihir's real resume data (experience, skills, projects, certifications, availability) and show the matching steps as I go. Ask about any of those, or his contact details."},
+      {id:'thanks',keywords:['thanks','thank you','appreciate it'],
+        trace:['parse_intent → "closing_pleasantry"','tool: none'],
+        answer:"You're welcome! Feel free to ask anything else, or reach out directly at mhrpanda13@gmail.com."},
       {id:'experience',keywords:['experience','years','how long','background'],
         trace:['parse_intent → "experience_summary"','tool: query_resume({section:"summary"})','→ matched 1 record'],
         answer:"I have 2.5+ years of hands-on QA experience — currently a Software Quality Engineer at Infosys (Nov 2025–present), testing the Availity healthcare portal, and before that a Software Test Engineer at Dietary Business Intelligence Pvt. Ltd. (Feb 2023–Dec 2024)."},
@@ -523,7 +532,10 @@
       let best=null,bestScore=0;
       KB.forEach(intent=>{
         let score=0;
-        intent.keywords.forEach(k=>{ if(q.includes(k)) score++; });
+        intent.keywords.forEach(k=>{
+          const re=new RegExp('\\b'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');
+          if(re.test(q)) score++;
+        });
         if(score>bestScore){ bestScore=score; best=intent; }
       });
       return best||FALLBACK;
