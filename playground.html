@@ -192,6 +192,70 @@
     .agent-input-row input::placeholder{color:#55617a}
     .agent-input-row .button{flex:none}
 
+    /* ---- mini apps ---- */
+    .apps-panel{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow-sm)}
+    .apps-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:10px;border-bottom:1px solid var(--border);background:var(--bg-subtle)}
+    .apps-tab{padding:9px 14px;border:0;border-radius:9px;background:transparent;color:var(--text-secondary);font-size:.8rem;font-weight:600;cursor:pointer}
+    .apps-tab:hover{background:var(--surface-2)}
+    .apps-tab.active{background:var(--btn-bg);color:var(--btn-text)}
+    .apps-body{padding:28px}
+    .app-view[hidden]{display:none}
+
+    .calc{max-width:320px;margin:0 auto}
+    .calc-display{padding:18px 16px;margin-bottom:12px;border-radius:12px;background:#0b0f18;color:#fff;text-align:right;font:700 1.9rem/1.2 'DM Mono',monospace;overflow-x:auto;white-space:nowrap}
+    .calc-display small{display:block;color:#7d8794;font-size:.72rem;font-weight:500;min-height:1em}
+    .calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+    .calc-btn{padding:16px 0;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--text);font-size:1.02rem;font-weight:600;cursor:pointer}
+    .calc-btn:hover{border-color:var(--border-strong)}
+    .calc-btn.op{background:var(--primary-soft);color:var(--primary)}
+    .calc-btn.eq{background:var(--btn-bg);color:var(--btn-text);grid-column:span 2}
+    .calc-btn.zero{grid-column:span 2}
+
+    .weather-search{display:flex;gap:8px;max-width:420px;margin:0 auto 18px}
+    .weather-search input{flex:1;padding:11px 14px;border:1px solid var(--border-strong);border-radius:10px;background:var(--bg-subtle);color:var(--text);font:inherit;font-size:.86rem}
+    .weather-loc-btn{flex:none;width:42px;border:1px solid var(--border-strong);border-radius:10px;background:var(--surface-2);color:var(--text-secondary);cursor:pointer;font-size:1rem}
+    .weather-note{max-width:420px;margin:0 auto 18px;display:flex;align-items:center;gap:7px;color:var(--text-muted);font-size:.72rem}
+    .weather-note i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+    .weather-state{max-width:420px;margin:0 auto;text-align:center;color:var(--text-muted);font-size:.84rem;padding:20px 0}
+    .weather-card{max-width:420px;margin:0 auto;padding:24px;border-radius:14px;background:linear-gradient(135deg,var(--primary-soft),var(--surface-2));border:1px solid var(--border)}
+    .weather-loc{font-size:.84rem;font-weight:700;color:var(--text)}
+    .weather-loc span{font-weight:500;color:var(--text-muted)}
+    .weather-main{display:flex;align-items:center;gap:14px;margin:14px 0}
+    .weather-icon{font-size:2.6rem;line-height:1}
+    .weather-temp{font-size:2.4rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+    .weather-desc{color:var(--text-secondary);font-size:.82rem}
+    .weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+    .weather-grid div{font-size:.78rem;color:var(--text-secondary)}
+    .weather-grid b{display:block;color:var(--text);font-size:.92rem}
+
+    .conv-cats{display:flex;gap:6px;margin-bottom:18px}
+    .conv-cat{padding:7px 13px;border:1px solid var(--border-strong);border-radius:999px;background:var(--surface);color:var(--text-secondary);font-size:.76rem;font-weight:600;cursor:pointer}
+    .conv-cat.active{background:var(--primary-soft);color:var(--primary);border-color:var(--primary)}
+    .conv-row{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end;max-width:500px}
+    .conv-field label{display:block;margin-bottom:6px;color:var(--text-muted);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .conv-field input,.conv-field select{width:100%;padding:10px 11px;border:1px solid var(--border-strong);border-radius:9px;background:var(--bg-subtle);color:var(--text);font:inherit;font-size:.86rem}
+    .conv-field select{margin-top:7px}
+    .conv-swap{align-self:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text-secondary);cursor:pointer;font-size:.9rem;margin-bottom:9px}
+
+    .pwd-output{display:flex;gap:8px;max-width:480px;margin:0 0 20px}
+    .pwd-output input{flex:1;padding:13px 14px;border:1px solid var(--border-strong);border-radius:10px;background:#0b0f18;color:#9fe0bd;font:700 .98rem 'DM Mono',monospace;letter-spacing:.02em}
+    .pwd-copy{flex:none;padding:0 16px;border:1px solid var(--border-strong);border-radius:10px;background:var(--surface-2);color:var(--text);font-size:.78rem;font-weight:700;cursor:pointer}
+    .pwd-row{display:flex;align-items:center;gap:12px;max-width:480px;margin-bottom:14px;font-size:.82rem;color:var(--text-secondary)}
+    .pwd-row input[type=range]{flex:1}
+    .pwd-row b{color:var(--text);min-width:28px;text-align:right}
+    .pwd-checks{display:flex;flex-wrap:wrap;gap:14px;max-width:480px;margin-bottom:18px}
+    .pwd-checks label{display:flex;align-items:center;gap:6px;color:var(--text-secondary);font-size:.8rem}
+    .pwd-strength{max-width:480px}
+    .pwd-strength-bar{height:5px;border-radius:999px;background:var(--border);overflow:hidden;margin-bottom:6px}
+    .pwd-strength-fill{height:100%;width:0%;border-radius:999px;transition:width .2s ease,background-color .2s ease}
+    .pwd-strength-label{font-size:.74rem;color:var(--text-muted);font-weight:600}
+
+    @media(max-width:480px){
+      .apps-body{padding:18px}
+      .conv-row{grid-template-columns:1fr;gap:10px}
+      .conv-swap{justify-self:center;transform:rotate(90deg)}
+    }
+
     .cta{padding:8px 0 56px}
     .cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:44px;border:1px solid var(--border-strong);border-radius:20px;background:var(--surface-2)}
     .cta-card h2{margin:0;font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-.02em}
@@ -235,8 +299,8 @@
     <section class="hero"><div class="wrap">
       <span class="signal"><i></i>INTERACTIVE DEMO</span>
       <h1 class="reveal">Don't just read about my testing. <span class="accent">Watch it happen.</span></h1>
-      <p class="reveal">Three small, hands-on demos: run a simulated test suite and watch a real QA workflow play out — queue, run, fail, triage, fix, retest — try to break a sample sign-up form, then ask a small scripted agent questions about my work.</p>
-      <div class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>All three demos below are simulated in your browser — not connected to a live CI pipeline, a real application, or a language model.</div>
+      <p class="reveal">Run a simulated test suite and watch a real QA workflow play out, try to break a sample sign-up form, ask a small scripted agent questions about my work, or just use a few genuinely working mini apps I built.</p>
+      <div class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>The test runner, bug form, and agent are simulated in your browser — not a live CI pipeline, real application, or language model. The mini apps below are the exception: the calculator, converter, and password generator run real logic, and the weather tool pulls real live data from a free public API.</div>
     </div></section>
 
     <section class="section" id="runner-section"><div class="wrap">
@@ -313,6 +377,100 @@
           <input type="text" id="agentInput" aria-label="Ask the agent a question" placeholder="Ask about experience, skills, projects…" autocomplete="off">
           <button class="button" type="submit">Ask</button>
         </form>
+      </div>
+    </div></section>
+
+    <section class="section" id="apps-section"><div class="wrap">
+      <p class="section-label"><b>04</b>Mini apps</p>
+      <h2>A few small, fully working tools.</h2>
+      <p class="lede">Not QA demos this time — just genuinely useful mini apps, built clean. The weather tool pulls real live data from a free public API; everything else runs entirely in your browser, nothing sent anywhere.</p>
+      <div class="apps-panel reveal">
+        <div class="apps-tabs" role="tablist">
+          <button type="button" class="apps-tab active" data-app="calculator" role="tab" aria-selected="true">Calculator</button>
+          <button type="button" class="apps-tab" data-app="weather" role="tab" aria-selected="false">Weather</button>
+          <button type="button" class="apps-tab" data-app="converter" role="tab" aria-selected="false">Unit Converter</button>
+          <button type="button" class="apps-tab" data-app="password" role="tab" aria-selected="false">Password Generator</button>
+        </div>
+        <div class="apps-body">
+
+          <div class="app-view" id="app-calculator">
+            <div class="calc">
+              <div class="calc-display"><small id="calcExpr">&nbsp;</small><div id="calcValue">0</div></div>
+              <div class="calc-grid">
+                <button type="button" class="calc-btn op" data-calc="clear">C</button>
+                <button type="button" class="calc-btn op" data-calc="back">⌫</button>
+                <button type="button" class="calc-btn op" data-calc="percent">%</button>
+                <button type="button" class="calc-btn op" data-calc="op" data-op="÷">÷</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="7">7</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="8">8</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="9">9</button>
+                <button type="button" class="calc-btn op" data-calc="op" data-op="×">×</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="4">4</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="5">5</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="6">6</button>
+                <button type="button" class="calc-btn op" data-calc="op" data-op="−">−</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="1">1</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="2">2</button>
+                <button type="button" class="calc-btn" data-calc="digit" data-d="3">3</button>
+                <button type="button" class="calc-btn op" data-calc="op" data-op="+">+</button>
+                <button type="button" class="calc-btn zero" data-calc="digit" data-d="0">0</button>
+                <button type="button" class="calc-btn" data-calc="decimal">.</button>
+                <button type="button" class="calc-btn eq" data-calc="equals">=</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" id="app-weather" hidden>
+            <div class="weather-search">
+              <input type="text" id="weatherInput" aria-label="City name" placeholder="Enter a city, e.g. Bengaluru">
+              <button type="button" class="weather-loc-btn" id="weatherLocBtn" title="Use my location" aria-label="Use my current location">📍</button>
+              <button type="button" class="button sm" id="weatherSearchBtn">Search</button>
+            </div>
+            <div class="weather-note"><i></i>Live data via Open-Meteo — a free, keyless public API. No tracking, nothing stored.</div>
+            <div id="weatherResult"><div class="weather-state">Search a city or use your location to see real live weather.</div></div>
+          </div>
+
+          <div class="app-view" id="app-converter" hidden>
+            <div class="conv-cats">
+              <button type="button" class="conv-cat active" data-cat="length">Length</button>
+              <button type="button" class="conv-cat" data-cat="weight">Weight</button>
+              <button type="button" class="conv-cat" data-cat="temperature">Temperature</button>
+            </div>
+            <div class="conv-row">
+              <div class="conv-field">
+                <label for="convFromValue">From</label>
+                <input type="number" id="convFromValue" value="1" inputmode="decimal">
+                <select id="convFromUnit"></select>
+              </div>
+              <button type="button" class="conv-swap" id="convSwap" aria-label="Swap units">⇄</button>
+              <div class="conv-field">
+                <label for="convToValue">To</label>
+                <input type="text" id="convToValue" readonly>
+                <select id="convToUnit"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" id="app-password" hidden>
+            <div class="pwd-output">
+              <input type="text" id="pwdOutput" readonly aria-label="Generated password" value="">
+              <button type="button" class="pwd-copy" id="pwdCopyBtn">Copy</button>
+            </div>
+            <div class="pwd-row">Length <input type="range" id="pwdLength" min="6" max="32" value="16"><b id="pwdLengthVal">16</b></div>
+            <div class="pwd-checks">
+              <label><input type="checkbox" id="pwdUpper" checked> Uppercase (A-Z)</label>
+              <label><input type="checkbox" id="pwdLower" checked> Lowercase (a-z)</label>
+              <label><input type="checkbox" id="pwdNumbers" checked> Numbers (0-9)</label>
+              <label><input type="checkbox" id="pwdSymbols"> Symbols (!@#$…)</label>
+            </div>
+            <div class="pwd-strength">
+              <div class="pwd-strength-bar"><div class="pwd-strength-fill" id="pwdStrengthFill"></div></div>
+              <div class="pwd-strength-label" id="pwdStrengthLabel">—</div>
+            </div>
+            <div class="actions" style="margin-top:16px"><button type="button" class="button" id="pwdGenerateBtn">↻ Generate new password</button></div>
+          </div>
+
+        </div>
       </div>
     </div></section>
 
@@ -615,6 +773,288 @@
     agentSuggestions.querySelectorAll('.chip-btn').forEach(btn=>{
       btn.addEventListener('click',()=>handleAsk(btn.dataset.q));
     });
+
+    /* ---------------- mini apps: tabs ---------------- */
+    document.querySelectorAll('.apps-tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        document.querySelectorAll('.apps-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        document.querySelectorAll('.app-view').forEach(v=>v.hidden=true);
+        document.getElementById('app-'+tab.dataset.app).hidden=false;
+      });
+    });
+
+    /* ---------------- mini app: calculator ---------------- */
+    (function(){
+      const valueEl=document.getElementById('calcValue');
+      const exprEl=document.getElementById('calcExpr');
+      let calc={display:'0',first:null,operator:null,waiting:false,expr:''};
+
+      function fmt(n){
+        if(Number.isNaN(n)||!isFinite(n)) return 'Error';
+        return String(Math.round(n*1e10)/1e10);
+      }
+      function render(){
+        valueEl.textContent=calc.display;
+        exprEl.textContent=calc.expr||' ';
+      }
+      function compute(a,b,op){
+        if(op==='+') return a+b;
+        if(op==='−') return a-b;
+        if(op==='×') return a*b;
+        if(op==='÷') return b===0?NaN:a/b;
+      }
+      function inputDigit(d){
+        if(calc.waiting){ calc.display=d; calc.waiting=false; }
+        else { calc.display = calc.display==='0' ? d : calc.display+d; }
+        render();
+      }
+      function inputDecimal(){
+        if(calc.waiting){ calc.display='0.'; calc.waiting=false; render(); return; }
+        if(!calc.display.includes('.')) calc.display+='.';
+        render();
+      }
+      function clearAll(){ calc={display:'0',first:null,operator:null,waiting:false,expr:''}; render(); }
+      function backspace(){
+        if(calc.waiting) return;
+        calc.display = calc.display.length>1 ? calc.display.slice(0,-1) : '0';
+        render();
+      }
+      function percent(){ calc.display=fmt(parseFloat(calc.display)/100); render(); }
+      function inputOp(nextOp){
+        const val=parseFloat(calc.display);
+        if(calc.operator && calc.waiting){
+          calc.operator=nextOp; calc.expr=fmt(calc.first)+' '+nextOp; render(); return;
+        }
+        if(calc.first===null) calc.first=val;
+        else if(calc.operator){ const r=compute(calc.first,val,calc.operator); calc.display=fmt(r); calc.first=r; }
+        calc.waiting=true; calc.operator=nextOp; calc.expr=fmt(calc.first)+' '+nextOp;
+        render();
+      }
+      function equals(){
+        const val=parseFloat(calc.display);
+        if(calc.operator===null||calc.first===null) return;
+        const r=compute(calc.first,val,calc.operator);
+        calc.expr=fmt(calc.first)+' '+calc.operator+' '+fmt(val)+' =';
+        calc.display=fmt(r); calc.first=null; calc.operator=null; calc.waiting=true;
+        render();
+      }
+      document.querySelectorAll('#app-calculator [data-calc]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const a=btn.dataset.calc;
+          if(a==='digit') inputDigit(btn.dataset.d);
+          else if(a==='decimal') inputDecimal();
+          else if(a==='clear') clearAll();
+          else if(a==='back') backspace();
+          else if(a==='percent') percent();
+          else if(a==='op') inputOp(btn.dataset.op);
+          else if(a==='equals') equals();
+        });
+      });
+      document.addEventListener('keydown',e=>{
+        if(document.getElementById('app-calculator').hidden) return;
+        if(document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+        if(/^[0-9]$/.test(e.key)) inputDigit(e.key);
+        else if(e.key==='.') inputDecimal();
+        else if(e.key==='+') inputOp('+');
+        else if(e.key==='-') inputOp('−');
+        else if(e.key==='*') inputOp('×');
+        else if(e.key==='/'){ e.preventDefault(); inputOp('÷'); }
+        else if(e.key==='Enter'||e.key==='=') equals();
+        else if(e.key==='Backspace') backspace();
+        else if(e.key==='Escape') clearAll();
+      });
+      render();
+    })();
+
+    /* ---------------- mini app: weather (real, live, keyless API) ---------------- */
+    (function(){
+      const input=document.getElementById('weatherInput');
+      const result=document.getElementById('weatherResult');
+      const searchBtn=document.getElementById('weatherSearchBtn');
+      const locBtn=document.getElementById('weatherLocBtn');
+      const CODES={
+        0:['Clear sky','☀️'],1:['Mainly clear','🌤️'],2:['Partly cloudy','⛅'],3:['Overcast','☁️'],
+        45:['Fog','🌫️'],48:['Rime fog','🌫️'],
+        51:['Light drizzle','🌦️'],53:['Drizzle','🌦️'],55:['Dense drizzle','🌦️'],
+        56:['Light freezing drizzle','🌦️'],57:['Freezing drizzle','🌦️'],
+        61:['Slight rain','🌧️'],63:['Rain','🌧️'],65:['Heavy rain','🌧️'],
+        66:['Light freezing rain','🌧️'],67:['Freezing rain','🌧️'],
+        71:['Slight snow','🌨️'],73:['Snow','🌨️'],75:['Heavy snow','❄️'],77:['Snow grains','❄️'],
+        80:['Slight showers','🌦️'],81:['Rain showers','🌦️'],82:['Violent showers','⛈️'],
+        85:['Slight snow showers','🌨️'],86:['Heavy snow showers','❄️'],
+        95:['Thunderstorm','⛈️'],96:['Thunderstorm, hail','⛈️'],99:['Thunderstorm, heavy hail','⛈️']
+      };
+      function desc(code){ return CODES[code]||['Weather data','🌡️']; }
+      function loading(){ result.innerHTML='<div class="weather-state">Fetching live weather…</div>'; }
+      function errorMsg(m){ result.innerHTML='<div class="weather-state">'+m+'</div>'; }
+      function render(place,w){
+        const d=desc(w.weather_code);
+        result.innerHTML=
+          '<div class="weather-card">'+
+            '<div class="weather-loc">'+place.name+(place.country?'<span>, '+place.country+'</span>':'')+'</div>'+
+            '<div class="weather-main"><span class="weather-icon">'+d[1]+'</span><div><div class="weather-temp">'+Math.round(w.temperature_2m)+'°C</div><div class="weather-desc">'+d[0]+'</div></div></div>'+
+            '<div class="weather-grid"><div>Humidity<b>'+w.relative_humidity_2m+'%</b></div><div>Wind<b>'+Math.round(w.wind_speed_10m)+' km/h</b></div></div>'+
+          '</div>';
+      }
+      async function forCoords(lat,lon,name,country){
+        loading();
+        try{
+          const url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto';
+          const resp=await fetch(url);
+          if(!resp.ok) throw new Error('bad response');
+          const data=await resp.json();
+          render({name:name,country:country},data.current);
+        }catch(e){
+          errorMsg("Couldn't load live weather right now — try again in a moment.");
+        }
+      }
+      async function search(){
+        const city=input.value.trim();
+        if(!city) return;
+        loading();
+        try{
+          const url='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&count=1';
+          const resp=await fetch(url);
+          if(!resp.ok) throw new Error('bad response');
+          const data=await resp.json();
+          if(!data.results||!data.results.length){
+            errorMsg('Couldn\'t find "'+city.replace(/[<>]/g,'')+'" — try a different spelling or a nearby larger city.');
+            return;
+          }
+          const r=data.results[0];
+          await forCoords(r.latitude,r.longitude,r.name,r.country||'');
+        }catch(e){
+          errorMsg("Couldn't search for that city right now — try again in a moment.");
+        }
+      }
+      searchBtn.addEventListener('click',search);
+      input.addEventListener('keydown',e=>{ if(e.key==='Enter') search(); });
+      locBtn.addEventListener('click',()=>{
+        if(!navigator.geolocation){ errorMsg("Geolocation isn't available in this browser."); return; }
+        loading();
+        navigator.geolocation.getCurrentPosition(
+          pos=>forCoords(pos.coords.latitude,pos.coords.longitude,'Your location',''),
+          ()=>errorMsg('Location access was denied or unavailable — try searching a city instead.')
+        );
+      });
+    })();
+
+    /* ---------------- mini app: unit converter ---------------- */
+    (function(){
+      const UNITS={
+        length:{units:{m:1,km:1000,cm:0.01,mm:0.001,mile:1609.344,yard:0.9144,foot:0.3048,inch:0.0254},
+          labels:{m:'Meters',km:'Kilometers',cm:'Centimeters',mm:'Millimeters',mile:'Miles',yard:'Yards',foot:'Feet',inch:'Inches'}},
+        weight:{units:{kg:1,g:0.001,mg:0.000001,lb:0.453592,oz:0.0283495,tonne:1000},
+          labels:{kg:'Kilograms',g:'Grams',mg:'Milligrams',lb:'Pounds',oz:'Ounces',tonne:'Tonnes'}},
+        temperature:{units:{c:1,f:1,k:1},labels:{c:'Celsius',f:'Fahrenheit',k:'Kelvin'}}
+      };
+      let cat='length';
+      const fromValue=document.getElementById('convFromValue');
+      const toValue=document.getElementById('convToValue');
+      const fromUnit=document.getElementById('convFromUnit');
+      const toUnit=document.getElementById('convToUnit');
+
+      function populate(){
+        const cfg=UNITS[cat];
+        const keys=Object.keys(cfg.units);
+        const opts=keys.map(k=>'<option value="'+k+'">'+cfg.labels[k]+'</option>').join('');
+        fromUnit.innerHTML=opts; toUnit.innerHTML=opts;
+        fromUnit.value=keys[0]; toUnit.value=keys[1]||keys[0];
+      }
+      function toCelsius(v,u){ return u==='c'?v : u==='f'?(v-32)*5/9 : v-273.15; }
+      function fromCelsius(v,u){ return u==='c'?v : u==='f'?v*9/5+32 : v+273.15; }
+      function recompute(){
+        const val=parseFloat(fromValue.value);
+        if(isNaN(val)){ toValue.value=''; return; }
+        const fu=fromUnit.value, tu=toUnit.value;
+        let result;
+        if(cat==='temperature'){ result=fromCelsius(toCelsius(val,fu),tu); }
+        else{ const cfg=UNITS[cat]; result=(val*cfg.units[fu])/cfg.units[tu]; }
+        toValue.value=String(Math.round(result*10000)/10000);
+      }
+      document.querySelectorAll('.conv-cat').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          document.querySelectorAll('.conv-cat').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          cat=btn.dataset.cat;
+          populate(); recompute();
+        });
+      });
+      document.getElementById('convSwap').addEventListener('click',()=>{
+        const f=fromUnit.value,t=toUnit.value;
+        fromUnit.value=t; toUnit.value=f;
+        recompute();
+      });
+      fromValue.addEventListener('input',recompute);
+      fromUnit.addEventListener('change',recompute);
+      toUnit.addEventListener('change',recompute);
+      populate(); recompute();
+    })();
+
+    /* ---------------- mini app: password generator ---------------- */
+    (function(){
+      const output=document.getElementById('pwdOutput');
+      const lengthEl=document.getElementById('pwdLength');
+      const lengthVal=document.getElementById('pwdLengthVal');
+      const upper=document.getElementById('pwdUpper');
+      const lower=document.getElementById('pwdLower');
+      const numbers=document.getElementById('pwdNumbers');
+      const symbols=document.getElementById('pwdSymbols');
+      const fill=document.getElementById('pwdStrengthFill');
+      const label=document.getElementById('pwdStrengthLabel');
+      const SETS={
+        upper:'ABCDEFGHJKLMNPQRSTUVWXYZ',
+        lower:'abcdefghijkmnpqrstuvwxyz',
+        numbers:'23456789',
+        symbols:'!@#$%^&*()-_=+[]{}'
+      };
+      function strength(len,poolSize){
+        if(!poolSize){ fill.style.width='0%'; label.textContent='—'; return; }
+        const bits=Math.round(len*Math.log2(poolSize));
+        let text,color,pct;
+        if(bits<40){ text='Weak'; color='#dc2626'; pct=25; }
+        else if(bits<60){ text='Fair'; color='#e0a94d'; pct=50; }
+        else if(bits<80){ text='Strong'; color='#0a8f5b'; pct=75; }
+        else { text='Very strong'; color='#0a8f5b'; pct=100; }
+        fill.style.width=pct+'%';
+        fill.style.background=color;
+        label.textContent=text+' — ~'+bits+' bits of entropy';
+      }
+      function generate(){
+        let pool='';
+        if(upper.checked) pool+=SETS.upper;
+        if(lower.checked) pool+=SETS.lower;
+        if(numbers.checked) pool+=SETS.numbers;
+        if(symbols.checked) pool+=SETS.symbols;
+        if(!pool){ output.value=''; output.placeholder='Select at least one character type'; strength(0,0); return; }
+        const len=parseInt(lengthEl.value,10);
+        const bytes=new Uint32Array(len);
+        crypto.getRandomValues(bytes);
+        let out='';
+        for(let i=0;i<len;i++) out+=pool[bytes[i]%pool.length];
+        output.value=out;
+        strength(len,pool.length);
+      }
+      lengthEl.addEventListener('input',()=>{ lengthVal.textContent=lengthEl.value; generate(); });
+      [upper,lower,numbers,symbols].forEach(cb=>cb.addEventListener('change',generate));
+      document.getElementById('pwdGenerateBtn').addEventListener('click',generate);
+      document.getElementById('pwdCopyBtn').addEventListener('click',()=>{
+        if(!output.value) return;
+        const btn=document.getElementById('pwdCopyBtn');
+        const original=btn.textContent;
+        function flash(){ btn.textContent='Copied!'; setTimeout(()=>{btn.textContent=original;},1200); }
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(output.value).then(flash).catch(()=>{
+            output.select(); document.execCommand('copy'); flash();
+          });
+        }else{
+          output.select(); document.execCommand('copy'); flash();
+        }
+      });
+      generate();
+    })();
   </script>
   <script src="audit-widget.js"></script>
 </body>
