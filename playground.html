@@ -284,9 +284,10 @@
     .bughunt-score b{color:var(--primary)}
     .bughunt-score button{border:0;background:none;color:var(--text-muted);font-size:.76rem;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
     .bughunt-stage{position:relative;padding:28px 26px;background:var(--bg-subtle);min-height:380px;cursor:crosshair}
-    .bughunt-stage [data-bug].found{outline:2px solid var(--accent);outline-offset:3px;background:var(--accent-soft);border-radius:6px;cursor:default}
+    .bh-faint{color:var(--text);opacity:.2}
+    .bughunt-stage [data-bug].found{outline:2px solid var(--accent);outline-offset:3px;background:var(--accent-soft);border-radius:6px;cursor:default;opacity:1}
     .bughunt-panel{padding:20px;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:10px;max-height:460px;overflow-y:auto}
-    .bughunt-panel h4{margin:0 0 4px;font-size:.84rem}
+    .bughunt-panel h3{margin:0 0 4px;font-size:.84rem;font-weight:700}
     .bh-item{display:flex;gap:10px;padding:11px 12px;border:1px solid var(--border);border-radius:10px;font-size:.78rem;color:var(--text-muted);background:var(--surface-2)}
     .bh-item.found{color:var(--text);border-color:var(--accent);background:var(--accent-soft)}
     .bh-item b{flex:none;width:16px}
@@ -551,13 +552,13 @@
       <div class="bughunt-wrap reveal">
         <div style="display:flex;flex-direction:column">
           <div class="bughunt-score"><span>Found <b id="bhFoundCount">0</b> / <b id="bhTotalCount">0</b></span><button type="button" id="bhResetBtn">Reset</button></div>
-          <div class="bughunt-stage" id="bughuntStage">
+          <div class="bughunt-stage" id="bughuntStage" data-audit-exclude>
             <div class="bh-mock-nav"><b>Acme Workspace</b><span style="color:var(--text-muted);font-size:.78rem">Create your account</span></div>
             <form class="bh-mock-form" id="bhMockForm" novalidate>
               <input type="text" placeholder="Full name">
               <input type="text" data-bug="no-label" placeholder="Email address">
               <input type="text" data-bug="password-type" value="hunter2" aria-label="Password (demo)">
-              <p data-bug="low-contrast" style="color:#d7dbe2;font-size:.78rem;margin:2px 0">All fields are required to continue.</p>
+              <p data-bug="low-contrast" class="bh-faint" style="font-size:.78rem;margin:2px 0">All fields are required to continue.</p>
               <label style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-secondary)"><input type="checkbox" data-bug="unlabeled-checkbox"></label>
               <p data-bug="lorem-ipsum" style="color:var(--text-muted);font-size:.72rem;margin:2px 0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <a href="#" data-bug="bad-link-text" style="font-size:.78rem;color:var(--primary);align-self:flex-start">Click here</a>
@@ -566,7 +567,7 @@
           </div>
         </div>
         <div class="bughunt-panel">
-          <h4>Bugs found</h4>
+          <h3>Bugs found</h3>
           <div id="bhList"></div>
         </div>
       </div>

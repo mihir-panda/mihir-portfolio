@@ -61,8 +61,12 @@
       return {pass:pass, detail:detail};
     });
 
+    function inExcludedZone(el){
+      return !!el.closest('[data-audit-exclude]');
+    }
+
     check('alt','All images have alt text',function(){
-      var imgs=Array.prototype.slice.call(d.querySelectorAll('img'));
+      var imgs=Array.prototype.slice.call(d.querySelectorAll('img')).filter(function(el){return !inExcludedZone(el)});
       var missing=imgs.filter(function(img){return !img.hasAttribute('alt')});
       var detail = imgs.length===0 ? 'No images on this page' :
         (missing.length===0 ? (imgs.length)+'/'+(imgs.length)+' images have alt text' : missing.length+' of '+imgs.length+' images missing alt text');
@@ -70,7 +74,7 @@
     });
 
     check('labels','Form fields have associated labels',function(){
-      var fields=Array.prototype.slice.call(d.querySelectorAll('input:not([type=hidden]),textarea,select'));
+      var fields=Array.prototype.slice.call(d.querySelectorAll('input:not([type=hidden]),textarea,select')).filter(function(el){return !inExcludedZone(el)});
       var unlabeled=fields.filter(function(f){
         if(f.getAttribute('aria-label')||f.getAttribute('aria-labelledby')) return false;
         if(f.id){
