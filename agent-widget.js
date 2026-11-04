@@ -10,10 +10,15 @@
 
   function injectStyles(){
     const css=
-      '#agentBadge{position:fixed;left:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:8px;padding:12px 16px 12px 12px;border-radius:999px;border:1px solid var(--border-strong,#d0d5dd);background:var(--btn-bg,#0f172a);color:var(--btn-text,#fff);box-shadow:0 10px 28px rgba(0,0,0,.2);cursor:pointer;transition:transform .15s ease}'+
-      '#agentBadge:hover{transform:translateY(-2px)}'+
-      '#agentBadge svg{width:18px;height:18px;flex:none}'+
-      '#agentBadge span{font:600 .76rem Inter,system-ui,sans-serif}'+
+      '#agentBadge{position:fixed;left:18px;bottom:18px;z-index:80;display:flex;align-items:center;justify-content:center;width:54px;height:54px;padding:0;border-radius:50%;border:1px solid var(--border-strong,#d0d5dd);background:var(--btn-bg,#0f172a);color:var(--btn-text,#fff);box-shadow:0 10px 28px rgba(0,0,0,.25);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}'+
+      '#agentBadge:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 14px 32px rgba(0,0,0,.3)}'+
+      '#agentBadge svg{width:22px;height:22px;flex:none}'+
+      '#agentBadge .af-icon-close{display:none}'+
+      '#agentBadge.is-open .af-icon-chat{display:none}'+
+      '#agentBadge.is-open .af-icon-close{display:block}'+
+      '#agentBadge .af-badge-dot{position:absolute;top:1px;right:1px;width:11px;height:11px;border-radius:50%;background:#22c55e;border:2px solid var(--btn-bg,#0f172a);animation:afdotpulse 2.2s ease-in-out infinite}'+
+      '#agentBadge.is-open .af-badge-dot{display:none}'+
+      '@keyframes afdotpulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}'+
       '#agentFloatPanel{position:fixed;left:18px;bottom:76px;z-index:81;width:min(360px,calc(100vw - 36px));max-height:min(78vh,560px);display:none;flex-direction:column;border:1px solid var(--border-strong,#d0d5dd);border-radius:18px;overflow:hidden;background:#0b0f18;box-shadow:0 24px 56px rgba(0,0,0,.3)}'+
       '#agentFloatPanel.open{display:flex}'+
       '#agentFloatPanel .af-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.08)}'+
@@ -46,7 +51,7 @@
       '#agentFloatPanel .af-form button{flex:none;padding:0 14px;border:0;border-radius:9px;background:#e6edf3;color:#0a0c10;font-weight:700;font-size:.76rem;cursor:pointer}'+
       '#agentFloatPanel .af-note{padding:9px 14px;border-top:1px solid rgba(255,255,255,.06);color:#6b7a91;font-size:.64rem;line-height:1.5}'+
       '#agentFloatPanel .af-note a{color:#7fa6e0;font-weight:600}'+
-      '@media(max-width:480px){#agentBadge{left:12px;bottom:12px}#agentFloatPanel{left:12px;right:12px;width:auto;bottom:68px}}';
+      '@media(max-width:480px){#agentBadge{left:12px;bottom:12px}#agentFloatPanel{left:12px;right:12px;width:auto;bottom:66px}}';
     const style=document.createElement('style');
     style.textContent=css;
     document.head.appendChild(style);
@@ -58,9 +63,10 @@
     const badge=document.createElement('button');
     badge.id='agentBadge';
     badge.type='button';
+    badge.title='Ask me anything';
     badge.setAttribute('aria-label','Ask the portfolio agent a question');
     badge.setAttribute('aria-expanded','false');
-    badge.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Ask me anything</span>';
+    badge.innerHTML='<svg class="af-icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><svg class="af-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span class="af-badge-dot"></span>';
     document.body.appendChild(badge);
 
     const panel=document.createElement('div');
@@ -156,8 +162,8 @@
       btn.addEventListener('click',()=>ask(btn.dataset.q));
     });
 
-    function open(){ panel.classList.add('open'); badge.setAttribute('aria-expanded','true'); input.focus(); }
-    function close(){ panel.classList.remove('open'); badge.setAttribute('aria-expanded','false'); }
+    function open(){ panel.classList.add('open'); badge.classList.add('is-open'); badge.setAttribute('aria-expanded','true'); input.focus(); }
+    function close(){ panel.classList.remove('open'); badge.classList.remove('is-open'); badge.setAttribute('aria-expanded','false'); }
     badge.addEventListener('click',()=>{ panel.classList.contains('open') ? close() : open(); });
     panel.querySelector('.af-close').addEventListener('click',close);
     document.addEventListener('click',e=>{
