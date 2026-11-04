@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="QA notes by Mihir Ranjan Panda — short, practical write-ups on testing technique from real QA/SDET work.">
+  <title>QA Notes | Mihir Panda</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+  <script>window.__auditErrors=[];window.addEventListener('error',function(e){window.__auditErrors.push(e.message)});var __ce=console.error;console.error=function(){window.__auditErrors.push(Array.prototype.slice.call(arguments).join(' '));__ce.apply(console,arguments)};</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      color-scheme:light;
+      --bg:#ffffff;--bg-subtle:#f6f8fa;--surface:#ffffff;--surface-2:#f1f4f8;
+      --border:#e2e5ea;--border-strong:#d0d5dd;
+      --text:#0f172a;--text-secondary:#475569;--text-muted:#64748b;
+      --primary:#2563eb;--primary-hover:#1d4ed8;--primary-soft:#eaf1ff;
+      --accent:#0a8f5b;--accent-soft:#e7f8f0;
+      --btn-bg:#0f172a;--btn-text:#ffffff;--btn-hover:#27324a;
+      --nav-bg:rgba(255,255,255,.86);
+      --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+      --shadow-md:0 10px 28px rgba(15,23,42,.08);
+      --shadow-lg:0 24px 56px rgba(15,23,42,.12);
+    }
+    [data-theme="dark"]{
+      color-scheme:dark;
+      --bg:#0a0c10;--bg-subtle:#0d1016;--surface:#12151c;--surface-2:#181c25;
+      --border:rgba(230,237,243,.09);--border-strong:rgba(230,237,243,.16);
+      --text:#e6edf3;--text-secondary:#aab4c0;--text-muted:#7d8794;
+      --primary:#5b9dff;--primary-hover:#7eb1ff;--primary-soft:rgba(91,157,255,.14);
+      --accent:#3fcf8e;--accent-soft:rgba(63,207,142,.13);
+      --btn-bg:#e6edf3;--btn-text:#0a0c10;--btn-hover:#ffffff;
+      --nav-bg:rgba(10,12,16,.82);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+      --shadow-md:0 10px 28px rgba(0,0,0,.45);
+      --shadow-lg:0 24px 56px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html{-webkit-font-smoothing:antialiased}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;transition:background-color .25s ease,color .25s ease}
+    a{color:inherit;text-decoration:none}
+    :focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
+
+    .bar{border-bottom:1px solid var(--border);background:var(--nav-bg);backdrop-filter:blur(14px)}
+    .barin{display:flex;align-items:center;justify-content:space-between;width:min(1120px,calc(100% - 48px));min-height:70px;margin:auto;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:700}
+    .mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;color:#fff;background:var(--primary);font:700 .65rem 'DM Mono',monospace}
+    .actions{display:flex;align-items:center;gap:9px}
+    .action{padding:9px 13px;border:1px solid var(--border-strong);border-radius:9px;color:var(--text);background:var(--surface);font-size:.75rem;font-weight:600;cursor:pointer}
+    .action:hover{background:var(--surface-2)}
+    .theme-toggle{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-strong);border-radius:9px;color:var(--text-secondary);background:var(--surface);cursor:pointer;flex:none}
+    .theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
+    .theme-toggle svg{width:17px;height:17px}
+    .theme-toggle .icon-moon{display:none}
+    [data-theme="dark"] .theme-toggle .icon-sun{display:none}
+    [data-theme="dark"] .theme-toggle .icon-moon{display:block}
+
+    .page{width:min(820px,calc(100% - 48px));margin:48px auto 64px}
+    .page-head{margin-bottom:34px}
+    .page-head p.eyebrow{margin:0 0 10px;color:var(--primary);font:700 .72rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+    .page-head h1{margin:0;font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-.02em;font-weight:800}
+    .page-head p.lede{margin:14px 0 0;max-width:620px;color:var(--text-secondary);font-size:.92rem;line-height:1.7}
+
+    .note{border:1px solid var(--border);border-radius:16px;background:var(--surface);margin-bottom:16px;overflow:hidden}
+    .note summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .note summary::-webkit-details-marker{display:none}
+    .note summary .nt-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px;color:var(--text-muted);font:600 .66rem 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+    .note summary h2{margin:0;font-size:1.08rem;font-weight:700;letter-spacing:-.01em}
+    .note summary p{margin:8px 0 0;color:var(--text-secondary);font-size:.84rem;line-height:1.6}
+    .note summary .nt-chevron{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--border-strong);display:grid;place-items:center;color:var(--text-muted);transition:transform .2s ease}
+    .note[open] summary .nt-chevron{transform:rotate(180deg)}
+    .note-body{padding:0 24px 26px;color:var(--text-secondary);font-size:.86rem;line-height:1.8}
+    .note-body p{margin:0 0 14px}
+    .note-body ul{margin:0 0 14px;padding-left:19px}
+    .note-body li{margin:7px 0}
+    .note-body p:last-child{margin-bottom:0}
+
+    .footer{padding:40px 0 30px;color:var(--text-muted);font:500 .68rem 'DM Mono',monospace}
+    .foot{display:flex;justify-content:space-between;gap:18px;width:min(1120px,calc(100% - 48px));margin:auto}
+
+    @media(max-width:760px){
+      .barin{width:calc(100% - 30px)}
+      .page{width:calc(100% - 30px);margin:28px auto 48px}
+      .actions .action:not(.cv-download){display:none}
+      .foot{width:calc(100% - 30px);flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header class="bar"><div class="barin">
+    <a class="brand" href="index.html"><span class="mark">MP</span>Mihir Panda</a>
+    <div class="actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a class="action" href="index.html">← Portfolio</a>
+      <a class="action" href="playground.html">Playground</a>
+      <a class="action" href="resume.html">Resume</a>
+      <a class="action cv-download" href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a>
+    </div>
+  </div></header>
+
+  <main class="page">
+    <div class="page-head">
+      <p class="eyebrow">QA Notes</p>
+      <h1>Short, practical write-ups on testing technique.</h1>
+      <p class="lede">Not polished theory — the checklists and habits I actually use day-to-day across manual testing, automation, and API work. Click a note to expand it.</p>
+    </div>
+
+    <details class="note" open>
+      <summary>
+        <div><div class="nt-meta"><span>TEST DESIGN</span></div><h2>Why boundary values are the first thing I test</h2><p>On every new feature, I check the edges before the happy path — here's the exact list I run through.</p></div>
+        <span class="nt-chevron" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="note-body">
+        <p>When a new feature lands in my queue, it's tempting to start with the happy path — the obvious, intended use case everyone already tried in dev. I don't. I start at the edges.</p>
+        <p>Boundary values are where most real defects actually live: the first and last valid values, the values just outside the valid range, empty input, and the maximum the system is supposed to tolerate. A date picker that accepts "today" but silently breaks on the last day of a leap year. A quantity field that accepts 1–100 but lets through -1 or 101 without validation. A text field with a 255-character limit that truncates silently at 256 instead of rejecting the input.</p>
+        <p>My quick checklist for any new input or workflow:</p>
+        <ul>
+          <li>Minimum valid value, and one below it</li>
+          <li>Maximum valid value, and one above it</li>
+          <li>Empty / null / missing input</li>
+          <li>The exact boundary of any stated limit (character count, date range, upload size)</li>
+          <li>Duplicate or repeated submission (double-click, back-button resubmission)</li>
+          <li>Values that are technically valid but operationally unusual — a $0 order, a same-day start-and-end date, a user with zero existing records</li>
+        </ul>
+        <p>This isn't about pessimism — it's about recognizing that developers naturally test the path they just wrote, which is almost always the middle of the range. QA's job is to live at the edges on purpose. On the Availity healthcare portal, this habit alone has caught UI state bugs that only showed up with empty result sets or single-record responses — cases that never appear in a demo with realistic sample data, but happen constantly in production the first week a new clinic goes live.</p>
+      </div>
+    </details>
+
+    <details class="note">
+      <summary>
+        <div><div class="nt-meta"><span>BUG REPORTING</span></div><h2>A simple triage framework for vague bug reports</h2><p>"It's broken" isn't a bug report. Here are the three questions I run it through first.</p></div>
+        <span class="nt-chevron" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="note-body">
+        <p>Every QA engineer gets some version of "it's broken" at least once a week — from a stakeholder, a support ticket, or a teammate in passing. Before I open a defect ticket, I run it through three questions.</p>
+        <p><b>1. Can I reproduce it, and how reliably?</b> If I can't reproduce it in three attempts, I don't file it as confirmed yet — I note the conditions I tried and ask the reporter for exact steps, browser, and account state. A huge number of "random" bugs turn out to be 100% reproducible once you match the right precondition: a specific user role, an empty cart, a timezone offset.</p>
+        <p><b>2. What's the actual vs. expected behavior, stated precisely?</b> Not "the page is broken" but "clicking Submit with a valid form shows a blank white screen instead of the confirmation message." Precise actual/expected framing does most of the work of the ticket for you, and it's the difference between a developer fixing it in ten minutes and re-reproducing your steps from scratch.</p>
+        <p><b>3. What's the blast radius?</b> One user, one browser, one edge case — or everyone, right now, on the critical path? This isn't about assigning severity labels for their own sake; it's about making sure a P1 doesn't sit behind five P3s in a queue because nobody separated them.</p>
+        <p>Once those three are answered, writing the actual ticket is almost mechanical: steps to reproduce, expected vs. actual, environment, severity, and — if I have it — a guess at where in the stack the problem likely lives. That last part isn't required, but it's the fastest way to earn a developer's trust that your reports are worth opening first.</p>
+      </div>
+    </details>
+
+    <details class="note">
+      <summary>
+        <div><div class="nt-meta"><span>API TESTING</span></div><h2>My API testing checklist before I call an endpoint "tested"</h2><p>A 200 response isn't a pass. Auth, pagination, idempotency, and the edge cases teams skip.</p></div>
+        <span class="nt-chevron" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="note-body">
+        <p>"I tested the API" often means "I sent a valid request and got a 200 back." That's a smoke test, not API testing. Here's what I actually check with Postman and Rest Assured before calling an endpoint covered.</p>
+        <p><b>Status codes, properly.</b> Not just the happy-path 200/201, but 400 for malformed input, 401/403 for auth failures, 404 for missing resources, and 409 for conflicts like a duplicate create. An endpoint that returns 200 with an error message in the body instead of an honest status code is a bug, even if the message is technically correct.</p>
+        <p><b>Auth and authorization, separately.</b> Does the endpoint reject requests with no token (401)? Does it reject a valid token that belongs to a user without permission for this specific resource (403)? These are two different failure modes, and I've seen both missed independently in the same API.</p>
+        <p><b>Pagination edge cases.</b> Page 0, a page number past the last page, a page size of 0 or a huge number, and whether the total count is consistent with what's actually returned.</p>
+        <p><b>Idempotency.</b> Calling the same POST/PUT twice — does it create a duplicate record, or does the API protect against that where it should? Same question for a retried request after a timeout.</p>
+        <p><b>Data validation at the boundary.</b> Required fields missing, wrong data types, strings that exceed the documented max length, and whether validation errors tell you which field failed.</p>
+        <p><b>Response shape, not just response code.</b> Does every success response actually match the documented schema, including fields that are supposed to be present but legitimately null?</p>
+        <p>On the Availity and ConfluxHR projects, most of the real defects in "tested" APIs weren't in the happy path at all — they were in the auth/authorization split and in what happened on a retried request. The happy path almost always works; it's usually the only thing anyone manually tried.</p>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer"><div class="foot"><span>© <span id="year"></span> MIHIR RANJAN PANDA</span><span>QUALITY ENGINEERING / SDET</span></div></footer>
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('themeToggle').addEventListener('click',()=>{
+      const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next)}catch(e){}
+    });
+  </script>
+  <script src="audit-widget.js"></script>
+  <script src="agent-kb.js"></script>
+  <script src="agent-widget.js"></script>
+</body>
+</html>

@@ -5,7 +5,8 @@
     {label:'Home', file:'index.html'},
     {label:'Resume', file:'resume.html'},
     {label:'Profile', file:'profile.html'},
-    {label:'Playground', file:'playground.html'}
+    {label:'Playground', file:'playground.html'},
+    {label:'QA Notes', file:'notes.html'}
   ];
 
   function currentFile(){
@@ -171,13 +172,14 @@
       '<div class="ap-head"><b>Live self-audit</b><span class="ap-score" id="apScore">—</span><button class="ap-close" id="apClose" type="button" aria-label="Close">&times;</button></div>'+
       '<div class="ap-pagesel"><label for="apPageSelect">Audit</label><select id="apPageSelect">'+selectOptions+'</select></div>'+
       '<div class="ap-list" id="apList"></div>'+
-      '<div class="ap-foot">Real checks, run live against the selected page — not a canned demo. Cross-page audits fetch that page\'s HTML (same-origin) and skip the two checks that only make sense on the page you\'re actually viewing. Scoped to what\'s reliably verifiable client-side, not a full Lighthouse/axe audit. <button type="button" id="apRerun">Re-run</button> &middot; <a href="'+moreDemosHref+'">More demos</a></div>';
+      '<div class="ap-foot">Real checks, run live against the selected page — not a canned demo. Cross-page audits fetch that page\'s HTML (same-origin) and skip the two checks that only make sense on the page you\'re actually viewing. Scoped to what\'s reliably verifiable client-side, not a full Lighthouse/axe audit. <button type="button" id="apRerun">Re-run</button> &middot; <button type="button" id="apExport">Export report</button> &middot; <a href="'+moreDemosHref+'">More demos</a></div>';
     document.body.appendChild(panel);
 
     var list=panel.querySelector('#apList');
     var scoreEl=panel.querySelector('#apScore');
     var pageSelect=panel.querySelector('#apPageSelect');
     var cache={};
+    var lastResults=null, lastFile=null;
 
     function setBadge(score,passCount,total){
       document.getElementById('auditBadgeText').textContent = total ? (score+'% · '+passCount+'/'+total) : 'Live audit';
@@ -185,7 +187,9 @@
       badge.classList.toggle('warn',total>0 && score<100);
     }
 
-    function renderList(results){
+    function renderList(results,file){
+      lastResults=results;
+      lastFile=file||myFile;
       list.innerHTML='';
       var passCount=0, scored=0;
       results.forEach(function(r){
@@ -207,11 +211,13 @@
     }
 
     function showLoading(label){
+      lastResults=null;
       list.innerHTML='<div class="ap-loading"><span class="ap-spin"></span>Fetching '+escapeHtml(label)+'…</div>';
       scoreEl.textContent='…';
     }
 
     function showFetchError(file){
+      lastResults=null;
       list.innerHTML='<div class="ap-error">Couldn\'t fetch '+escapeHtml(file)+' from here. This works once the site is served over HTTP(S) (same-origin fetch) — opening pages directly as local files blocks cross-file requests in some browsers. Try again once this is live, or switch back to "this page."</div>';
       scoreEl.textContent='—';
       setBadge(0,0,0);
@@ -219,13 +225,13 @@
 
     function runFor(file){
       if(file===myFile){
-        renderList(runChecks(document,true));
+        renderList(runChecks(document,true),file);
         return;
       }
       var pageMeta=PAGES.filter(function(p){return p.file===file})[0];
       showLoading(pageMeta?pageMeta.label:file);
       if(cache[file]){
-        renderList(runChecks(cache[file],false));
+        renderList(runChecks(cache[file],false),file);
         return;
       }
       fetch(file).then(function(resp){
@@ -234,10 +240,45 @@
       }).then(function(html){
         var doc=new DOMParser().parseFromString(html,'text/html');
         cache[file]=doc;
-        renderList(runChecks(doc,false));
+        renderList(runChecks(doc,false),file);
       }).catch(function(){
         showFetchError(file);
       });
+    }
+
+    function exportReport(){
+      if(!lastResults){ return; }
+      var pageMeta=PAGES.filter(function(p){return p.file===lastFile})[0];
+      var label=pageMeta?pageMeta.label:lastFile;
+      var scored=lastResults.filter(function(r){return !r.skip});
+      var passCount=scored.filter(function(r){return r.pass}).length;
+      var score=scored.length>0?Math.round((passCount/scored.length)*100):0;
+      var lines=[];
+      lines.push('# Live self-audit report');
+      lines.push('');
+      lines.push('Page: '+label+' ('+lastFile+')');
+      lines.push('Generated: '+new Date().toString());
+      lines.push('Score: '+score+'% ('+passCount+'/'+scored.length+' checks passed)');
+      lines.push('');
+      lines.push('## Results');
+      lines.push('');
+      lastResults.forEach(function(r){
+        var mark=r.skip?'–':(r.pass?'PASS':'FAIL');
+        lines.push('- ['+mark+'] '+r.label);
+        lines.push('  '+r.detail);
+      });
+      lines.push('');
+      lines.push('---');
+      lines.push('Generated client-side by the live self-audit widget at '+location.href+'. Real checks against live DOM/page content — not a canned demo, and not a full Lighthouse/axe audit.');
+      var blob=new Blob([lines.join('\n')],{type:'text/markdown'});
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a');
+      a.href=url;
+      a.download='audit-report-'+lastFile.replace(/\.html?$/,'')+'.md';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); },1000);
     }
 
     function openPanel(){
@@ -258,6 +299,7 @@
       delete cache[pageSelect.value];
       runFor(pageSelect.value);
     });
+    panel.querySelector('#apExport').addEventListener('click',exportReport);
     pageSelect.addEventListener('change',function(){ runFor(pageSelect.value); });
     document.addEventListener('click',function(e){
       if(panel.classList.contains('open') && !panel.contains(e.target) && !badge.contains(e.target)) closePanel();
