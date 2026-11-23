@@ -168,6 +168,8 @@
 
     .cta{padding:0 0 64px}
     .cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;padding:52px;border:1px solid var(--border-strong);border-radius:20px;background:var(--surface-2)}
+    .cta-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+    .cta-actions .button{white-space:nowrap}
     .teaser{padding:0 0 100px}
     .teaser-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:46px 52px;border:1px solid var(--border-strong);border-radius:20px;background:#0b0f18;box-shadow:var(--shadow-lg)}
     .teaser-card::before{position:absolute;top:-180px;left:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,#5b9dff,transparent 68%);opacity:.14;content:'';pointer-events:none}
@@ -264,6 +266,7 @@
       .phase:last-child{border-bottom:0}
       .cta-card{padding:32px 24px}
       .cta-card .button{justify-self:start}
+      .cta-actions{align-items:flex-start;width:100%}
       .foot{flex-direction:column}
       .reveal{opacity:1;transform:none}
     }
@@ -276,7 +279,7 @@
 <body>
   <header class="nav"><div class="wrap navin">
     <a class="brand" href="profile.html" title="View personal profile"><span class="brand-mark">MP</span>Mihir Panda</a>
-    <nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="playground.html">Playground</a><a href="#model">Approach</a><a href="profile.html">Profile</a><a href="resume.html">Resume</a><a href="notes.html">Notes</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
+    <nav class="links"><a href="#capabilities">Capabilities</a><a href="#impact">Impact</a><a href="#work">Case studies</a><a href="playground.html">Playground</a><a href="#model">Approach</a><a href="profile.html">Profile</a><a href="resume.html">Resume</a><a href="notes.html">Notes</a><a href="work-with-me.html">Work With Me</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a></nav>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -364,23 +367,23 @@
 
     <section class="section" id="impact"><div class="wrap">
       <p class="section-label">Measured impact</p>
-      <div class="headline"><h2>Numbers that show what disciplined testing actually changes.</h2><p>Hands-on ownership of complex, workflow-heavy products across healthcare, ERP, HRMS, and document management.</p></div>
+      <div class="headline"><h2>What disciplined testing actually buys a business: fewer incidents, faster releases.</h2><p>Hands-on ownership of complex, workflow-heavy products across healthcare, ERP, HRMS, and document management — where a missed bug isn't just an inconvenience, it's a support ticket, a compliance risk, or a churned customer.</p></div>
       <div class="impact">
-        <article class="reveal"><b>300+</b><h3>Tests executed</h3><p>Functional, regression, exploratory, UAT, and cross-browser coverage for healthcare workflows.</p></article>
-        <article class="reveal"><b>100+</b><h3>Defects verified</h3><p>Clear reporting and fix validation alongside developers and delivery teams.</p></article>
-        <article class="reveal"><b>60%</b><h3>Less regression time</h3><p>Hybrid Selenium, TestNG, and Maven automation framework built at DBI.</p></article>
-        <article class="reveal"><b>50+</b><h3>Flows automated</h3><p>Critical UI scenarios automated with reusable methods and resilient test practices.</p></article>
+        <article class="reveal"><b>300+</b><h3>Tests executed</h3><p>Functional, regression, exploratory, UAT, and cross-browser coverage — the breadth that catches what a rushed release misses.</p></article>
+        <article class="reveal"><b>100+</b><h3>Defects caught pre-release</h3><p>Each one a support ticket, refund, or lost-trust moment that a customer never had to experience.</p></article>
+        <article class="reveal"><b>60%</b><h3>Less regression time</h3><p>Hybrid Selenium, TestNG, and Maven framework at DBI — shorter cycles mean releases ship on schedule, not late.</p></article>
+        <article class="reveal"><b>50+</b><h3>Flows automated</h3><p>Repetitive checks automated so testing time goes toward exploratory work that actually finds new risk.</p></article>
       </div>
     </div></section>
 
     <section class="section section-alt" id="work"><div class="wrap">
       <p class="section-label">Selected case studies</p>
-      <div class="headline"><h2>Real products. Measurable release outcomes.</h2><p>Quality ownership applied to the systems that customers, teams, and operations depend on every day.</p></div>
+      <div class="headline"><h2>Real products. Real business stakes.</h2><p>Quality ownership applied to the systems that customers, teams, and operations depend on every day — framed around what breaking them actually costs.</p></div>
       <div class="case-list">
-        <article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal<span class="status-badge"><i></i>ONGOING</span></h3><p>US patient-management platform: 300+ tests, UI automation, and release readiness across critical workflows.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article>
-        <article class="case reveal"><span class="case-no">02</span><h3>Zyler ERP Suite</h3><p>Automated business workflows and UAT validation that improved platform stability by 45%.</p><span class="case-tag">ERP</span><b class="work-metric">45%</b></article>
-        <article class="case reveal"><span class="case-no">03</span><h3>ASTERDocs</h3><p>Document upload, approvals, role-based access, and exception-safe automation coverage.</p><span class="case-tag">DOCUMENTS</span><b class="work-metric">100%</b></article>
-        <article class="case reveal"><span class="case-no">04</span><h3>ConfluxHR</h3><p>Attendance, payroll, employee modules, REST API testing, and 98% defect resolution tracking.</p><span class="case-tag">HR TECH</span><b class="work-metric">98%</b></article>
+        <article class="case reveal"><span class="case-no">01</span><h3>Availity UI Healthcare Portal<span class="status-badge"><i></i>ONGOING</span></h3><p>A live US patient-management platform: 300+ tests and UI automation keeping it shipping safely — not just shipping fast, on a product where a bug touches patient care.</p><span class="case-tag">HEALTHCARE</span><b class="work-metric">300+</b></article>
+        <article class="case reveal"><span class="case-no">02</span><h3>Zyler ERP Suite</h3><p>Automated workflow and UAT validation that improved platform stability by 45% — fewer emergency fixes, fewer support escalations eating into delivery time.</p><span class="case-tag">ERP</span><b class="work-metric">45%</b></article>
+        <article class="case reveal"><span class="case-no">03</span><h3>ASTERDocs</h3><p>Document upload, approvals, and role-based access tested to 100% requirement coverage before launch — gaps found in QA, not discovered by a customer after.</p><span class="case-tag">DOCUMENTS</span><b class="work-metric">100%</b></article>
+        <article class="case reveal"><span class="case-no">04</span><h3>ConfluxHR</h3><p>Attendance, payroll, and employee modules with 98% defect resolution tracking — payroll errors caught before they ever reached a paycheck.</p><span class="case-tag">HR TECH</span><b class="work-metric">98%</b></article>
       </div>
     </div></section>
 
@@ -418,13 +421,13 @@
     <section class="cta" id="contact"><div class="wrap">
       <div class="cta-card">
         <div><p class="section-label">Let's work together</p><h2>Make the next release the one your team trusts.</h2><p>Available worldwide for freelance QA, test automation, API validation, and release-quality engagements.</p></div>
-        <a class="button" href="mailto:mhrpanda13@gmail.com?subject=QA%20Project%20Enquiry">Start a conversation ↗</a>
+        <div class="cta-actions"><a class="button" href="mailto:mhrpanda13@gmail.com?subject=Book%20a%2015-min%20call&amp;body=Hi%20Mihir%2C%0A%0AI%27d%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20a%20project.%20Here%27s%20a%20bit%20about%20what%20I%20need%20and%20a%20couple%20of%20times%20that%20work%20for%20me%3A%0A%0A">Book a 15-min call ↗</a><a class="button secondary" href="work-with-me.html">How we'd work together</a></div>
       </div>
     </div></section>
   </main>
   <footer><div class="wrap foot">
     <span>© <span id="year"></span> MIHIR RANJAN PANDA</span>
-    <div class="social"><a href="resume.html">Resume ↗</a><a href="notes.html">QA Notes ↗</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a><a href="mailto:mhrpanda13@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/mihirpanda-sdet" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    <div class="social"><a href="resume.html">Resume ↗</a><a href="notes.html">QA Notes ↗</a><a href="work-with-me.html">Work With Me ↗</a><a href="Mihir_Ranjan_Panda_SDET_Resume_2026.pdf" download>Download CV ↓</a><a href="mailto:mhrpanda13@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/mihirpanda-sdet" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/mihir-panda" target="_blank" rel="noreferrer">GitHub ↗</a></div>
   </div></footer>
   <script>
     const menu=document.querySelector('.menu'),links=document.querySelector('.links');

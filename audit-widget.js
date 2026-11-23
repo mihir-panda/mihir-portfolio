@@ -6,7 +6,8 @@
     {label:'Resume', file:'resume.html'},
     {label:'Profile', file:'profile.html'},
     {label:'Playground', file:'playground.html'},
-    {label:'QA Notes', file:'notes.html'}
+    {label:'QA Notes', file:'notes.html'},
+    {label:'Work With Me', file:'work-with-me.html'}
   ];
 
   function currentFile(){
@@ -127,6 +128,15 @@
       '#auditPanel .ap-pagesel{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border,#e2e5ea);background:var(--bg-subtle,#f6f8fa)}'+
       '#auditPanel .ap-pagesel label{font-size:.68rem;font-weight:700;color:var(--text-muted,#64748b);text-transform:uppercase;letter-spacing:.04em;flex:none}'+
       '#auditPanel .ap-pagesel select{flex:1;padding:6px 8px;border:1px solid var(--border-strong,#d0d5dd);border-radius:7px;background:var(--surface,#fff);color:var(--text,#0f172a);font:inherit;font-size:.76rem}'+
+      '#auditPanel .ap-urlrow{display:none;gap:7px;padding:12px 16px;border-bottom:1px solid var(--border,#e2e5ea);background:var(--bg-subtle,#f6f8fa)}'+
+      '#auditPanel .ap-urlrow.show{display:flex}'+
+      '#auditPanel .ap-urlrow input{flex:1;min-width:0;padding:7px 9px;border:1px solid var(--border-strong,#d0d5dd);border-radius:7px;background:var(--surface,#fff);color:var(--text,#0f172a);font:inherit;font-size:.76rem}'+
+      '#auditPanel .ap-urlrow button{flex:none;padding:7px 12px;border:0;border-radius:7px;background:var(--primary,#2563eb);color:#fff;font-size:.72rem;font-weight:700;cursor:pointer}'+
+      '#auditPanel .ap-urlnote{display:none;padding:0 16px 10px;color:var(--text-muted,#64748b);font-size:.64rem;line-height:1.5;background:var(--bg-subtle,#f6f8fa);border-bottom:1px solid var(--border,#e2e5ea)}'+
+      '#auditPanel .ap-urlnote.show{display:block}'+
+      '#auditPanel .ap-lead{margin:10px 8px 4px;padding:14px;border-radius:12px;background:var(--primary-soft,#eaf1ff);border:1px solid var(--primary,#2563eb);font-size:.76rem;line-height:1.6;color:var(--text,#0f172a)}'+
+      '#auditPanel .ap-lead b{display:block;margin-bottom:5px;font-size:.8rem}'+
+      '#auditPanel .ap-lead a{color:var(--primary,#2563eb);font-weight:700}'+
       '#auditPanel .ap-list{padding:8px;min-height:60px}'+
       '#auditPanel .ap-loading{display:flex;align-items:center;gap:8px;padding:20px 12px;color:var(--text-muted,#64748b);font-size:.78rem}'+
       '#auditPanel .ap-spin{width:13px;height:13px;border-radius:50%;border:2px solid var(--border-strong,#d0d5dd);border-top-color:var(--primary,#2563eb);animation:apspin .7s linear infinite;flex:none}'+
@@ -168,13 +178,15 @@
     var selectOptions=PAGES.map(function(p){
       var sel=p.file===myFile?' selected':'';
       return '<option value="'+p.file+'"'+sel+'>'+p.label+(p.file===myFile?' (this page)':'')+'</option>';
-    }).join('');
+    }).join('')+'<option value="__custom__">🔗 Audit any website…</option>';
 
     var panel=document.createElement('div');
     panel.id='auditPanel';
     panel.innerHTML=
       '<div class="ap-head"><b>Live self-audit</b><span class="ap-score" id="apScore">—</span><button class="ap-close" id="apClose" type="button" aria-label="Close">&times;</button></div>'+
       '<div class="ap-pagesel"><label for="apPageSelect">Audit</label><select id="apPageSelect">'+selectOptions+'</select></div>'+
+      '<div class="ap-urlrow" id="apUrlRow"><input type="text" id="apUrlInput" placeholder="yoursite.com" aria-label="Website URL to audit"><button type="button" id="apUrlGo">Run free audit</button></div>'+
+      '<div class="ap-urlnote" id="apUrlNote">Fetched live via a public reader service (r.jina.ai) so this can reach any site, not just this portfolio — nothing is stored.</div>'+
       '<div class="ap-list" id="apList"></div>'+
       '<div class="ap-foot">Real checks, run live against the selected page — not a canned demo. Cross-page audits fetch that page\'s HTML (same-origin) and skip the two checks that only make sense on the page you\'re actually viewing. Scoped to what\'s reliably verifiable client-side, not a full Lighthouse/axe audit. <button type="button" id="apRerun">Re-run</button> &middot; <button type="button" id="apExport">Export report</button> &middot; <a href="'+moreDemosHref+'">More demos</a></div>';
     document.body.appendChild(panel);
@@ -182,8 +194,12 @@
     var list=panel.querySelector('#apList');
     var scoreEl=panel.querySelector('#apScore');
     var pageSelect=panel.querySelector('#apPageSelect');
+    var urlRow=panel.querySelector('#apUrlRow');
+    var urlNote=panel.querySelector('#apUrlNote');
+    var urlInput=panel.querySelector('#apUrlInput');
+    var urlGoBtn=panel.querySelector('#apUrlGo');
     var cache={};
-    var lastResults=null, lastFile=null;
+    var lastResults=null, lastFile=null, lastIsExternal=false;
 
     function setBadge(score,passCount,total){
       document.getElementById('auditBadgeText').textContent = total ? (score+'% · '+passCount+'/'+total) : 'Live audit';
@@ -191,9 +207,10 @@
       badge.classList.toggle('warn',total>0 && score<100);
     }
 
-    function renderList(results,file){
+    function renderList(results,file,isExternal){
       lastResults=results;
       lastFile=file||myFile;
+      lastIsExternal=!!isExternal;
       list.innerHTML='';
       var passCount=0, scored=0;
       results.forEach(function(r){
@@ -212,6 +229,16 @@
       var score=scored>0?Math.round((passCount/scored)*100):0;
       scoreEl.textContent=score+'%';
       setBadge(score,passCount,scored);
+      if(isExternal){
+        var lead=document.createElement('div');
+        lead.className='ap-lead';
+        var failCount=scored-passCount;
+        var headline = failCount>0
+          ? 'That\'s '+failCount+' of '+scored+' checks failing on a live site — the kind of thing that quietly costs conversions and trust.'
+          : 'Clean pass on these checks — nice. A full audit goes deeper than what\'s safely automatable from a browser.';
+        lead.innerHTML='<b>Want this fixed, or a deeper audit?</b>'+escapeHtml(headline)+' <a href="work-with-me.html">See how a quality audit works</a> or <a href="mailto:mhrpanda13@gmail.com?subject=Quality%20audit%20request&amp;body=Hi%20Mihir%2C%20I%27d%20like%20to%20talk%20about%20a%20quality%20audit%20for%3A%20'+encodeURIComponent(lastFile)+'">book a free 15-min call</a>.';
+        list.appendChild(lead);
+      }
     }
 
     function showLoading(label){
@@ -227,15 +254,52 @@
       setBadge(0,0,0);
     }
 
+    function showUrlError(url,reason){
+      lastResults=null;
+      list.innerHTML='<div class="ap-error">Couldn\'t audit '+escapeHtml(url)+' — '+escapeHtml(reason)+' This uses a free third-party reader service that can occasionally be slow or rate-limited; try again in a moment, or try a different URL.</div>';
+      scoreEl.textContent='—';
+      setBadge(0,0,0);
+    }
+
+    function normalizeUrl(raw){
+      var v=(raw||'').trim();
+      if(!v) return null;
+      if(!/^https?:\/\//i.test(v)) v='https://'+v;
+      try{ return new URL(v).href; }catch(e){ return null; }
+    }
+
+    function runForUrl(raw){
+      var url=normalizeUrl(raw);
+      if(!url){ showUrlError(raw||'(empty)','that doesn\'t look like a valid URL.'); return; }
+      showLoading(url.replace(/^https?:\/\//,''));
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timer = controller ? setTimeout(function(){ controller.abort(); },15000) : null;
+      fetch('https://r.jina.ai/'+url,{headers:{'X-Respond-With':'html'},signal: controller?controller.signal:undefined})
+        .then(function(resp){
+          if(timer) clearTimeout(timer);
+          if(!resp.ok) throw new Error('reader service returned HTTP '+resp.status+'.');
+          return resp.text();
+        })
+        .then(function(html){
+          var doc=new DOMParser().parseFromString(html,'text/html');
+          if(!doc || !doc.body || doc.body.children.length===0) throw new Error('got an empty response — that site may block automated readers.');
+          renderList(runChecks(doc,false),url,true);
+        })
+        .catch(function(err){
+          var reason = (err && err.name==='AbortError') ? 'the request took too long and timed out.' : (err && err.message) ? err.message : 'the request failed.';
+          showUrlError(url,reason);
+        });
+    }
+
     function runFor(file){
       if(file===myFile){
-        renderList(runChecks(document,true),file);
+        renderList(runChecks(document,true),file,false);
         return;
       }
       var pageMeta=PAGES.filter(function(p){return p.file===file})[0];
       showLoading(pageMeta?pageMeta.label:file);
       if(cache[file]){
-        renderList(runChecks(cache[file],false),file);
+        renderList(runChecks(cache[file],false),file,false);
         return;
       }
       fetch(file).then(function(resp){
@@ -244,7 +308,7 @@
       }).then(function(html){
         var doc=new DOMParser().parseFromString(html,'text/html');
         cache[file]=doc;
-        renderList(runChecks(doc,false),file);
+        renderList(runChecks(doc,false),file,false);
       }).catch(function(){
         showFetchError(file);
       });
@@ -253,14 +317,14 @@
     function exportReport(){
       if(!lastResults){ return; }
       var pageMeta=PAGES.filter(function(p){return p.file===lastFile})[0];
-      var label=pageMeta?pageMeta.label:lastFile;
+      var label=lastIsExternal?lastFile:(pageMeta?pageMeta.label:lastFile);
       var scored=lastResults.filter(function(r){return !r.skip});
       var passCount=scored.filter(function(r){return r.pass}).length;
       var score=scored.length>0?Math.round((passCount/scored.length)*100):0;
       var lines=[];
       lines.push('# Live self-audit report');
       lines.push('');
-      lines.push('Page: '+label+' ('+lastFile+')');
+      lines.push(lastIsExternal ? ('External site: '+label) : ('Page: '+label+' ('+lastFile+')'));
       lines.push('Generated: '+new Date().toString());
       lines.push('Score: '+score+'% ('+passCount+'/'+scored.length+' checks passed)');
       lines.push('');
@@ -278,17 +342,30 @@
       var url=URL.createObjectURL(blob);
       var a=document.createElement('a');
       a.href=url;
-      a.download='audit-report-'+lastFile.replace(/\.html?$/,'')+'.md';
+      var safeName=lastIsExternal ? lastFile.replace(/^https?:\/\//,'').replace(/[^a-z0-9.-]+/gi,'-').replace(/^-+|-+$/g,'').slice(0,60) : lastFile.replace(/\.html?$/,'');
+      a.download='audit-report-'+safeName+'.md';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       setTimeout(function(){ URL.revokeObjectURL(url); },1000);
     }
 
+    function syncUrlMode(){
+      var isCustom=pageSelect.value==='__custom__';
+      urlRow.classList.toggle('show',isCustom);
+      urlNote.classList.toggle('show',isCustom);
+      if(isCustom){
+        list.innerHTML='<div class="ap-loading">Enter a URL above and run a free audit.</div>';
+        scoreEl.textContent='—';
+        urlInput.focus();
+      }
+    }
+
     function openPanel(){
       panel.classList.add('open');
       badge.setAttribute('aria-expanded','true');
-      runFor(pageSelect.value);
+      if(pageSelect.value==='__custom__'){ syncUrlMode(); }
+      else{ runFor(pageSelect.value); }
     }
     function closePanel(){
       panel.classList.remove('open');
@@ -300,11 +377,20 @@
     });
     panel.querySelector('#apClose').addEventListener('click',closePanel);
     panel.querySelector('#apRerun').addEventListener('click',function(){
+      if(pageSelect.value==='__custom__'){
+        if(urlInput.value.trim()) runForUrl(urlInput.value);
+        return;
+      }
       delete cache[pageSelect.value];
       runFor(pageSelect.value);
     });
     panel.querySelector('#apExport').addEventListener('click',exportReport);
-    pageSelect.addEventListener('change',function(){ runFor(pageSelect.value); });
+    pageSelect.addEventListener('change',function(){
+      syncUrlMode();
+      if(pageSelect.value!=='__custom__') runFor(pageSelect.value);
+    });
+    urlGoBtn.addEventListener('click',function(){ runForUrl(urlInput.value); });
+    urlInput.addEventListener('keydown',function(e){ if(e.key==='Enter') runForUrl(urlInput.value); });
     document.addEventListener('click',function(e){
       if(panel.classList.contains('open') && !panel.contains(e.target) && !badge.contains(e.target)) closePanel();
     });
