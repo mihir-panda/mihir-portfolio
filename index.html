@@ -626,12 +626,8 @@
       // Page load: real timing via the Performance API
       function reportLoad(){
         const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-        if(nav && nav.loadEventEnd){
-          const ms=Math.round(nav.loadEventEnd-nav.startTime);
-          setStatus(row3, dot3, ms>0 && ms<3000, ms+'ms', ms+'ms');
-        }else{
-          setStatus(row3, dot3, true, Math.round(performance.now())+'ms', Math.round(performance.now())+'ms');
-        }
+        const ms = (nav && nav.loadEventEnd) ? Math.round(nav.loadEventEnd-nav.startTime) : Math.round(performance.now());
+        setStatus(row3, dot3, ms>0 && ms<3000, ms+'ms', ms+'ms');
       }
       if(document.readyState==='complete') reportLoad();
       else window.addEventListener('load', reportLoad);
