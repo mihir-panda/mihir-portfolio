@@ -236,7 +236,7 @@
         var headline = failCount>0
           ? 'That\'s '+failCount+' of '+scored+' checks failing on a live site — the kind of thing that quietly costs conversions and trust.'
           : 'Clean pass on these checks — nice. A full audit goes deeper than what\'s safely automatable from a browser.';
-        lead.innerHTML='<b>Want this fixed, or a deeper audit?</b>'+escapeHtml(headline)+' <a href="work-with-me.html">See how a quality audit works</a> or <a href="mailto:mhrpanda13@gmail.com?subject=Quality%20audit%20request&amp;body=Hi%20Mihir%2C%20I%27d%20like%20to%20talk%20about%20a%20quality%20audit%20for%3A%20'+encodeURIComponent(lastFile)+'">book a free 15-min call</a>.';
+        lead.innerHTML='<b>Want this fixed, or a deeper audit?</b>'+escapeHtml(headline)+' <a href="work-with-me.html">See how a quality audit works</a> or <a href="https://calendly.com/mhrpanda13/30min" target="_blank" rel="noreferrer">book a free 30-min call</a>.';
         list.appendChild(lead);
       }
     }
