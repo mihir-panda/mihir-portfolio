@@ -107,19 +107,25 @@
     .dots i{width:6px;height:6px;border-radius:50%;background:#3a4454}
     .dots i:first-child{background:#ff8f6b}
     .dots i:nth-child(2){background:#f6cf5e}
-    .dashboard{display:grid;grid-template-rows:auto 1fr auto;gap:9px;padding:18px;border-radius:13px;background:#0b0f18}
+    .dashboard{display:grid;grid-template-rows:auto 1fr auto auto;gap:7px;padding:18px;border-radius:13px;background:#0b0f18}
     .dashboard-top{display:flex;align-items:baseline;justify-content:space-between;color:#dce9ff;font-size:.68rem;font-weight:600}
     .dash-sub{margin-left:6px;color:#5c6b85;font-size:.6rem;font-weight:500}
-    .live{color:#3fcf8e;font:500 .58rem 'DM Mono',monospace;transition:color .2s ease}
-    .live::before{display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:#3fcf8e;content:'';transition:background-color .2s ease}
+    .live{position:relative;color:#3fcf8e;font:500 .58rem 'DM Mono',monospace;transition:color .2s ease}
+    .live::before{display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:#3fcf8e;content:'';transition:background-color .2s ease;animation:livepulse 2s ease-in-out infinite}
     .live.demo{color:#8695ab}
-    .live.demo::before{background:#8695ab}
-    .chart{position:relative;overflow:hidden;display:flex;align-items:end;gap:10px;min-height:150px;padding:14px 10px;border-bottom:1px solid rgba(184,209,244,.14);background:linear-gradient(180deg,rgba(91,140,255,.1),transparent)}
-    .chart i{flex:1;min-height:6px;border-radius:5px;background:linear-gradient(#8fc3ff,#4d7fff);transition:height .5s cubic-bezier(.22,1,.36,1)}
+    .live.demo::before{background:#8695ab;animation:none}
+    @keyframes livepulse{0%,100%{box-shadow:0 0 0 0 rgba(63,207,142,.5)}50%{box-shadow:0 0 0 5px rgba(63,207,142,0)}}
+    .chart{position:relative;overflow:hidden;display:flex;align-items:end;gap:10px;min-height:130px;padding:14px 10px 10px;border-radius:9px 9px 0 0;background:linear-gradient(180deg,rgba(91,140,255,.14),transparent)}
+    .chart i{position:relative;flex:1;min-height:6px;border-radius:6px 6px 2px 2px;background:linear-gradient(#8fc3ff,#4d7fff);box-shadow:0 0 0 1px rgba(143,195,255,.15) inset;transition:height .6s cubic-bezier(.22,1,.36,1)}
+    .chart i:last-child{background:linear-gradient(#bcdcff,#6fa3ff);box-shadow:0 0 12px rgba(111,163,255,.5)}
     .chart i:nth-child(1){height:31%}.chart i:nth-child(2){height:55%}.chart i:nth-child(3){height:43%}.chart i:nth-child(4){height:78%}.chart i:nth-child(5){height:63%}.chart i:nth-child(6){height:92%}.chart i:nth-child(7){height:74%}
-    .dashboard-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid rgba(184,209,244,.09);color:#8695ab;font-size:.64rem}
+    .chart-labels{display:flex;gap:10px;padding:0 10px;border-bottom:1px solid rgba(184,209,244,.14)}
+    .chart-labels span{flex:1;padding-bottom:9px;text-align:center;color:#56657f;font:500 .52rem 'DM Mono',monospace;letter-spacing:.02em}
+    .dashboard-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(184,209,244,.09);color:#8695ab;font-size:.64rem}
     .dashboard-row:last-child{border:0}
-    .dashboard-row b{color:#d8e8ff;font-weight:500}
+    .row-dot{width:6px;height:6px;border-radius:50%;background:#3fcf8e;flex:none;transition:background-color .2s ease}
+    .row-dot.warn{background:#ff8f6b}
+    .dashboard-row b{flex:1;color:#d8e8ff;font-weight:500}
     .status{padding:3px 7px;border-radius:5px;color:#3fcf8e;background:rgba(63,207,142,.13);font-size:.56rem;font-weight:600;transition:color .2s ease,background-color .2s ease}
     .status.warn{color:#ff8f6b;background:rgba(255,143,107,.14)}
     .showcase-owner{display:flex;align-items:center;gap:10px;margin:11px 2px 2px;padding:13px 8px 2px;border-top:1px solid rgba(255,255,255,.08);border-radius:8px;cursor:pointer;transition:background-color .15s ease}
@@ -327,12 +333,13 @@
         <div class="showcase reveal">
           <div class="showcase-head"><span>QUALITY CONTROL / LIVE</span><span class="dots"><i></i><i></i><i></i></span></div>
           <div class="dashboard">
-            <div class="dashboard-top"><span>Commit activity<span class="dash-sub">· recent active days</span></span><span class="live" id="dashLive">LIVE</span></div>
+            <div class="dashboard-top"><span>Commit activity<span class="dash-sub" id="dashSub">· recent active days</span></span><span class="live" id="dashLive">LIVE</span></div>
             <div class="chart" id="dashChart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="chart-labels" id="dashLabels"><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span></div>
             <div>
-              <div class="dashboard-row"><b>Accessibility</b><span class="status" id="dashRow1">—</span></div>
-              <div class="dashboard-row"><b>External links</b><span class="status" id="dashRow2">—</span></div>
-              <div class="dashboard-row"><b>Page load</b><span class="status" id="dashRow3">—</span></div>
+              <div class="dashboard-row"><span class="row-dot" id="dashDot1"></span><b>Accessibility</b><span class="status" id="dashRow1">—</span></div>
+              <div class="dashboard-row"><span class="row-dot" id="dashDot2"></span><b>External links</b><span class="status" id="dashRow2">—</span></div>
+              <div class="dashboard-row"><span class="row-dot" id="dashDot3"></span><b>Page load</b><span class="status" id="dashRow3">—</span></div>
             </div>
           </div>
           <a class="showcase-owner" href="profile.html" title="View personal profile"><img class="owner-avatar" src="mihir-photo.jpeg" alt="Mihir Ranjan Panda"><div><b>Mihir Ranjan Panda</b><span>QA ENGINEER / SDET</span></div><svg class="owner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -590,11 +597,13 @@
     /* ---------------- hero dashboard: real page-quality signals + real GitHub activity ---------------- */
     (function(){
       const row1=document.getElementById('dashRow1'), row2=document.getElementById('dashRow2'), row3=document.getElementById('dashRow3');
+      const dot1=document.getElementById('dashDot1'), dot2=document.getElementById('dashDot2'), dot3=document.getElementById('dashDot3');
       if(!row1) return;
 
-      function setStatus(el,ok,passText,warnText){
+      function setStatus(el,dot,ok,passText,warnText){
         el.textContent = ok ? passText : warnText;
         el.classList.toggle('warn', !ok);
+        if(dot) dot.classList.toggle('warn', !ok);
       }
 
       // Accessibility: real alt-text + form-label checks against this live page
@@ -607,21 +616,21 @@
         if(f.closest('label')) return false;
         return true;
       }).length;
-      setStatus(row1, missingAlt===0 && unlabeled===0, 'COVERED', 'REVIEW');
+      setStatus(row1, dot1, missingAlt===0 && unlabeled===0, 'COVERED', 'REVIEW');
 
       // External links: real rel=noopener/noreferrer check against this live page
       const extLinks=Array.prototype.slice.call(document.querySelectorAll('a[target="_blank"]'));
       const unsafe=extLinks.filter(a=>!/noopener|noreferrer/.test(a.getAttribute('rel')||'')).length;
-      setStatus(row2, unsafe===0, 'PASSING', 'REVIEW');
+      setStatus(row2, dot2, unsafe===0, 'PASSING', 'REVIEW');
 
       // Page load: real timing via the Performance API
       function reportLoad(){
         const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
         if(nav && nav.loadEventEnd){
           const ms=Math.round(nav.loadEventEnd-nav.startTime);
-          setStatus(row3, ms>0 && ms<3000, ms+'ms', ms+'ms');
+          setStatus(row3, dot3, ms>0 && ms<3000, ms+'ms', ms+'ms');
         }else{
-          setStatus(row3, true, Math.round(performance.now())+'ms', Math.round(performance.now())+'ms');
+          setStatus(row3, dot3, true, Math.round(performance.now())+'ms', Math.round(performance.now())+'ms');
         }
       }
       if(document.readyState==='complete') reportLoad();
@@ -633,6 +642,8 @@
       (async function(){
         const liveEl=document.getElementById('dashLive');
         const chartEl=document.getElementById('dashChart');
+        const labelsEl=document.getElementById('dashLabels');
+        const subEl=document.getElementById('dashSub');
         try{
           const resp=await fetch('https://api.github.com/repos/mihir-panda/mihir-portfolio/commits?per_page=100');
           if(!resp.ok) throw new Error('bad response');
@@ -656,6 +667,14 @@
             bar.title=label+': '+d.count+' commit'+(d.count===1?'':'s');
             return bar.outerHTML;
           }).join('');
+          labelsEl.innerHTML=days.map(d=>{
+            const short=d.date.toLocaleDateString(undefined,{day:'numeric',month:'short'});
+            const span=document.createElement('span');
+            span.textContent=short;
+            return span.outerHTML;
+          }).join('');
+          const totalCommits=days.reduce((sum,d)=>sum+d.count,0);
+          subEl.textContent='· '+totalCommits+' commit'+(totalCommits===1?'':'s')+' across '+days.length+' active day'+(days.length===1?'':'s');
         }catch(e){
           liveEl.textContent='DEMO';
           liveEl.classList.add('demo');
