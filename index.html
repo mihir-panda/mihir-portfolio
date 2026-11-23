@@ -107,32 +107,18 @@
     .dots i{width:6px;height:6px;border-radius:50%;background:#3a4454}
     .dots i:first-child{background:#ff8f6b}
     .dots i:nth-child(2){background:#f6cf5e}
-    .dashboard{display:grid;grid-template-rows:auto 1fr auto;gap:9px;padding:18px;border-radius:13px;background:#0b0f18}
-    .dashboard-top{display:flex;align-items:baseline;justify-content:space-between;color:#dce9ff;font-size:.68rem;font-weight:600}
-    .dash-sub{margin-left:6px;color:#5c6b85;font-size:.6rem;font-weight:500}
-    .live{position:relative;color:#3fcf8e;font:500 .58rem 'DM Mono',monospace;transition:color .2s ease}
-    .live::before{display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:#3fcf8e;content:'';transition:background-color .2s ease;animation:livepulse 2s ease-in-out infinite}
-    .live.demo{color:#8695ab}
-    .live.demo::before{background:#8695ab;animation:none}
-    @keyframes livepulse{0%,100%{box-shadow:0 0 0 0 rgba(63,207,142,.5)}50%{box-shadow:0 0 0 5px rgba(63,207,142,0)}}
-    .activity-feed{display:flex;flex-direction:column;gap:1px;min-height:120px;max-height:150px;overflow-y:auto;padding:4px 2px;border-bottom:1px solid rgba(184,209,244,.14)}
-    .activity-feed::-webkit-scrollbar{width:4px}
-    .activity-feed::-webkit-scrollbar-thumb{background:rgba(143,195,255,.25);border-radius:4px}
-    .activity-item{display:flex;align-items:flex-start;gap:9px;padding:8px 4px;border-bottom:1px solid rgba(184,209,244,.07)}
-    .activity-item:last-child{border-bottom:0}
-    .activity-dot{width:5px;height:5px;margin-top:5px;border-radius:50%;background:#4d7fff;flex:none;box-shadow:0 0 6px rgba(77,127,255,.6)}
-    .activity-item:first-child .activity-dot{background:#6fa3ff;box-shadow:0 0 8px rgba(111,163,255,.8)}
-    .activity-body{flex:1;min-width:0}
-    .activity-msg{display:block;overflow:hidden;color:#d8e8ff;font-size:.68rem;font-weight:500;line-height:1.4;white-space:nowrap;text-overflow:ellipsis}
-    .activity-time{display:block;margin-top:2px;color:#56657f;font:500 .58rem 'DM Mono',monospace}
-    .activity-empty{margin:auto;color:#56657f;font-size:.66rem}
-    .dashboard-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(184,209,244,.09);color:#8695ab;font-size:.64rem}
-    .dashboard-row:last-child{border:0}
-    .row-dot{width:6px;height:6px;border-radius:50%;background:#3fcf8e;flex:none;transition:background-color .2s ease}
-    .row-dot.warn{background:#ff8f6b}
-    .dashboard-row b{flex:1;color:#d8e8ff;font-weight:500}
-    .status{padding:3px 7px;border-radius:5px;color:#3fcf8e;background:rgba(63,207,142,.13);font-size:.56rem;font-weight:600;transition:color .2s ease,background-color .2s ease}
-    .status.warn{color:#ff8f6b;background:rgba(255,143,107,.14)}
+    .codecard{border-radius:13px;background:#0b0f18;overflow:hidden}
+    .codecard-tab{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid rgba(184,209,244,.1);color:#7d8fac;font:500 .66rem 'DM Mono',monospace}
+    .codecard-tab svg{width:12px;height:12px;flex:none;color:#5b9dff}
+    .codecard-pass{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:#3fcf8e;font-weight:600}
+    .codecard-pass::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#3fcf8e}
+    .codecard-body{margin:0;padding:16px 14px;overflow-x:auto;font:400 .74rem/1.75 'DM Mono',monospace}
+    .cl{display:flex;white-space:pre}
+    .cl .ln{flex:none;width:20px;margin-right:14px;color:#3a4357;text-align:right;user-select:none}
+    .tok-kw{color:#c792ea}
+    .tok-str{color:#addb67}
+    .tok-fn{color:#82aaff}
+    .cl-code{color:#c9d6ec}
     .showcase-owner{display:flex;align-items:center;gap:10px;margin:11px 2px 2px;padding:13px 8px 2px;border-top:1px solid rgba(255,255,255,.08);border-radius:8px;cursor:pointer;transition:background-color .15s ease}
     .showcase-owner:hover{background:rgba(255,255,255,.05)}
     .owner-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center 18%;flex:none;filter:saturate(.95) contrast(1.02)}
@@ -336,15 +322,11 @@
           <div class="microproof"><i></i><span><b>Remote-friendly</b> &amp; available for freelance QA engagements</span></div>
         </div>
         <div class="showcase reveal">
-          <div class="showcase-head"><span>QUALITY CONTROL / LIVE</span><span class="dots"><i></i><i></i><i></i></span></div>
-          <div class="dashboard">
-            <div class="dashboard-top"><span>Recent commits<span class="dash-sub" id="dashSub">· live from GitHub</span></span><span class="live" id="dashLive">LIVE</span></div>
-            <div class="activity-feed" id="dashFeed"><div class="activity-empty">Loading recent commits…</div></div>
-            <div>
-              <div class="dashboard-row"><span class="row-dot" id="dashDot1"></span><b>Accessibility</b><span class="status" id="dashRow1">—</span></div>
-              <div class="dashboard-row"><span class="row-dot" id="dashDot2"></span><b>External links</b><span class="status" id="dashRow2">—</span></div>
-              <div class="dashboard-row"><span class="row-dot" id="dashDot3"></span><b>Page load</b><span class="status" id="dashRow3">—</span></div>
-            </div>
+          <div class="showcase-head"><span>TEST SUITE</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="codecard">
+            <div class="codecard-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>availity.spec.ts<span class="codecard-pass">PASS</span></div>
+            <pre class="codecard-body"><code
+><div class="cl"><span class="ln">1</span><span class="cl-code"><span class="tok-kw">import</span> { test, expect } <span class="tok-kw">from</span> <span class="tok-str">'@playwright/test'</span>;</span></div><div class="cl"><span class="ln">2</span><span class="cl-code"></span></div><div class="cl"><span class="ln">3</span><span class="cl-code"><span class="tok-fn">test</span>(<span class="tok-str">'patient search returns valid results'</span>, <span class="tok-kw">async</span> ({ page }) => {</span></div><div class="cl"><span class="ln">4</span><span class="cl-code">  <span class="tok-kw">await</span> page.<span class="tok-fn">goto</span>(<span class="tok-str">'/patients'</span>);</span></div><div class="cl"><span class="ln">5</span><span class="cl-code">  <span class="tok-kw">await</span> page.<span class="tok-fn">fill</span>(<span class="tok-str">'[data-testid="search"]'</span>, <span class="tok-str">'MRN-10234'</span>);</span></div><div class="cl"><span class="ln">6</span><span class="cl-code">  <span class="tok-kw">await</span> page.<span class="tok-fn">click</span>(<span class="tok-str">'button:has-text("Search")'</span>);</span></div><div class="cl"><span class="ln">7</span><span class="cl-code"></span></div><div class="cl"><span class="ln">8</span><span class="cl-code">  <span class="tok-kw">const</span> results = page.<span class="tok-fn">locator</span>(<span class="tok-str">'.patient-row'</span>);</span></div><div class="cl"><span class="ln">9</span><span class="cl-code">  <span class="tok-kw">await</span> <span class="tok-fn">expect</span>(results).<span class="tok-fn">toHaveCount</span>(1);</span></div><div class="cl"><span class="ln">10</span><span class="cl-code">  <span class="tok-kw">await</span> <span class="tok-fn">expect</span>(results.<span class="tok-fn">first</span>()).<span class="tok-fn">toContainText</span>(<span class="tok-str">'Active'</span>);</span></div><div class="cl"><span class="ln">11</span><span class="cl-code">});</span></div></code></pre>
           </div>
           <a class="showcase-owner" href="profile.html" title="View personal profile"><img class="owner-avatar" src="mihir-photo.jpeg" alt="Mihir Ranjan Panda"><div><b>Mihir Ranjan Panda</b><span>QA ENGINEER / SDET</span></div><svg class="owner-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
         </div>
@@ -598,84 +580,6 @@
       render();
     })();
 
-    /* ---------------- hero dashboard: real page-quality signals + real GitHub activity ---------------- */
-    (function(){
-      const row1=document.getElementById('dashRow1'), row2=document.getElementById('dashRow2'), row3=document.getElementById('dashRow3');
-      const dot1=document.getElementById('dashDot1'), dot2=document.getElementById('dashDot2'), dot3=document.getElementById('dashDot3');
-      if(!row1) return;
-
-      function setStatus(el,dot,ok,passText,warnText){
-        el.textContent = ok ? passText : warnText;
-        el.classList.toggle('warn', !ok);
-        if(dot) dot.classList.toggle('warn', !ok);
-      }
-
-      // Accessibility: real alt-text + form-label checks against this live page
-      const imgs=Array.prototype.slice.call(document.querySelectorAll('img'));
-      const missingAlt=imgs.filter(img=>!img.hasAttribute('alt')).length;
-      const fields=Array.prototype.slice.call(document.querySelectorAll('input:not([type=hidden]),textarea,select'));
-      const unlabeled=fields.filter(f=>{
-        if(f.getAttribute('aria-label')||f.getAttribute('aria-labelledby')) return false;
-        if(f.id){ try{ if(document.querySelector('label[for="'+CSS.escape(f.id)+'"]')) return false; }catch(e){} }
-        if(f.closest('label')) return false;
-        return true;
-      }).length;
-      setStatus(row1, dot1, missingAlt===0 && unlabeled===0, 'COVERED', 'REVIEW');
-
-      // External links: real rel=noopener/noreferrer check against this live page
-      const extLinks=Array.prototype.slice.call(document.querySelectorAll('a[target="_blank"]'));
-      const unsafe=extLinks.filter(a=>!/noopener|noreferrer/.test(a.getAttribute('rel')||'')).length;
-      setStatus(row2, dot2, unsafe===0, 'PASSING', 'REVIEW');
-
-      // Page load: real timing via the Performance API
-      function reportLoad(){
-        const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-        const ms = (nav && nav.loadEventEnd) ? Math.round(nav.loadEventEnd-nav.startTime) : Math.round(performance.now());
-        setStatus(row3, dot3, ms>0 && ms<3000, ms+'ms', ms+'ms');
-      }
-      if(document.readyState==='complete') reportLoad();
-      else window.addEventListener('load', reportLoad);
-
-      // Recent commits feed: real commit history from the public GitHub API —
-      // actual commit messages and real relative timestamps, not a chart.
-      (async function(){
-        const liveEl=document.getElementById('dashLive');
-        const feedEl=document.getElementById('dashFeed');
-        const subEl=document.getElementById('dashSub');
-
-        function timeAgo(iso){
-          const diff=Math.max(0,(Date.now()-new Date(iso).getTime())/1000);
-          const units=[['year',31536000],['month',2592000],['day',86400],['hour',3600],['minute',60]];
-          for(const [label,secs] of units){
-            const v=Math.floor(diff/secs);
-            if(v>=1) return v+' '+label+(v>1?'s':'')+' ago';
-          }
-          return 'just now';
-        }
-        function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-        try{
-          const resp=await fetch('https://api.github.com/repos/mihir-panda/mihir-portfolio/commits?per_page=5');
-          if(!resp.ok) throw new Error('bad response');
-          const commits=await resp.json();
-          if(!Array.isArray(commits) || !commits.length) throw new Error('no commit history');
-          feedEl.innerHTML=commits.map(c=>{
-            const msg=(c.commit && c.commit.message || '').split('\n')[0];
-            const date=c.commit && c.commit.author && c.commit.author.date;
-            return '<div class="activity-item"><span class="activity-dot"></span><div class="activity-body">'+
-              '<span class="activity-msg" title="'+escapeHtml(msg)+'">'+escapeHtml(msg)+'</span>'+
-              '<span class="activity-time">'+(date?timeAgo(date):'')+'</span>'+
-            '</div></div>';
-          }).join('');
-          subEl.textContent='· '+commits.length+' latest from mihir-portfolio';
-        }catch(e){
-          liveEl.textContent='DEMO';
-          liveEl.classList.add('demo');
-          liveEl.title='Live GitHub data unavailable right now — showing a placeholder pattern instead.';
-          feedEl.innerHTML='<div class="activity-empty">Couldn\'t load live commits right now.</div>';
-        }
-      })();
-    })();
   </script>
   <script src="audit-widget.js"></script>
   <script src="agent-kb.js"></script>
